@@ -1,6 +1,6 @@
 ﻿namespace TrabajoPractico3
 {
-    partial class Form1
+    partial class frmTP3
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1022, 631);
+            this.Name = "Form1";
+            this.Text = "Trabajo Practico N° 3 - Grupo 10 - Simulacion - 4K4 - 2018";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
