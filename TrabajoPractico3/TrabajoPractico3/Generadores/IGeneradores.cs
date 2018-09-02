@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrabajoPractico3.Generadores
 {
-    interface IGeneradores
+    public interface IGeneradores
     {
         double Generar();
         int Generar(int cifras);

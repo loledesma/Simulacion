@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace TrabajoPractico3.Distribuciones
 {
-    interface IDistribuciones
+    public interface IDistribuciones
     {
+        void asignarGenerador (Generadores.IGeneradores generador);
+        double generar();
+        List<double> generar(int cantidad);
+        List<double> getFrecuenciasEsperadas(List<Intervalo> intervalos);
+        int getCantidadParametros();
     }
 }

@@ -83,6 +83,7 @@
     <Compile Include="grafico.Designer.cs">
       <DependentUpon>grafico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Intervalo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmTP3.resx">
