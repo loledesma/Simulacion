@@ -332,6 +332,7 @@
             this.btn_PuntoC.TabIndex = 7;
             this.btn_PuntoC.Text = "Generar ";
             this.btn_PuntoC.UseVisualStyleBackColor = true;
+            this.btn_PuntoC.Click += new System.EventHandler(this.btn_PuntoC_Click);
             // 
             // txt_lambda
             // 

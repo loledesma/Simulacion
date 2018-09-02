@@ -16,13 +16,10 @@ namespace TrabajoPractico3
         {
             InitializeComponent();
         }
-
         private void btn_grafico_Click(object sender, EventArgs e)
         {
             grafico graficoDistribucion = new grafico(); 
             graficoDistribucion.Show();
         }
-
-     
     }
 }
