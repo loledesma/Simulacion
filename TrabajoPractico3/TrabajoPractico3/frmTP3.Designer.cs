@@ -104,10 +104,10 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(394, 320);
+            this.groupBox4.Size = new System.Drawing.Size(394, 297);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Generador Nros Aleatorios";
+            this.groupBox4.Text = "Generador Números Aleatorios";
             // 
             // groupBox2
             // 
@@ -124,7 +124,7 @@
             this.groupBox2.Controls.Add(this.txt_semillaA);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(14, 134);
+            this.groupBox2.Location = new System.Drawing.Point(14, 124);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
@@ -255,7 +255,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(362, 95);
+            this.groupBox1.Size = new System.Drawing.Size(362, 89);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Generadores";
@@ -263,7 +263,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(11, 72);
+            this.radioButton3.Location = new System.Drawing.Point(14, 61);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(87, 17);
@@ -274,7 +274,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(11, 50);
+            this.radioButton2.Location = new System.Drawing.Point(14, 39);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(182, 17);
@@ -286,7 +286,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(11, 28);
+            this.radioButton1.Location = new System.Drawing.Point(14, 17);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(133, 17);
@@ -312,11 +312,11 @@
             this.groupBox5.Controls.Add(this.rad_normal);
             this.groupBox5.Controls.Add(this.rad_uniforme);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(422, 12);
+            this.groupBox5.Location = new System.Drawing.Point(417, 11);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(175, 320);
+            this.groupBox5.Size = new System.Drawing.Size(175, 297);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Distribuciones";
@@ -325,7 +325,7 @@
             // 
             this.btn_PuntoC.Enabled = false;
             this.btn_PuntoC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PuntoC.Location = new System.Drawing.Point(84, 260);
+            this.btn_PuntoC.Location = new System.Drawing.Point(58, 244);
             this.btn_PuntoC.Margin = new System.Windows.Forms.Padding(2);
             this.btn_PuntoC.Name = "btn_PuntoC";
             this.btn_PuntoC.Size = new System.Drawing.Size(68, 36);
@@ -336,7 +336,7 @@
             // txt_lambda
             // 
             this.txt_lambda.Enabled = false;
-            this.txt_lambda.Location = new System.Drawing.Point(84, 211);
+            this.txt_lambda.Location = new System.Drawing.Point(88, 190);
             this.txt_lambda.Margin = new System.Windows.Forms.Padding(2);
             this.txt_lambda.Name = "txt_lambda";
             this.txt_lambda.Size = new System.Drawing.Size(76, 19);
@@ -345,7 +345,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(17, 214);
+            this.label10.Location = new System.Drawing.Point(21, 193);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
@@ -355,7 +355,7 @@
             // txt_varianza
             // 
             this.txt_varianza.Enabled = false;
-            this.txt_varianza.Location = new System.Drawing.Point(84, 188);
+            this.txt_varianza.Location = new System.Drawing.Point(88, 167);
             this.txt_varianza.Margin = new System.Windows.Forms.Padding(2);
             this.txt_varianza.Name = "txt_varianza";
             this.txt_varianza.Size = new System.Drawing.Size(76, 19);
@@ -364,7 +364,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 191);
+            this.label9.Location = new System.Drawing.Point(10, 170);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 13);
@@ -374,7 +374,7 @@
             // txt_media
             // 
             this.txt_media.Enabled = false;
-            this.txt_media.Location = new System.Drawing.Point(84, 165);
+            this.txt_media.Location = new System.Drawing.Point(88, 144);
             this.txt_media.Margin = new System.Windows.Forms.Padding(2);
             this.txt_media.Name = "txt_media";
             this.txt_media.Size = new System.Drawing.Size(76, 19);
@@ -383,7 +383,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(35, 168);
+            this.label8.Location = new System.Drawing.Point(39, 147);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 13);
@@ -393,7 +393,7 @@
             // txt_b
             // 
             this.txt_b.Enabled = false;
-            this.txt_b.Location = new System.Drawing.Point(84, 142);
+            this.txt_b.Location = new System.Drawing.Point(88, 121);
             this.txt_b.Margin = new System.Windows.Forms.Padding(2);
             this.txt_b.Name = "txt_b";
             this.txt_b.Size = new System.Drawing.Size(76, 19);
@@ -402,7 +402,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(61, 145);
+            this.label7.Location = new System.Drawing.Point(65, 124);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(19, 13);
@@ -412,7 +412,7 @@
             // txt_a
             // 
             this.txt_a.Enabled = false;
-            this.txt_a.Location = new System.Drawing.Point(84, 119);
+            this.txt_a.Location = new System.Drawing.Point(88, 98);
             this.txt_a.Margin = new System.Windows.Forms.Padding(2);
             this.txt_a.Name = "txt_a";
             this.txt_a.Size = new System.Drawing.Size(76, 19);
@@ -421,7 +421,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(61, 122);
+            this.label5.Location = new System.Drawing.Point(65, 101);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(19, 13);
@@ -431,7 +431,7 @@
             // rad_exponencial
             // 
             this.rad_exponencial.AutoSize = true;
-            this.rad_exponencial.Location = new System.Drawing.Point(20, 81);
+            this.rad_exponencial.Location = new System.Drawing.Point(11, 70);
             this.rad_exponencial.Margin = new System.Windows.Forms.Padding(2);
             this.rad_exponencial.Name = "rad_exponencial";
             this.rad_exponencial.Size = new System.Drawing.Size(149, 17);
@@ -442,7 +442,7 @@
             // rad_normal
             // 
             this.rad_normal.AutoSize = true;
-            this.rad_normal.Location = new System.Drawing.Point(20, 59);
+            this.rad_normal.Location = new System.Drawing.Point(11, 48);
             this.rad_normal.Margin = new System.Windows.Forms.Padding(2);
             this.rad_normal.Name = "rad_normal";
             this.rad_normal.Size = new System.Drawing.Size(64, 17);
@@ -453,7 +453,7 @@
             // rad_uniforme
             // 
             this.rad_uniforme.AutoSize = true;
-            this.rad_uniforme.Location = new System.Drawing.Point(20, 37);
+            this.rad_uniforme.Location = new System.Drawing.Point(11, 26);
             this.rad_uniforme.Margin = new System.Windows.Forms.Padding(2);
             this.rad_uniforme.Name = "rad_uniforme";
             this.rad_uniforme.Size = new System.Drawing.Size(75, 17);
@@ -469,11 +469,11 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.posicion,
             this.numero});
-            this.dataGridView1.Location = new System.Drawing.Point(11, 351);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 318);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(280, 380);
+            this.dataGridView1.Size = new System.Drawing.Size(280, 383);
             this.dataGridView1.TabIndex = 15;
             // 
             // posicion
@@ -500,11 +500,11 @@
             this.FORelativa,
             this.FERelativa,
             this.ChiCuadrado});
-            this.dataGridView2.Location = new System.Drawing.Point(304, 351);
+            this.dataGridView2.Location = new System.Drawing.Point(304, 318);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(635, 207);
+            this.dataGridView2.Size = new System.Drawing.Size(635, 329);
             this.dataGridView2.TabIndex = 38;
             // 
             // intervalo
@@ -544,9 +544,9 @@
             this.groupBox6.Controls.Add(this.groupBox8);
             this.groupBox6.Controls.Add(this.groupBox9);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(602, 12);
+            this.groupBox6.Location = new System.Drawing.Point(602, 11);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(337, 158);
+            this.groupBox6.Size = new System.Drawing.Size(337, 157);
             this.groupBox6.TabIndex = 39;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Prueba Chi Cuadrado";
@@ -554,7 +554,7 @@
             // btn_compro
             // 
             this.btn_compro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_compro.Location = new System.Drawing.Point(245, 108);
+            this.btn_compro.Location = new System.Drawing.Point(223, 97);
             this.btn_compro.Margin = new System.Windows.Forms.Padding(2);
             this.btn_compro.Name = "btn_compro";
             this.btn_compro.Size = new System.Drawing.Size(80, 30);
@@ -567,17 +567,17 @@
             this.groupBox7.Controls.Add(this.txt_chicierto);
             this.groupBox7.Controls.Add(this.label4);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(5, 82);
+            this.groupBox7.Location = new System.Drawing.Point(7, 82);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Size = new System.Drawing.Size(235, 56);
+            this.groupBox7.Size = new System.Drawing.Size(176, 56);
             this.groupBox7.TabIndex = 41;
             this.groupBox7.TabStop = false;
             // 
             // txt_chicierto
             // 
-            this.txt_chicierto.Location = new System.Drawing.Point(83, 21);
+            this.txt_chicierto.Location = new System.Drawing.Point(98, 21);
             this.txt_chicierto.Margin = new System.Windows.Forms.Padding(2);
             this.txt_chicierto.Name = "txt_chicierto";
             this.txt_chicierto.Size = new System.Drawing.Size(60, 19);
@@ -587,7 +587,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 24);
+            this.label4.Location = new System.Drawing.Point(16, 24);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
@@ -598,11 +598,11 @@
             // 
             this.groupBox8.Controls.Add(this.lbl_chi_cu);
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(167, 21);
+            this.groupBox8.Location = new System.Drawing.Point(172, 22);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Size = new System.Drawing.Size(158, 54);
+            this.groupBox8.Size = new System.Drawing.Size(158, 56);
             this.groupBox8.TabIndex = 40;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Chi Cuadrado Observado";
@@ -620,11 +620,11 @@
             // 
             this.groupBox9.Controls.Add(this.lblFrecuenciaEsperada);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(5, 23);
+            this.groupBox9.Location = new System.Drawing.Point(7, 22);
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Size = new System.Drawing.Size(158, 54);
+            this.groupBox9.Size = new System.Drawing.Size(158, 55);
             this.groupBox9.TabIndex = 39;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Chi Cuadrado Esperado";
@@ -641,7 +641,7 @@
             // btn_grafico
             // 
             this.btn_grafico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_grafico.Location = new System.Drawing.Point(859, 301);
+            this.btn_grafico.Location = new System.Drawing.Point(592, 661);
             this.btn_grafico.Margin = new System.Windows.Forms.Padding(2);
             this.btn_grafico.Name = "btn_grafico";
             this.btn_grafico.Size = new System.Drawing.Size(80, 30);
@@ -654,7 +654,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(950, 747);
+            this.ClientSize = new System.Drawing.Size(950, 709);
             this.Controls.Add(this.btn_grafico);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.dataGridView2);
