@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txt_cA = new System.Windows.Forms.TextBox();
@@ -72,15 +73,16 @@
             this.FERelativa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChiCuadrado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.lblFrecuenciaEsperada = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.lbl_chi_cu = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.btn_compro = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.txt_chicierto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.lbl_chi_cu = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.lblFrecuenciaEsperada = new System.Windows.Forms.Label();
+            this.btn_grafico = new System.Windows.Forms.Button();
+            this.tltp_generadores = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,9 +90,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox6.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -142,7 +144,7 @@
             // 
             // txt_IntC
             // 
-            this.txt_IntC.Location = new System.Drawing.Point(279, 54);
+            this.txt_IntC.Location = new System.Drawing.Point(230, 96);
             this.txt_IntC.Margin = new System.Windows.Forms.Padding(2);
             this.txt_IntC.Name = "txt_IntC";
             this.txt_IntC.Size = new System.Drawing.Size(76, 19);
@@ -150,7 +152,7 @@
             // 
             // txt_cant_nroC
             // 
-            this.txt_cant_nroC.Location = new System.Drawing.Point(279, 21);
+            this.txt_cant_nroC.Location = new System.Drawing.Point(230, 45);
             this.txt_cant_nroC.Margin = new System.Windows.Forms.Padding(2);
             this.txt_cant_nroC.Name = "txt_cant_nroC";
             this.txt_cant_nroC.Size = new System.Drawing.Size(76, 19);
@@ -159,7 +161,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(196, 57);
+            this.label14.Location = new System.Drawing.Point(233, 81);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(67, 13);
@@ -182,9 +184,9 @@
             this.label13.Location = new System.Drawing.Point(195, 27);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(71, 13);
+            this.label13.Size = new System.Drawing.Size(157, 13);
             this.label13.TabIndex = 9;
-            this.label13.Text = "Cant. Nros:";
+            this.label13.Text = "Cantidad de Simulaciones:";
             // 
             // txt_mA
             // 
@@ -264,9 +266,9 @@
             this.radioButton3.Location = new System.Drawing.Point(11, 72);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(151, 17);
+            this.radioButton3.Size = new System.Drawing.Size(87, 17);
             this.radioButton3.TabIndex = 2;
-            this.radioButton3.Text = "Generador del sistema";
+            this.radioButton3.Text = "Aleatorio ()";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton2
@@ -275,9 +277,10 @@
             this.radioButton2.Location = new System.Drawing.Point(11, 50);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(321, 17);
+            this.radioButton2.Size = new System.Drawing.Size(182, 17);
             this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Congruencial Multiplicativo - Xn = (A * Xn-1 ) Mod M";
+            this.radioButton2.Text = "Congruencial Multiplicativo ";
+            this.tltp_generadores.SetToolTip(this.radioButton2, " Xn = (A * Xn-1 ) Mod M");
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
@@ -286,9 +289,10 @@
             this.radioButton1.Location = new System.Drawing.Point(11, 28);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(299, 17);
+            this.radioButton1.Size = new System.Drawing.Size(133, 17);
             this.radioButton1.TabIndex = 0;
-            this.radioButton1.Text = "Congruencial Mixto - Xn = (A * Xn-1 + C ) Mod M";
+            this.radioButton1.Text = "Congruencial Mixto";
+            this.tltp_generadores.SetToolTip(this.radioButton1, "Xn = (A * Xn-1 + C ) Mod M");
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // groupBox5
@@ -341,12 +345,12 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(25, 214);
+            this.label10.Location = new System.Drawing.Point(17, 214);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 13);
+            this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 19;
-            this.label10.Text = "Lambda:";
+            this.label10.Text = "Lambda λ:";
             // 
             // txt_varianza
             // 
@@ -360,12 +364,12 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 191);
+            this.label9.Location = new System.Drawing.Point(6, 191);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 13);
+            this.label9.Size = new System.Drawing.Size(76, 13);
             this.label9.TabIndex = 17;
-            this.label9.Text = "Varianza:";
+            this.label9.Text = "Varianza σ²:";
             // 
             // txt_media
             // 
@@ -430,9 +434,9 @@
             this.rad_exponencial.Location = new System.Drawing.Point(20, 81);
             this.rad_exponencial.Margin = new System.Windows.Forms.Padding(2);
             this.rad_exponencial.Name = "rad_exponencial";
-            this.rad_exponencial.Size = new System.Drawing.Size(140, 17);
+            this.rad_exponencial.Size = new System.Drawing.Size(149, 17);
             this.rad_exponencial.TabIndex = 5;
-            this.rad_exponencial.Text = "Exponencial Inversa";
+            this.rad_exponencial.Text = "Exponencial Negativa";
             this.rad_exponencial.UseVisualStyleBackColor = true;
             // 
             // rad_normal
@@ -465,20 +469,22 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.posicion,
             this.numero});
-            this.dataGridView1.Location = new System.Drawing.Point(610, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 351);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(161, 337);
+            this.dataGridView1.Size = new System.Drawing.Size(280, 380);
             this.dataGridView1.TabIndex = 15;
             // 
             // posicion
             // 
-            this.posicion.HeaderText = "Posición";
+            this.posicion.FillWeight = 45.68528F;
+            this.posicion.HeaderText = "n";
             this.posicion.Name = "posicion";
             // 
             // numero
             // 
+            this.numero.FillWeight = 134.3147F;
             this.numero.HeaderText = "Números";
             this.numero.Name = "numero";
             // 
@@ -494,11 +500,11 @@
             this.FORelativa,
             this.FERelativa,
             this.ChiCuadrado});
-            this.dataGridView2.Location = new System.Drawing.Point(775, 11);
+            this.dataGridView2.Location = new System.Drawing.Point(304, 351);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(584, 207);
+            this.dataGridView2.Size = new System.Drawing.Size(635, 207);
             this.dataGridView2.TabIndex = 38;
             // 
             // intervalo
@@ -538,34 +544,55 @@
             this.groupBox6.Controls.Add(this.groupBox8);
             this.groupBox6.Controls.Add(this.groupBox9);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(776, 224);
+            this.groupBox6.Location = new System.Drawing.Point(602, 12);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(582, 122);
+            this.groupBox6.Size = new System.Drawing.Size(337, 158);
             this.groupBox6.TabIndex = 39;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Prueba Chi Cuadrado";
             // 
-            // groupBox9
+            // btn_compro
             // 
-            this.groupBox9.Controls.Add(this.lblFrecuenciaEsperada);
-            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(5, 23);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Size = new System.Drawing.Size(158, 54);
-            this.groupBox9.TabIndex = 39;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Chi Cuadrado Esperado";
+            this.btn_compro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_compro.Location = new System.Drawing.Point(245, 108);
+            this.btn_compro.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_compro.Name = "btn_compro";
+            this.btn_compro.Size = new System.Drawing.Size(80, 30);
+            this.btn_compro.TabIndex = 35;
+            this.btn_compro.Text = "Probar";
+            this.btn_compro.UseVisualStyleBackColor = true;
             // 
-            // lblFrecuenciaEsperada
+            // groupBox7
             // 
-            this.lblFrecuenciaEsperada.AutoSize = true;
-            this.lblFrecuenciaEsperada.Location = new System.Drawing.Point(23, 32);
-            this.lblFrecuenciaEsperada.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFrecuenciaEsperada.Name = "lblFrecuenciaEsperada";
-            this.lblFrecuenciaEsperada.Size = new System.Drawing.Size(0, 13);
-            this.lblFrecuenciaEsperada.TabIndex = 0;
+            this.groupBox7.Controls.Add(this.txt_chicierto);
+            this.groupBox7.Controls.Add(this.label4);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(5, 82);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox7.Size = new System.Drawing.Size(235, 56);
+            this.groupBox7.TabIndex = 41;
+            this.groupBox7.TabStop = false;
+            // 
+            // txt_chicierto
+            // 
+            this.txt_chicierto.Location = new System.Drawing.Point(83, 21);
+            this.txt_chicierto.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_chicierto.Name = "txt_chicierto";
+            this.txt_chicierto.Size = new System.Drawing.Size(60, 19);
+            this.txt_chicierto.TabIndex = 35;
+            this.txt_chicierto.Text = "0.05";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(4, 24);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "Confianza";
             // 
             // groupBox8
             // 
@@ -589,74 +616,53 @@
             this.lbl_chi_cu.Size = new System.Drawing.Size(0, 13);
             this.lbl_chi_cu.TabIndex = 0;
             // 
-            // groupBox7
+            // groupBox9
             // 
-            this.groupBox7.Controls.Add(this.txt_chicierto);
-            this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(329, 21);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Size = new System.Drawing.Size(235, 56);
-            this.groupBox7.TabIndex = 41;
-            this.groupBox7.TabStop = false;
+            this.groupBox9.Controls.Add(this.lblFrecuenciaEsperada);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox9.Location = new System.Drawing.Point(5, 23);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox9.Size = new System.Drawing.Size(158, 54);
+            this.groupBox9.TabIndex = 39;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Chi Cuadrado Esperado";
             // 
-            // btn_compro
+            // lblFrecuenciaEsperada
             // 
-            this.btn_compro.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_compro.Location = new System.Drawing.Point(497, 87);
-            this.btn_compro.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_compro.Name = "btn_compro";
-            this.btn_compro.Size = new System.Drawing.Size(80, 30);
-            this.btn_compro.TabIndex = 35;
-            this.btn_compro.Text = "Comprobar";
-            this.btn_compro.UseVisualStyleBackColor = true;
+            this.lblFrecuenciaEsperada.AutoSize = true;
+            this.lblFrecuenciaEsperada.Location = new System.Drawing.Point(23, 32);
+            this.lblFrecuenciaEsperada.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFrecuenciaEsperada.Name = "lblFrecuenciaEsperada";
+            this.lblFrecuenciaEsperada.Size = new System.Drawing.Size(0, 13);
+            this.lblFrecuenciaEsperada.TabIndex = 0;
             // 
-            // txt_chicierto
+            // btn_grafico
             // 
-            this.txt_chicierto.Location = new System.Drawing.Point(83, 21);
-            this.txt_chicierto.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_chicierto.Name = "txt_chicierto";
-            this.txt_chicierto.Size = new System.Drawing.Size(60, 19);
-            this.txt_chicierto.TabIndex = 35;
-            this.txt_chicierto.Text = "0.05";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 24);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
-            this.label4.TabIndex = 34;
-            this.label4.Text = "Confianza";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(10, 353);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(1343, 365);
-            this.groupBox3.TabIndex = 40;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Gráfico";
+            this.btn_grafico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_grafico.Location = new System.Drawing.Point(859, 301);
+            this.btn_grafico.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_grafico.Name = "btn_grafico";
+            this.btn_grafico.Size = new System.Drawing.Size(80, 30);
+            this.btn_grafico.TabIndex = 40;
+            this.btn_grafico.Text = "Grafico";
+            this.btn_grafico.UseVisualStyleBackColor = true;
+            this.btn_grafico.Click += new System.EventHandler(this.btn_grafico_Click);
             // 
             // frmTP3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 736);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(950, 747);
+            this.Controls.Add(this.btn_grafico);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Name = "frmTP3";
-            this.Text = "Trabajo Practico N° 3 - Grupo 10 - Simulacion - 4K4 - 2018";
+            this.Text = "Trabajo Practico N° 3 - Grupo 10 - Arancibia, Forcada, Maldonado, Ledesma";
             this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -667,12 +673,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -713,8 +719,6 @@
         private System.Windows.Forms.RadioButton rad_normal;
         private System.Windows.Forms.RadioButton rad_uniforme;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn posicion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numero;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn intervalo;
         private System.Windows.Forms.DataGridViewTextBoxColumn frecuencia;
@@ -731,7 +735,10 @@
         private System.Windows.Forms.Label lbl_chi_cu;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label lblFrecuenciaEsperada;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn posicion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero;
+        private System.Windows.Forms.Button btn_grafico;
+        private System.Windows.Forms.ToolTip tltp_generadores;
     }
 }
 

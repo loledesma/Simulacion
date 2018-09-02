@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace TrabajoPractico3
 {
-    public partial class frmTP3 : Form
+    public partial class grafico : Form
     {
-        public frmTP3()
+        public grafico()
         {
             InitializeComponent();
         }
-
-        private void btn_grafico_Click(object sender, EventArgs e)
-        {
-            grafico graficoDistribucion = new grafico(); 
-            graficoDistribucion.Show();
-        }
-
-     
     }
 }
