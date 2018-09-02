@@ -28,18 +28,15 @@ namespace TrabajoPractico3
             grafico graficoDistribucion = new grafico(); 
             graficoDistribucion.Show();
         }
-
       
         private bool ValidarFormulario()
         {
             if (radioButton3.Checked)
                 return true;
-
             int semilla;
             int a;
             int c;
             int m;
-
             if (!int.TryParse(txt_mA.Text, out m) ||
                 m <= 0)
             {
@@ -101,17 +98,15 @@ namespace TrabajoPractico3
 
             if (rad_uniforme.Checked)
             {
-                double a;
-                double b;
-
-                if (!double.TryParse(txt_a.Text, out a))
+                double _a;
+                double _b;
+                if (!double.TryParse(txt_a.Text, out _a))
                 {
                     MessageBox.Show(@"El valor de A debe ser un número válido");
                     txt_a.Focus();
                     return false;
                 }
-
-                if (!double.TryParse(txt_b.Text, out b) || b <= a)
+                if (!double.TryParse(txt_b.Text, out _b) || _b <= _a)
                 {
                     MessageBox.Show(@"El valor de B debe ser mayor que A");
                     txt_b.Focus();
@@ -123,14 +118,12 @@ namespace TrabajoPractico3
             {
                 double media;
                 double varianza;
-
                 if (!double.TryParse(txt_media.Text, out media))
                 {
                     MessageBox.Show(@"La Media debe ser un número válido");
                     txt_media.Focus();
                     return false;
                 }
-
                 if (!double.TryParse(txt_varianza.Text, out varianza) || varianza < 0)
                 {
                     MessageBox.Show(@"La Varianza no puede ser negativa");
@@ -142,7 +135,6 @@ namespace TrabajoPractico3
             if (rad_exponencial.Checked)
             {
                 double lambda;
-
                 if (!double.TryParse(txt_lambda.Text, out lambda) || lambda <= 0)
                 {
                     MessageBox.Show(@"La Varianza debe ser positiva");
@@ -150,7 +142,6 @@ namespace TrabajoPractico3
                     return false;
                 }
             }
-
             return true;
         }
 
@@ -175,13 +166,11 @@ namespace TrabajoPractico3
         {
             dataGridView1.Rows.Clear();
             dataGridView2.Rows.Clear();
-
             txt_chi_observado.Text = "";
             txt_esperado.Text = "";
             txt_chi_observado.Enabled = false;
             txt_esperado.Enabled = false;
             txt_chicierto.Text = @"0.05";
-
             btn_compro.Enabled = false;
         }
 
@@ -257,7 +246,6 @@ namespace TrabajoPractico3
         {
             var generador = radioButton1.Checked || radioButton2.Checked || radioButton3.Checked;
             var distribucion = rad_uniforme.Checked || rad_normal.Checked || rad_exponencial.Checked;
-
             btn_PuntoC.Enabled = generador && distribucion;
         }
 
@@ -268,30 +256,25 @@ namespace TrabajoPractico3
                 btn_cancelar.Enabled = true;
                 GenerarNumeros();
             }
-                
         }
         
         private void GenerarNumeros()
         {
             LimpiarTablas();
-
             if (radioButton3.Checked)
             {
                 _generadorAleatorio = new AleatorioSistema();
             }
-
             else
             {
                 var a = int.Parse(txt_aA.Text);
                 var m = int.Parse(txt_mA.Text);
                 var semilla = double.Parse(txt_semillaA.Text);
-
                 //Congruencial Multiplicativo : Xn = (A * Xn-1 ) Mod M
                 if (radioButton2.Checked)
                 {
                     _generadorAleatorio = new CongruencialMultiplicativo(semilla, a, m);
                 }
-
                 //Congruencial Mixto : Xn = (A * Xn-1 + C ) Mod M
                 else if (radioButton1.Checked)
                 {
@@ -299,7 +282,6 @@ namespace TrabajoPractico3
                     _generadorAleatorio = new CongruencialMixto(semilla, a, c, m);
                 }
             }
-
             generarDistribucion();
         }
 
@@ -313,15 +295,12 @@ namespace TrabajoPractico3
             var chiObtenido = 0;
             var chiEsperado = 0;
             var mensaje = "";
-
             if (chiObtenido < chiEsperado) {
-                mensaje = "Se acepta la hipótesis";
-  
+                mensaje = "Se acepta la hipótesis";  
             }else
             {
                 mensaje = "Se rechaza la hipótesis";
             }
-
             MessageBox.Show(mensaje);
         }
 
