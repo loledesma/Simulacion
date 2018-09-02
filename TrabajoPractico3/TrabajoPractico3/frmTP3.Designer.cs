@@ -78,11 +78,13 @@
             this.txt_chicierto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.lbl_chi_cu = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.lblFrecuenciaEsperada = new System.Windows.Forms.Label();
             this.btn_grafico = new System.Windows.Forms.Button();
             this.tltp_generadores = new System.Windows.Forms.ToolTip(this.components);
+            this.txt_esperado = new System.Windows.Forms.TextBox();
+            this.txt_chi_observado = new System.Windows.Forms.TextBox();
+            this.btn_limpiar_todo = new System.Windows.Forms.Button();
+            this.btn_cancelar = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -105,7 +107,7 @@
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(394, 297);
-            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Generador Números Aleatorios";
             // 
@@ -129,7 +131,7 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(362, 156);
-            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parámetros";
             // 
@@ -140,7 +142,7 @@
             this.txt_cA.Margin = new System.Windows.Forms.Padding(2);
             this.txt_cA.Name = "txt_cA";
             this.txt_cA.Size = new System.Drawing.Size(60, 19);
-            this.txt_cA.TabIndex = 3;
+            this.txt_cA.TabIndex = 2;
             // 
             // txt_IntC
             // 
@@ -148,7 +150,7 @@
             this.txt_IntC.Margin = new System.Windows.Forms.Padding(2);
             this.txt_IntC.Name = "txt_IntC";
             this.txt_IntC.Size = new System.Drawing.Size(76, 19);
-            this.txt_IntC.TabIndex = 12;
+            this.txt_IntC.TabIndex = 5;
             // 
             // txt_cant_nroC
             // 
@@ -156,7 +158,7 @@
             this.txt_cant_nroC.Margin = new System.Windows.Forms.Padding(2);
             this.txt_cant_nroC.Name = "txt_cant_nroC";
             this.txt_cant_nroC.Size = new System.Drawing.Size(76, 19);
-            this.txt_cant_nroC.TabIndex = 11;
+            this.txt_cant_nroC.TabIndex = 4;
             // 
             // label14
             // 
@@ -195,7 +197,7 @@
             this.txt_mA.Margin = new System.Windows.Forms.Padding(2);
             this.txt_mA.Name = "txt_mA";
             this.txt_mA.Size = new System.Drawing.Size(60, 19);
-            this.txt_mA.TabIndex = 4;
+            this.txt_mA.TabIndex = 3;
             // 
             // label3
             // 
@@ -214,7 +216,7 @@
             this.txt_aA.Margin = new System.Windows.Forms.Padding(2);
             this.txt_aA.Name = "txt_aA";
             this.txt_aA.Size = new System.Drawing.Size(60, 19);
-            this.txt_aA.TabIndex = 2;
+            this.txt_aA.TabIndex = 1;
             // 
             // label2
             // 
@@ -233,7 +235,7 @@
             this.txt_semillaA.Margin = new System.Windows.Forms.Padding(2);
             this.txt_semillaA.Name = "txt_semillaA";
             this.txt_semillaA.Size = new System.Drawing.Size(60, 19);
-            this.txt_semillaA.TabIndex = 1;
+            this.txt_semillaA.TabIndex = 0;
             // 
             // label1
             // 
@@ -297,6 +299,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btn_cancelar);
             this.groupBox5.Controls.Add(this.btn_PuntoC);
             this.groupBox5.Controls.Add(this.txt_lambda);
             this.groupBox5.Controls.Add(this.label10);
@@ -317,7 +320,7 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox5.Size = new System.Drawing.Size(175, 297);
-            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Distribuciones";
             // 
@@ -325,13 +328,14 @@
             // 
             this.btn_PuntoC.Enabled = false;
             this.btn_PuntoC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PuntoC.Location = new System.Drawing.Point(58, 244);
+            this.btn_PuntoC.Location = new System.Drawing.Point(11, 247);
             this.btn_PuntoC.Margin = new System.Windows.Forms.Padding(2);
             this.btn_PuntoC.Name = "btn_PuntoC";
             this.btn_PuntoC.Size = new System.Drawing.Size(68, 36);
-            this.btn_PuntoC.TabIndex = 7;
+            this.btn_PuntoC.TabIndex = 5;
             this.btn_PuntoC.Text = "Generar ";
             this.btn_PuntoC.UseVisualStyleBackColor = true;
+            this.btn_PuntoC.Click += new System.EventHandler(this.btn_PuntoC_Click);
             // 
             // txt_lambda
             // 
@@ -340,7 +344,7 @@
             this.txt_lambda.Margin = new System.Windows.Forms.Padding(2);
             this.txt_lambda.Name = "txt_lambda";
             this.txt_lambda.Size = new System.Drawing.Size(76, 19);
-            this.txt_lambda.TabIndex = 18;
+            this.txt_lambda.TabIndex = 4;
             // 
             // label10
             // 
@@ -359,7 +363,7 @@
             this.txt_varianza.Margin = new System.Windows.Forms.Padding(2);
             this.txt_varianza.Name = "txt_varianza";
             this.txt_varianza.Size = new System.Drawing.Size(76, 19);
-            this.txt_varianza.TabIndex = 16;
+            this.txt_varianza.TabIndex = 3;
             // 
             // label9
             // 
@@ -378,7 +382,7 @@
             this.txt_media.Margin = new System.Windows.Forms.Padding(2);
             this.txt_media.Name = "txt_media";
             this.txt_media.Size = new System.Drawing.Size(76, 19);
-            this.txt_media.TabIndex = 14;
+            this.txt_media.TabIndex = 2;
             // 
             // label8
             // 
@@ -397,7 +401,7 @@
             this.txt_b.Margin = new System.Windows.Forms.Padding(2);
             this.txt_b.Name = "txt_b";
             this.txt_b.Size = new System.Drawing.Size(76, 19);
-            this.txt_b.TabIndex = 12;
+            this.txt_b.TabIndex = 1;
             // 
             // label7
             // 
@@ -416,7 +420,7 @@
             this.txt_a.Margin = new System.Windows.Forms.Padding(2);
             this.txt_a.Name = "txt_a";
             this.txt_a.Size = new System.Drawing.Size(76, 19);
-            this.txt_a.TabIndex = 10;
+            this.txt_a.TabIndex = 0;
             // 
             // label5
             // 
@@ -547,7 +551,7 @@
             this.groupBox6.Location = new System.Drawing.Point(602, 11);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(337, 157);
-            this.groupBox6.TabIndex = 39;
+            this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Prueba Chi Cuadrado";
             // 
@@ -558,9 +562,10 @@
             this.btn_compro.Margin = new System.Windows.Forms.Padding(2);
             this.btn_compro.Name = "btn_compro";
             this.btn_compro.Size = new System.Drawing.Size(80, 30);
-            this.btn_compro.TabIndex = 35;
+            this.btn_compro.TabIndex = 0;
             this.btn_compro.Text = "Probar";
             this.btn_compro.UseVisualStyleBackColor = true;
+            this.btn_compro.Click += new System.EventHandler(this.btn_compro_Click);
             // 
             // groupBox7
             // 
@@ -581,7 +586,7 @@
             this.txt_chicierto.Margin = new System.Windows.Forms.Padding(2);
             this.txt_chicierto.Name = "txt_chicierto";
             this.txt_chicierto.Size = new System.Drawing.Size(60, 19);
-            this.txt_chicierto.TabIndex = 35;
+            this.txt_chicierto.TabIndex = 0;
             this.txt_chicierto.Text = "0.05";
             // 
             // label4
@@ -596,7 +601,7 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.lbl_chi_cu);
+            this.groupBox8.Controls.Add(this.txt_chi_observado);
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(172, 22);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
@@ -607,18 +612,9 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Chi Cuadrado Observado";
             // 
-            // lbl_chi_cu
-            // 
-            this.lbl_chi_cu.AutoSize = true;
-            this.lbl_chi_cu.Location = new System.Drawing.Point(11, 33);
-            this.lbl_chi_cu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_chi_cu.Name = "lbl_chi_cu";
-            this.lbl_chi_cu.Size = new System.Drawing.Size(0, 13);
-            this.lbl_chi_cu.TabIndex = 0;
-            // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.lblFrecuenciaEsperada);
+            this.groupBox9.Controls.Add(this.txt_esperado);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(7, 22);
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
@@ -629,15 +625,6 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Chi Cuadrado Esperado";
             // 
-            // lblFrecuenciaEsperada
-            // 
-            this.lblFrecuenciaEsperada.AutoSize = true;
-            this.lblFrecuenciaEsperada.Location = new System.Drawing.Point(23, 32);
-            this.lblFrecuenciaEsperada.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFrecuenciaEsperada.Name = "lblFrecuenciaEsperada";
-            this.lblFrecuenciaEsperada.Size = new System.Drawing.Size(0, 13);
-            this.lblFrecuenciaEsperada.TabIndex = 0;
-            // 
             // btn_grafico
             // 
             this.btn_grafico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -645,16 +632,59 @@
             this.btn_grafico.Margin = new System.Windows.Forms.Padding(2);
             this.btn_grafico.Name = "btn_grafico";
             this.btn_grafico.Size = new System.Drawing.Size(80, 30);
-            this.btn_grafico.TabIndex = 40;
+            this.btn_grafico.TabIndex = 3;
             this.btn_grafico.Text = "Grafico";
             this.btn_grafico.UseVisualStyleBackColor = true;
             this.btn_grafico.Click += new System.EventHandler(this.btn_grafico_Click);
+            // 
+            // txt_esperado
+            // 
+            this.txt_esperado.Enabled = false;
+            this.txt_esperado.Location = new System.Drawing.Point(28, 27);
+            this.txt_esperado.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_esperado.Name = "txt_esperado";
+            this.txt_esperado.Size = new System.Drawing.Size(110, 19);
+            this.txt_esperado.TabIndex = 20;
+            // 
+            // txt_chi_observado
+            // 
+            this.txt_chi_observado.Enabled = false;
+            this.txt_chi_observado.Location = new System.Drawing.Point(21, 27);
+            this.txt_chi_observado.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_chi_observado.Name = "txt_chi_observado";
+            this.txt_chi_observado.Size = new System.Drawing.Size(110, 19);
+            this.txt_chi_observado.TabIndex = 21;
+            // 
+            // btn_limpiar_todo
+            // 
+            this.btn_limpiar_todo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limpiar_todo.Location = new System.Drawing.Point(846, 661);
+            this.btn_limpiar_todo.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_limpiar_todo.Name = "btn_limpiar_todo";
+            this.btn_limpiar_todo.Size = new System.Drawing.Size(93, 30);
+            this.btn_limpiar_todo.TabIndex = 39;
+            this.btn_limpiar_todo.Text = "Limpiar Todo";
+            this.btn_limpiar_todo.UseVisualStyleBackColor = true;
+            this.btn_limpiar_todo.Click += new System.EventHandler(this.btn_limpiar_todo_Click);
+            // 
+            // btn_cancelar
+            // 
+            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelar.Location = new System.Drawing.Point(96, 247);
+            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_cancelar.Name = "btn_cancelar";
+            this.btn_cancelar.Size = new System.Drawing.Size(68, 36);
+            this.btn_cancelar.TabIndex = 20;
+            this.btn_cancelar.Text = "Cancelar";
+            this.btn_cancelar.UseVisualStyleBackColor = true;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // frmTP3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 709);
+            this.Controls.Add(this.btn_limpiar_todo);
             this.Controls.Add(this.btn_grafico);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.dataGridView2);
@@ -732,13 +762,15 @@
         private System.Windows.Forms.TextBox txt_chicierto;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Label lbl_chi_cu;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Label lblFrecuenciaEsperada;
         private System.Windows.Forms.DataGridViewTextBoxColumn posicion;
         private System.Windows.Forms.DataGridViewTextBoxColumn numero;
         private System.Windows.Forms.Button btn_grafico;
         private System.Windows.Forms.ToolTip tltp_generadores;
+        private System.Windows.Forms.TextBox txt_chi_observado;
+        private System.Windows.Forms.TextBox txt_esperado;
+        private System.Windows.Forms.Button btn_limpiar_todo;
+        private System.Windows.Forms.Button btn_cancelar;
     }
 }
 
