@@ -59,12 +59,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Distribuciones\DistribucionExponencialNegativa.cs" />
+    <Compile Include="Distribuciones\DistribucionNormal.cs" />
+    <Compile Include="Distribuciones\DistribucionUniforme.cs" />
+    <Compile Include="Distribuciones\IDistribuciones.cs" />
     <Compile Include="frmTP3.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTP3.Designer.cs">
       <DependentUpon>frmTP3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generadores\AleatorioSistema.cs" />
+    <Compile Include="Generadores\CongruencialMixto.cs" />
+    <Compile Include="Generadores\CongruencialMultiplicativo.cs" />
+    <Compile Include="Generadores\IGeneradores.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmTP3.resx">
