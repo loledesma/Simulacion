@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrabajoPractico3.Generadores;
 using TrabajoPractico3.Distribuciones;
+using System.Globalization;
 
 
 
@@ -18,6 +19,8 @@ namespace TrabajoPractico3
     {
         private IGeneradores _generadorAleatorio;
         private IDistribuciones _distribucion;
+        private PruebaChiCuadrado _pruebaChiCuadrado;
+        private const int Decimales = 3;
 
         public frmTP3()
         {
@@ -33,6 +36,7 @@ namespace TrabajoPractico3
         {
             if (radioButton3.Checked)
                 return true;
+
             int semilla;
             int a;
             int c;
@@ -313,12 +317,69 @@ namespace TrabajoPractico3
             var tamañoMuestra = int.Parse(txt_cant_nroC.Text);
             var cantidadIntervalos = int.Parse(txt_IntC.Text);
             var alfa = double.Parse(txt_chicierto.Text);
+
+            try
+            {
+                _pruebaChiCuadrado = new PruebaChiCuadrado(_distribucion, tamañoMuestra, cantidadIntervalos, alfa);
+            }
+            catch (Exception)
+            {
+                var grados = int.Parse(txt_IntC.Text) - _distribucion.getCantidadParametros() - 1;
+
+                MessageBox.Show(grados <= 0
+                    ? @"Grados de libertad insuficientes, utilice más intervalos"
+                    : @"Falla la prueba de Chi Cuadrado porque las frecuencias esperadas tienden a cero, utilice menos intervalos");
+
+                txt_mA.Focus();
+                return;
+            }
+            for (var i = 0; i < tamañoMuestra; i++)
+            {
+                var valor = _pruebaChiCuadrado._valores[i];
+
+                dataGridView1.Rows.Add(i + 1, valor);
+            }
+
+            CompletarTabla();
+        }
+
+        private void CompletarTabla()
+        {
+            for (var i = 0; i < _pruebaChiCuadrado._cantidadIntervalos; i++)
+            {
+                var subint = $"{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._inicio, Decimales)} - " +
+                             $"{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._fin, Decimales)}";
+                var freObs = _pruebaChiCuadrado._frecuenciasObservadasAbsolutas[i];
+                var freEsp = decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasEsperadasAbsolutas[i], Decimales);
+                var freObsRel = decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasObservadasRelativas[i], Decimales);
+                var freEspRel = decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasEsperadasRelativas[i], Decimales);
+                var chiCuad = decimal.Round((decimal)_pruebaChiCuadrado._valoresChiCuadrado[i], Decimales);
+
+                dataGridView2.Rows.Add(subint, freObs, freEsp, freObsRel, freEspRel, chiCuad);
+            }
+
+            dataGridView2.Rows.Add(
+                "Totales",
+                _pruebaChiCuadrado._frecuenciasObservadasAbsolutas.Sum(),
+                _pruebaChiCuadrado._frecuenciasEsperadasAbsolutas.Sum(),
+                _pruebaChiCuadrado._frecuenciasObservadasRelativas.Sum(),
+                _pruebaChiCuadrado._frecuenciasEsperadasRelativas.Sum(),
+                _pruebaChiCuadrado._valoresChiCuadrado.Sum()
+            );
+
+            txt_chi_observado.Text = decimal.Round((decimal)_pruebaChiCuadrado._valoresChiCuadrado.Sum(), Decimales)
+                .ToString(CultureInfo.InvariantCulture);
+
+            txt_esperado.Text = decimal.Round((decimal)_pruebaChiCuadrado._tablaChiCuadrado, Decimales)
+                .ToString(CultureInfo.InvariantCulture);
+
+            btn_compro.Enabled = true;
         }
 
         private void btn_compro_Click(object sender, EventArgs e)
         {
-            var chiObtenido = 0;
-            var chiEsperado = 0;
+            var chiObtenido = _pruebaChiCuadrado._valoresChiCuadrado.Sum();
+            var chiEsperado = _pruebaChiCuadrado._tablaChiCuadrado;
             var mensaje = "";
             if (chiObtenido < chiEsperado) {
                 mensaje = "Se acepta la hipótesis";  
