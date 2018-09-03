@@ -45,7 +45,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(1175, 478);
+            this.groupBox3.Size = new System.Drawing.Size(1184, 478);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Gráfico";
@@ -71,7 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1197, 500);
+            this.ClientSize = new System.Drawing.Size(1209, 500);
             this.Controls.Add(this.groupBox3);
             this.Name = "grafico";
             this.Text = "Grafico Distribuciones";

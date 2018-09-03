@@ -127,7 +127,7 @@ namespace TrabajoPractico3
         {
             if (!(grados > 0))
                 throw new NotSupportedException("Los grados de libertad deben ser mayores a cero!");
-            ChiSquaredDistribution d = new ChiSquaredDistribution(grados);
+            ContinuousDistribution d = new ChiSquaredDistribution(grados);
             var valor = d.InverseRightProbability(alfa);
             return valor;
         }

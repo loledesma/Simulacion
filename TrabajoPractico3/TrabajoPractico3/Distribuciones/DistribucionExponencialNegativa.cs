@@ -55,7 +55,7 @@ namespace TrabajoPractico3.Distribuciones
         public List<double> getFrecuenciasEsperadas(List<Intervalo> intervalos)
         {
             var _frecuencias = new List<double>(intervalos.Count);
-            ExponentialDistribution d = new ExponentialDistribution(1 / _lambda);
+            ContinuousDistribution d = new ExponentialDistribution(1 / _lambda);
             foreach (var _intervalo in intervalos)
             {
                 var _frecuencia = d.LeftProbability(_intervalo._fin) - d.LeftProbability(_intervalo._inicio);

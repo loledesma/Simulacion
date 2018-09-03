@@ -43,7 +43,7 @@ namespace TrabajoPractico3.Distribuciones
             var _secondRandom = _generator.Generar();            
             var z = Math.Sqrt(-2 * Math.Log(_firstRandom)) * Math.Cos(2 * Math.PI * _secondRandom);
             // Formula de Generacion de Variables Aleatorias
-            var _variable = _media + z * _varianza;
+            var _variable = _media + z * Math.Sqrt(_varianza);
             return _variable;
         }
 
@@ -60,7 +60,7 @@ namespace TrabajoPractico3.Distribuciones
         public List<double> getFrecuenciasEsperadas(List<Intervalo> intervalos)
         {
             var _frecuencias = new List<double>(intervalos.Count);
-            NormalDistribution d = new NormalDistribution (_media, _varianza);
+            ContinuousDistribution d = new NormalDistribution (_media, _varianza);
             foreach (var intervalo in intervalos)
             {
                 var _frecuencia = d.LeftProbability(intervalo._fin) - d.LeftProbability(intervalo._inicio);
