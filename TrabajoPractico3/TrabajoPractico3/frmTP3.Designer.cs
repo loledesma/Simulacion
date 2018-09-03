@@ -48,6 +48,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btn_cancelar = new System.Windows.Forms.Button();
             this.btn_PuntoC = new System.Windows.Forms.Button();
             this.txt_lambda = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -78,13 +79,12 @@
             this.txt_chicierto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.txt_chi_observado = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.txt_esperado = new System.Windows.Forms.TextBox();
             this.btn_grafico = new System.Windows.Forms.Button();
             this.tltp_generadores = new System.Windows.Forms.ToolTip(this.components);
-            this.txt_esperado = new System.Windows.Forms.TextBox();
-            this.txt_chi_observado = new System.Windows.Forms.TextBox();
             this.btn_limpiar_todo = new System.Windows.Forms.Button();
-            this.btn_cancelar = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -272,6 +272,7 @@
             this.radioButton3.TabIndex = 2;
             this.radioButton3.Text = "Aleatorio ()";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -284,6 +285,7 @@
             this.radioButton2.Text = "Congruencial Multiplicativo ";
             this.tltp_generadores.SetToolTip(this.radioButton2, " Xn = (A * Xn-1 ) Mod M");
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -296,6 +298,7 @@
             this.radioButton1.Text = "Congruencial Mixto";
             this.tltp_generadores.SetToolTip(this.radioButton1, "Xn = (A * Xn-1 + C ) Mod M");
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // groupBox5
             // 
@@ -323,6 +326,18 @@
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Distribuciones";
+            // 
+            // btn_cancelar
+            // 
+            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelar.Location = new System.Drawing.Point(96, 247);
+            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_cancelar.Name = "btn_cancelar";
+            this.btn_cancelar.Size = new System.Drawing.Size(68, 36);
+            this.btn_cancelar.TabIndex = 20;
+            this.btn_cancelar.Text = "Cancelar";
+            this.btn_cancelar.UseVisualStyleBackColor = true;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // btn_PuntoC
             // 
@@ -612,6 +627,15 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Chi Cuadrado Observado";
             // 
+            // txt_chi_observado
+            // 
+            this.txt_chi_observado.Enabled = false;
+            this.txt_chi_observado.Location = new System.Drawing.Point(21, 27);
+            this.txt_chi_observado.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_chi_observado.Name = "txt_chi_observado";
+            this.txt_chi_observado.Size = new System.Drawing.Size(110, 19);
+            this.txt_chi_observado.TabIndex = 21;
+            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.txt_esperado);
@@ -625,6 +649,15 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Chi Cuadrado Esperado";
             // 
+            // txt_esperado
+            // 
+            this.txt_esperado.Enabled = false;
+            this.txt_esperado.Location = new System.Drawing.Point(28, 27);
+            this.txt_esperado.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_esperado.Name = "txt_esperado";
+            this.txt_esperado.Size = new System.Drawing.Size(110, 19);
+            this.txt_esperado.TabIndex = 20;
+            // 
             // btn_grafico
             // 
             this.btn_grafico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -637,24 +670,6 @@
             this.btn_grafico.UseVisualStyleBackColor = true;
             this.btn_grafico.Click += new System.EventHandler(this.btn_grafico_Click);
             // 
-            // txt_esperado
-            // 
-            this.txt_esperado.Enabled = false;
-            this.txt_esperado.Location = new System.Drawing.Point(28, 27);
-            this.txt_esperado.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_esperado.Name = "txt_esperado";
-            this.txt_esperado.Size = new System.Drawing.Size(110, 19);
-            this.txt_esperado.TabIndex = 20;
-            // 
-            // txt_chi_observado
-            // 
-            this.txt_chi_observado.Enabled = false;
-            this.txt_chi_observado.Location = new System.Drawing.Point(21, 27);
-            this.txt_chi_observado.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_chi_observado.Name = "txt_chi_observado";
-            this.txt_chi_observado.Size = new System.Drawing.Size(110, 19);
-            this.txt_chi_observado.TabIndex = 21;
-            // 
             // btn_limpiar_todo
             // 
             this.btn_limpiar_todo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -666,18 +681,6 @@
             this.btn_limpiar_todo.Text = "Limpiar Todo";
             this.btn_limpiar_todo.UseVisualStyleBackColor = true;
             this.btn_limpiar_todo.Click += new System.EventHandler(this.btn_limpiar_todo_Click);
-            // 
-            // btn_cancelar
-            // 
-            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancelar.Location = new System.Drawing.Point(96, 247);
-            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.Size = new System.Drawing.Size(68, 36);
-            this.btn_cancelar.TabIndex = 20;
-            this.btn_cancelar.Text = "Cancelar";
-            this.btn_cancelar.UseVisualStyleBackColor = true;
-            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // frmTP3
             // 

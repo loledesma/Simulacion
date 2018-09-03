@@ -178,7 +178,7 @@ namespace TrabajoPractico3
             btn_compro.Enabled = false;
         }
 
-        private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             txt_semillaA.Enabled = true;
             txt_aA.Enabled = true;
