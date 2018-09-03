@@ -318,11 +318,11 @@
             this.groupBox5.Controls.Add(this.rad_normal);
             this.groupBox5.Controls.Add(this.rad_uniforme);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(417, 11);
+            this.groupBox5.Location = new System.Drawing.Point(409, 11);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(175, 297);
+            this.groupBox5.Size = new System.Drawing.Size(183, 297);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Distribuciones";
@@ -383,12 +383,12 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 170);
+            this.label9.Location = new System.Drawing.Point(21, 169);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(76, 13);
+            this.label9.Size = new System.Drawing.Size(60, 13);
             this.label9.TabIndex = 17;
-            this.label9.Text = "Varianza σ²:";
+            this.label9.Text = "Varianza:";
             // 
             // txt_media
             // 
@@ -457,6 +457,7 @@
             this.rad_exponencial.TabIndex = 5;
             this.rad_exponencial.Text = "Exponencial Negativa";
             this.rad_exponencial.UseVisualStyleBackColor = true;
+            this.rad_exponencial.CheckedChanged += new System.EventHandler(this.rad_exponencial_CheckedChanged);
             // 
             // rad_normal
             // 
@@ -468,6 +469,7 @@
             this.rad_normal.TabIndex = 4;
             this.rad_normal.Text = "Normal";
             this.rad_normal.UseVisualStyleBackColor = true;
+            this.rad_normal.CheckedChanged += new System.EventHandler(this.rad_normal_CheckedChanged);
             // 
             // rad_uniforme
             // 
@@ -479,6 +481,7 @@
             this.rad_uniforme.TabIndex = 3;
             this.rad_uniforme.Text = "Uniforme";
             this.rad_uniforme.UseVisualStyleBackColor = true;
+            this.rad_uniforme.CheckedChanged += new System.EventHandler(this.rad_uniforme_CheckedChanged);
             // 
             // dataGridView1
             // 

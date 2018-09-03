@@ -13,7 +13,7 @@ namespace TrabajoPractico3
         public IDistribuciones _distribucion { get; protected set; }
         public int _nTamañoMuestra { get; protected set; }
         public int _cantidadIntervalos { get; protected set; }
-        public double _alfa { get; protected set; }
+        public string _alfa { get; protected set; }
         public List<double> _valores { get; protected set; }
         public List<Intervalo> _intervalos { get; protected set; }
         public List<int> _frecuenciasObservadasAbsolutas { get; protected set; }
@@ -23,7 +23,7 @@ namespace TrabajoPractico3
         public List<double> _valoresChiCuadrado { get; protected set; }
         public double _tablaChiCuadrado { get; protected set; }
 
-        public PruebaChiCuadrado (IDistribuciones distribucion, int tamañoMuestra, int cantidadIntervalos, double alfa)
+        public PruebaChiCuadrado (IDistribuciones distribucion, int tamañoMuestra, int cantidadIntervalos, string alfa)
         {
             _distribucion = distribucion;
             _nTamañoMuestra = tamañoMuestra;
@@ -123,12 +123,14 @@ namespace TrabajoPractico3
             return valor;
         }
 
-        public static double valorDeTabla(int grados, double alfa)
+        public static double valorDeTabla(int grados, string alfa)
         {
+            double confianza = double.Parse(alfa,System.Globalization.CultureInfo.InvariantCulture);
             if (!(grados > 0))
                 throw new NotSupportedException("Los grados de libertad deben ser mayores a cero!");
+
             ContinuousDistribution d = new ChiSquaredDistribution(grados);
-            var valor = d.InverseRightProbability(alfa);
+            var valor = d.InverseRightProbability(confianza);
             return valor;
         }
     }

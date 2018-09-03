@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace TrabajoPractico3.Generadores
 {
@@ -10,6 +10,7 @@ namespace TrabajoPractico3.Generadores
     {
         public double Generar()
         {
+            Thread.Sleep(20);
             var _random = new Random().NextDouble();
             return _random;
         }

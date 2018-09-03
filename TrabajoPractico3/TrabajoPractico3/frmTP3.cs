@@ -91,15 +91,19 @@ namespace TrabajoPractico3
                 txt_IntC.Focus();
                 return false;
             }
-
-            if (!double.TryParse(txt_chicierto.Text, out alfa)
-                || alfa <= 0 || alfa >= 1)
+            alfa = double.Parse(txt_chicierto.Text, CultureInfo.InvariantCulture);
+            if (alfa <= 0 || alfa >= 1)
             {
                 MessageBox.Show(@"El valor de alfa debe estar entre 0 y 1");
                 txt_chicierto.Focus();
                 return false;
             }
 
+            return true;
+        }
+
+        private bool ValidarDistribucion()
+        {
             if (rad_uniforme.Checked)
             {
                 double _a;
@@ -141,7 +145,7 @@ namespace TrabajoPractico3
                 double lambda;
                 if (!double.TryParse(txt_lambda.Text, out lambda) || lambda <= 0)
                 {
-                    MessageBox.Show(@"La Varianza debe ser positiva");
+                    MessageBox.Show(@"Lambda debe ser positiva");
                     txt_lambda.Focus();
                     return false;
                 }
@@ -155,6 +159,8 @@ namespace TrabajoPractico3
             txt_aA.Text = "";
             txt_cA.Text = "";
             txt_mA.Text = "";
+            txt_cant_nroC.Text = "";
+            txt_IntC.Text = "";
         }
 
         private void LimpiarDatosDistribucion()
@@ -257,8 +263,12 @@ namespace TrabajoPractico3
         {
             if (ValidarFormulario())
             {
-                btn_cancelar.Enabled = true;
-                GenerarNumeros();
+                if (ValidarDistribucion())
+                {
+                    btn_cancelar.Enabled = true;
+                    GenerarNumeros();
+                }
+               
             }
         }
         
@@ -316,7 +326,7 @@ namespace TrabajoPractico3
 
             var tamañoMuestra = int.Parse(txt_cant_nroC.Text);
             var cantidadIntervalos = int.Parse(txt_IntC.Text);
-            var alfa = double.Parse(txt_chicierto.Text);
+            var alfa = txt_chicierto.Text;
 
             try
             {
@@ -324,6 +334,7 @@ namespace TrabajoPractico3
             }
             catch (Exception)
             {
+               
                 var grados = int.Parse(txt_IntC.Text) - _distribucion.getCantidadParametros() - 1;
 
                 MessageBox.Show(grados <= 0
