@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.histogramaGenerado = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox3.SuspendLayout();
@@ -59,10 +58,6 @@
             this.histogramaGenerado.Location = new System.Drawing.Point(14, 22);
             this.histogramaGenerado.Name = "histogramaGenerado";
             this.histogramaGenerado.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.histogramaGenerado.Series.Add(series1);
             this.histogramaGenerado.Size = new System.Drawing.Size(1156, 441);
             this.histogramaGenerado.TabIndex = 0;
             this.histogramaGenerado.Text = "histogramaGenerado";

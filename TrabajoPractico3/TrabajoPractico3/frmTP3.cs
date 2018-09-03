@@ -11,8 +11,6 @@ using TrabajoPractico3.Generadores;
 using TrabajoPractico3.Distribuciones;
 using System.Globalization;
 
-
-
 namespace TrabajoPractico3
 {
     public partial class frmTP3 : Form
@@ -20,15 +18,16 @@ namespace TrabajoPractico3
         private IGeneradores _generadorAleatorio;
         private IDistribuciones _distribucion;
         private PruebaChiCuadrado _pruebaChiCuadrado;
-        private const int Decimales = 3;
 
         public frmTP3()
         {
             InitializeComponent();
+            btn_grafico.Enabled = false;
         }
+
         private void btn_grafico_Click(object sender, EventArgs e)
         {
-            grafico graficoDistribucion = new grafico(); 
+            grafico graficoDistribucion = new grafico(_pruebaChiCuadrado); 
             graficoDistribucion.Show();
         }
       
@@ -36,61 +35,55 @@ namespace TrabajoPractico3
         {
             if (radioButton3.Checked)
                 return true;
-
             int semilla;
             int a;
             int c;
             int m;
-            if (!int.TryParse(txt_mA.Text, out m) ||
-                m <= 0)
+            if (!int.TryParse(txt_mA.Text, out m) || m <= 0)
             {
                 MessageBox.Show(@"El valor de M debe ser un entero positivo");
                 txt_mA.Focus();
                 return false;
             }
 
-            if (!int.TryParse(txt_semillaA.Text, out semilla) ||
-                semilla <= 0 || semilla >= m)
+            if (!int.TryParse(txt_semillaA.Text, out semilla) || semilla <= 0 || semilla >= m)
             {
                 MessageBox.Show(@"El valor de semilla debe ser un entero positivo menor a M");
                 txt_semillaA.Focus();
                 return false;
             }
 
-            if (!int.TryParse(txt_aA.Text, out a) ||
-                a <= 0 || a >= m)
+            if (!int.TryParse(txt_aA.Text, out a) || a <= 0 || a >= m)
             {
                 MessageBox.Show(@"El valor de A debe ser un entero positivo menor a M");
                 txt_aA.Focus();
                 return false;
             }
 
-            if (radioButton1.Checked && (!int.TryParse(txt_cA.Text, out c) ||
-                c <= 0 || c >= m))
+            if (radioButton1.Checked && (!int.TryParse(txt_cA.Text, out c) || c <= 0 || c >= m))
             {
                 MessageBox.Show(@"El valor de C debe ser un entero positivo menor a M");
                 txt_cA.Focus();
                 return false;
             }
+
             int muestra;
             int intervalos;
             double alfa;
-
-            if (!int.TryParse(txt_cant_nroC.Text, out muestra)
-                || muestra <= 0)
+            if (!int.TryParse(txt_cant_nroC.Text, out muestra) || muestra <= 0)
             {
                 MessageBox.Show(@"El tamaño de la muestra debe ser un entero positivo");
                 txt_cant_nroC.Focus();
                 return false;
             }
 
-            if (!int.TryParse(txt_IntC.Text, out intervalos)
-                || intervalos <= 0)
+            if (!int.TryParse(txt_IntC.Text, out intervalos) || intervalos <= 0)
             {
                 MessageBox.Show(@"La cantidad de intervalos debe ser un entero positivo");
                 txt_IntC.Focus();
                 return false;
             }
+
             alfa = double.Parse(txt_chicierto.Text, CultureInfo.InvariantCulture);
             if (alfa <= 0 || alfa >= 1)
             {
@@ -98,7 +91,6 @@ namespace TrabajoPractico3
                 txt_chicierto.Focus();
                 return false;
             }
-
             return true;
         }
 
@@ -121,7 +113,6 @@ namespace TrabajoPractico3
                     return false;
                 }
             }
-
             if (rad_normal.Checked)
             {
                 double media;
@@ -139,7 +130,6 @@ namespace TrabajoPractico3
                     return false;
                 }
             }
-
             if (rad_exponencial.Checked)
             {
                 double lambda;
@@ -265,10 +255,13 @@ namespace TrabajoPractico3
             {
                 if (ValidarDistribucion())
                 {
-                    btn_cancelar.Enabled = true;
+                    btn_grafico.Enabled = false;
                     GenerarNumeros();
-                }
-               
+                    if (!(_pruebaChiCuadrado is null))
+                    {
+                        btn_grafico.Enabled = true;
+                    }
+                }        
             }
         }
         
@@ -305,7 +298,6 @@ namespace TrabajoPractico3
             {
                 var a = double.Parse(txt_a.Text);
                 var b = double.Parse(txt_b.Text);
-
                 _distribucion = new DistribucionUniforme(a, b, _generadorAleatorio);
             }
 
@@ -313,21 +305,18 @@ namespace TrabajoPractico3
             {
                 var media = double.Parse(txt_media.Text);
                 var varianza = double.Parse(txt_varianza.Text);
-
                 _distribucion = new DistribucionNormal(media, varianza, _generadorAleatorio);
             }
 
             if (rad_exponencial.Checked)
             {
                 var lambda = double.Parse(txt_lambda.Text);
-
                 _distribucion = new DistribucionExponencialNegativa(lambda, _generadorAleatorio);
             }
 
             var tamañoMuestra = int.Parse(txt_cant_nroC.Text);
             var cantidadIntervalos = int.Parse(txt_IntC.Text);
             var alfa = txt_chicierto.Text;
-
             try
             {
                 _pruebaChiCuadrado = new PruebaChiCuadrado(_distribucion, tamañoMuestra, cantidadIntervalos, alfa);
@@ -347,43 +336,37 @@ namespace TrabajoPractico3
             for (var i = 0; i < tamañoMuestra; i++)
             {
                 var valor = _pruebaChiCuadrado._valores[i];
-
                 dataGridView1.Rows.Add(i + 1, valor);
             }
-
-            CompletarTabla();
+            CompletarTabla(4);
         }
 
-        private void CompletarTabla()
+        private void CompletarTabla(int decimales)
         {
             for (var i = 0; i < _pruebaChiCuadrado._cantidadIntervalos; i++)
             {
-                var subint = $"{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._inicio, Decimales)} - " +
-                             $"{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._fin, Decimales)}";
+                var subint = $"{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._inicio, decimales)} - " +
+                             $"{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._fin, decimales)}";
                 var freObs = _pruebaChiCuadrado._frecuenciasObservadasAbsolutas[i];
-                var freEsp = decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasEsperadasAbsolutas[i], Decimales);
-                var freObsRel = decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasObservadasRelativas[i], Decimales);
-                var freEspRel = decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasEsperadasRelativas[i], Decimales);
-                var chiCuad = decimal.Round((decimal)_pruebaChiCuadrado._valoresChiCuadrado[i], Decimales);
+                var freEsp = decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasEsperadasAbsolutas[i], decimales);
+                var freObsRel = decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasObservadasRelativas[i], decimales);
+                var freEspRel = decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasEsperadasRelativas[i], decimales);
+                var chiCuad = decimal.Round((decimal)_pruebaChiCuadrado._valoresChiCuadrado[i], decimales);
 
                 dataGridView2.Rows.Add(subint, freObs, freEsp, freObsRel, freEspRel, chiCuad);
             }
-
             dataGridView2.Rows.Add(
                 "Totales",
-                _pruebaChiCuadrado._frecuenciasObservadasAbsolutas.Sum(),
-                _pruebaChiCuadrado._frecuenciasEsperadasAbsolutas.Sum(),
-                _pruebaChiCuadrado._frecuenciasObservadasRelativas.Sum(),
-                _pruebaChiCuadrado._frecuenciasEsperadasRelativas.Sum(),
-                _pruebaChiCuadrado._valoresChiCuadrado.Sum()
+                decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasObservadasAbsolutas.Sum(), decimales),
+                decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasEsperadasAbsolutas.Sum(), decimales),
+                decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasObservadasRelativas.Sum(), decimales),
+                decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasEsperadasRelativas.Sum(), decimales),
+                decimal.Round((decimal)_pruebaChiCuadrado._valoresChiCuadrado.Sum(), decimales)
             );
-
-            txt_chi_observado.Text = decimal.Round((decimal)_pruebaChiCuadrado._valoresChiCuadrado.Sum(), Decimales)
+            txt_chi_observado.Text = decimal.Round((decimal)_pruebaChiCuadrado._valoresChiCuadrado.Sum(), decimales)
                 .ToString(CultureInfo.InvariantCulture);
-
-            txt_esperado.Text = decimal.Round((decimal)_pruebaChiCuadrado._tablaChiCuadrado, Decimales)
+            txt_esperado.Text = decimal.Round((decimal)_pruebaChiCuadrado._tablaChiCuadrado, decimales)
                 .ToString(CultureInfo.InvariantCulture);
-
             btn_compro.Enabled = true;
         }
 
@@ -392,9 +375,11 @@ namespace TrabajoPractico3
             var chiObtenido = _pruebaChiCuadrado._valoresChiCuadrado.Sum();
             var chiEsperado = _pruebaChiCuadrado._tablaChiCuadrado;
             var mensaje = "";
-            if (chiObtenido < chiEsperado) {
+            if (chiObtenido < chiEsperado)
+            {
                 mensaje = "Se acepta la hipótesis";  
-            }else
+            }
+            else
             {
                 mensaje = "Se rechaza la hipótesis";
             }
@@ -406,11 +391,7 @@ namespace TrabajoPractico3
             LimpiarDatosDistribucion();
             LimpiarDatosGenerador();
             LimpiarTablas();
-        }
-
-        private void btn_cancelar_Click(object sender, EventArgs e)
-        {
-
+            btn_grafico.Enabled = false;
         }
     }
 }

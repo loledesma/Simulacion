@@ -48,7 +48,6 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btn_cancelar = new System.Windows.Forms.Button();
             this.btn_PuntoC = new System.Windows.Forms.Button();
             this.txt_lambda = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -302,7 +301,6 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.btn_cancelar);
             this.groupBox5.Controls.Add(this.btn_PuntoC);
             this.groupBox5.Controls.Add(this.txt_lambda);
             this.groupBox5.Controls.Add(this.label10);
@@ -327,23 +325,11 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Distribuciones";
             // 
-            // btn_cancelar
-            // 
-            this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancelar.Location = new System.Drawing.Point(96, 247);
-            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.Size = new System.Drawing.Size(68, 36);
-            this.btn_cancelar.TabIndex = 20;
-            this.btn_cancelar.Text = "Cancelar";
-            this.btn_cancelar.UseVisualStyleBackColor = true;
-            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
-            // 
             // btn_PuntoC
             // 
             this.btn_PuntoC.Enabled = false;
             this.btn_PuntoC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PuntoC.Location = new System.Drawing.Point(11, 247);
+            this.btn_PuntoC.Location = new System.Drawing.Point(58, 244);
             this.btn_PuntoC.Margin = new System.Windows.Forms.Padding(2);
             this.btn_PuntoC.Name = "btn_PuntoC";
             this.btn_PuntoC.Size = new System.Drawing.Size(68, 36);
@@ -355,7 +341,7 @@
             // txt_lambda
             // 
             this.txt_lambda.Enabled = false;
-            this.txt_lambda.Location = new System.Drawing.Point(88, 190);
+            this.txt_lambda.Location = new System.Drawing.Point(88, 205);
             this.txt_lambda.Margin = new System.Windows.Forms.Padding(2);
             this.txt_lambda.Name = "txt_lambda";
             this.txt_lambda.Size = new System.Drawing.Size(76, 19);
@@ -364,7 +350,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(21, 193);
+            this.label10.Location = new System.Drawing.Point(21, 208);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
@@ -374,7 +360,7 @@
             // txt_varianza
             // 
             this.txt_varianza.Enabled = false;
-            this.txt_varianza.Location = new System.Drawing.Point(88, 167);
+            this.txt_varianza.Location = new System.Drawing.Point(88, 178);
             this.txt_varianza.Margin = new System.Windows.Forms.Padding(2);
             this.txt_varianza.Name = "txt_varianza";
             this.txt_varianza.Size = new System.Drawing.Size(76, 19);
@@ -383,7 +369,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 169);
+            this.label9.Location = new System.Drawing.Point(21, 180);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(60, 13);
@@ -393,7 +379,7 @@
             // txt_media
             // 
             this.txt_media.Enabled = false;
-            this.txt_media.Location = new System.Drawing.Point(88, 144);
+            this.txt_media.Location = new System.Drawing.Point(88, 151);
             this.txt_media.Margin = new System.Windows.Forms.Padding(2);
             this.txt_media.Name = "txt_media";
             this.txt_media.Size = new System.Drawing.Size(76, 19);
@@ -402,7 +388,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(39, 147);
+            this.label8.Location = new System.Drawing.Point(39, 154);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 13);
@@ -412,7 +398,7 @@
             // txt_b
             // 
             this.txt_b.Enabled = false;
-            this.txt_b.Location = new System.Drawing.Point(88, 121);
+            this.txt_b.Location = new System.Drawing.Point(88, 124);
             this.txt_b.Margin = new System.Windows.Forms.Padding(2);
             this.txt_b.Name = "txt_b";
             this.txt_b.Size = new System.Drawing.Size(76, 19);
@@ -421,7 +407,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(65, 124);
+            this.label7.Location = new System.Drawing.Point(65, 127);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(19, 13);
@@ -776,7 +762,6 @@
         private System.Windows.Forms.TextBox txt_chi_observado;
         private System.Windows.Forms.TextBox txt_esperado;
         private System.Windows.Forms.Button btn_limpiar_todo;
-        private System.Windows.Forms.Button btn_cancelar;
     }
 }
 
