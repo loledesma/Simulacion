@@ -287,7 +287,32 @@ namespace TrabajoPractico3
 
         private void generarDistribucion()
         {
+            if (rad_uniforme.Checked)
+            {
+                var a = double.Parse(txt_a.Text);
+                var b = double.Parse(txt_b.Text);
 
+                _distribucion = new DistribucionUniforme(a, b, _generadorAleatorio);
+            }
+
+            if (rad_normal.Checked)
+            {
+                var media = double.Parse(txt_media.Text);
+                var varianza = double.Parse(txt_varianza.Text);
+
+                _distribucion = new DistribucionNormal(media, varianza, _generadorAleatorio);
+            }
+
+            if (rad_exponencial.Checked)
+            {
+                var lambda = double.Parse(txt_lambda.Text);
+
+                _distribucion = new DistribucionExponencialNegativa(lambda, _generadorAleatorio);
+            }
+
+            var tamañoMuestra = int.Parse(txt_cant_nroC.Text);
+            var cantidadIntervalos = int.Parse(txt_IntC.Text);
+            var alfa = double.Parse(txt_chicierto.Text);
         }
 
         private void btn_compro_Click(object sender, EventArgs e)
