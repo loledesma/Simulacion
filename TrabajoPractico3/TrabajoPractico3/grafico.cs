@@ -23,7 +23,7 @@ namespace TrabajoPractico3
         {
             InitializeComponent();
             _pruebaChiCuadrado = pruebachi;
-            cargarHistograma(4);
+            cargarHistograma(3);
         }
 
         private void cargarHistograma(int decimales)
@@ -34,9 +34,7 @@ namespace TrabajoPractico3
             {
                 histogramaGenerado.Series[0].Points.Add(_pruebaChiCuadrado._frecuenciasObservadasAbsolutas[i]);
                 histogramaGenerado.Series[1].Points.Add((double)decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasEsperadasAbsolutas[i], decimales));
-                histogramaGenerado.Series[0].Points[i].AxisLabel =
-                    $"[{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._inicio, decimales)} - " +
-                    $"{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._fin, decimales)}]";
+                histogramaGenerado.Series[0].Points[i].AxisLabel = $"[{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._marca, decimales)}]";
                 histogramaGenerado.Series[0].IsValueShownAsLabel = true;
                 histogramaGenerado.Series[1].IsValueShownAsLabel = true;
             }

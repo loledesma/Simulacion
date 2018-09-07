@@ -10,7 +10,7 @@ namespace TrabajoPractico3.Generadores
     {
         public double Generar()
         {
-            Thread.Sleep(20);
+            Thread.Sleep(1);
             var _random = new Random().NextDouble();
             return _random;
         }

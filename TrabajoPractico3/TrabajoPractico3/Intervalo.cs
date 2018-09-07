@@ -10,6 +10,7 @@ namespace TrabajoPractico3
     {
         public double _inicio { get; set; }
         public double _fin { get; set; }
+        public double _marca { get; set; }
 
         public Intervalo (double inicio, double fin)
         {
@@ -17,6 +18,7 @@ namespace TrabajoPractico3
                 throw new NotSupportedException ("El final del intervalo debe ser mayor al inicio del intervalo!");
             _inicio = inicio;
             _fin = fin;
+            _marca = _inicio + ((_fin - _inicio) / 2);
         }
     }
 }

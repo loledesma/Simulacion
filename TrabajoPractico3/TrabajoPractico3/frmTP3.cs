@@ -338,7 +338,7 @@ namespace TrabajoPractico3
                 var valor = _pruebaChiCuadrado._valores[i];
                 dataGridView1.Rows.Add(i + 1, valor);
             }
-            CompletarTabla(4);
+            CompletarTabla(3);
         }
 
         private void CompletarTabla(int decimales)
