@@ -30,15 +30,17 @@ namespace TrabajoPractico3
         {
             histogramaGenerado.Series.Add("Frecuecias Observadas");
             histogramaGenerado.Series.Add("Frecuecias Esperadas");
+            histogramaGenerado.ChartAreas[0].AxisX.Interval = 1;
             for (var i = 0; i < _pruebaChiCuadrado._cantidadIntervalos; i++)
             {
                 histogramaGenerado.Series[0].Points.Add(_pruebaChiCuadrado._frecuenciasObservadasAbsolutas[i]);
                 histogramaGenerado.Series[1].Points.Add((double)decimal.Round((decimal)_pruebaChiCuadrado._frecuenciasEsperadasAbsolutas[i], decimales));
-                histogramaGenerado.Series[0].Points[i].AxisLabel = $"[{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._marca, decimales)}]";
+                histogramaGenerado.Series[0].Points[i].AxisLabel = decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._marca, decimales).ToString();
+                histogramaGenerado.Series[1].Points[i].AxisLabel = decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._marca, decimales).ToString();
+                //histogramaGenerado.Series[0].Points[i].AxisLabel = $"[{decimal.Round((decimal)_pruebaChiCuadrado._intervalos[i]._marca, decimales)}]";
                 histogramaGenerado.Series[0].IsValueShownAsLabel = true;
                 histogramaGenerado.Series[1].IsValueShownAsLabel = true;
             }
-            histogramaGenerado.ChartAreas[0].AxisY.Maximum = _pruebaChiCuadrado._frecuenciasObservadasAbsolutas.Max();
             histogramaGenerado.Series[0].Color = Color.Aqua;
             histogramaGenerado.Series[1].Color = Color.LightGreen;
         }
