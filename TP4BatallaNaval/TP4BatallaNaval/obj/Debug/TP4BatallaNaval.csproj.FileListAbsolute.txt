@@ -1,9 +1,0 @@
-d:\documents\visual studio 2013\Projects\TP4BatallaNaval\TP4BatallaNaval\bin\Debug\TP4BatallaNaval.exe.config
-d:\documents\visual studio 2013\Projects\TP4BatallaNaval\TP4BatallaNaval\bin\Debug\TP4BatallaNaval.exe
-d:\documents\visual studio 2013\Projects\TP4BatallaNaval\TP4BatallaNaval\bin\Debug\TP4BatallaNaval.pdb
-d:\documents\visual studio 2013\Projects\TP4BatallaNaval\TP4BatallaNaval\obj\Debug\TP4BatallaNaval.csprojResolveAssemblyReference.cache
-d:\documents\visual studio 2013\Projects\TP4BatallaNaval\TP4BatallaNaval\obj\Debug\TP4BatallaNaval.Main.resources
-d:\documents\visual studio 2013\Projects\TP4BatallaNaval\TP4BatallaNaval\obj\Debug\TP4BatallaNaval.Properties.Resources.resources
-d:\documents\visual studio 2013\Projects\TP4BatallaNaval\TP4BatallaNaval\obj\Debug\TP4BatallaNaval.csproj.GenerateResource.Cache
-d:\documents\visual studio 2013\Projects\TP4BatallaNaval\TP4BatallaNaval\obj\Debug\TP4BatallaNaval.exe
-d:\documents\visual studio 2013\Projects\TP4BatallaNaval\TP4BatallaNaval\obj\Debug\TP4BatallaNaval.pdb
