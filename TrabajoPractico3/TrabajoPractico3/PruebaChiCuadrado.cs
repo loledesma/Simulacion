@@ -99,8 +99,8 @@ namespace TrabajoPractico3
             var chiCuadrado = new List<double>();
             for (var i = 0; i < _cantidadIntervalos; i++)
             {
-                var observada = _frecuenciasObservadasAbsolutas[i];
-                var esperada = _frecuenciasEsperadasAbsolutas[i];
+                var observada = _frecuenciasObservadasRelativas[i];
+                var esperada = _frecuenciasEsperadasRelativas[i];
                 var valor = calcular(observada, esperada);
                 chiCuadrado.Add(valor);
             }

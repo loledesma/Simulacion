@@ -71,10 +71,12 @@
             this.histogramaGenerado.Name = "histogramaGenerado";
             this.histogramaGenerado.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.Aquamarine;
             series1.IsValueShownAsLabel = true;
             series1.IsXValueIndexed = true;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "Frecuencias Observadas";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.histogramaGenerado.Series.Add(series1);
             this.histogramaGenerado.Size = new System.Drawing.Size(1156, 441);
             this.histogramaGenerado.TabIndex = 0;
