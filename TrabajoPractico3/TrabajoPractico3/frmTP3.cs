@@ -170,7 +170,6 @@ namespace TrabajoPractico3
             txt_esperado.Text = "";
             txt_chi_observado.Enabled = false;
             txt_esperado.Enabled = false;
-            txt_chicierto.Text = @"0.05";
             btn_compro.Enabled = false;
         }
 

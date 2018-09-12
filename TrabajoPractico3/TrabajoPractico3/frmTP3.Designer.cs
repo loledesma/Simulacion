@@ -586,7 +586,7 @@
             // 
             // txt_chicierto
             // 
-            this.txt_chicierto.Location = new System.Drawing.Point(80, 21);
+            this.txt_chicierto.Location = new System.Drawing.Point(58, 22);
             this.txt_chicierto.Margin = new System.Windows.Forms.Padding(2);
             this.txt_chicierto.Name = "txt_chicierto";
             this.txt_chicierto.Size = new System.Drawing.Size(60, 19);
@@ -596,12 +596,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 24);
+            this.label4.Location = new System.Drawing.Point(25, 25);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 34;
-            this.label4.Text = "Confianza";
+            this.label4.Text = "Alfa";
             // 
             // groupBox8
             // 
