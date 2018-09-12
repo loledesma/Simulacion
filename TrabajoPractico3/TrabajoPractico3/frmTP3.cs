@@ -377,7 +377,7 @@ namespace TrabajoPractico3
             var mensaje = "";
             if (chiObtenido < chiEsperado)
             {
-                mensaje = "Se acepta la hipótesis";  
+                mensaje = "No se rechaza la hipótesis";  
             }
             else
             {

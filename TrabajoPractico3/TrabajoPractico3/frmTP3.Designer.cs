@@ -105,7 +105,7 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(394, 297);
+            this.groupBox4.Size = new System.Drawing.Size(389, 297);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Generador Números Aleatorios";
@@ -512,7 +512,7 @@
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(635, 329);
+            this.dataGridView2.Size = new System.Drawing.Size(644, 329);
             this.dataGridView2.TabIndex = 38;
             // 
             // intervalo
@@ -554,7 +554,7 @@
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(602, 11);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(337, 157);
+            this.groupBox6.Size = new System.Drawing.Size(345, 143);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Prueba Chi Cuadrado";
@@ -576,17 +576,17 @@
             this.groupBox7.Controls.Add(this.txt_chicierto);
             this.groupBox7.Controls.Add(this.label4);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(7, 82);
+            this.groupBox7.Location = new System.Drawing.Point(7, 81);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Size = new System.Drawing.Size(176, 56);
+            this.groupBox7.Size = new System.Drawing.Size(161, 56);
             this.groupBox7.TabIndex = 41;
             this.groupBox7.TabStop = false;
             // 
             // txt_chicierto
             // 
-            this.txt_chicierto.Location = new System.Drawing.Point(98, 21);
+            this.txt_chicierto.Location = new System.Drawing.Point(80, 21);
             this.txt_chicierto.Margin = new System.Windows.Forms.Padding(2);
             this.txt_chicierto.Name = "txt_chicierto";
             this.txt_chicierto.Size = new System.Drawing.Size(60, 19);
@@ -596,7 +596,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 24);
+            this.label4.Location = new System.Drawing.Point(13, 24);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
@@ -611,7 +611,7 @@
             this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Size = new System.Drawing.Size(158, 56);
+            this.groupBox8.Size = new System.Drawing.Size(165, 56);
             this.groupBox8.TabIndex = 40;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Chi Cuadrado Observado";
@@ -633,7 +633,7 @@
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Size = new System.Drawing.Size(158, 55);
+            this.groupBox9.Size = new System.Drawing.Size(161, 55);
             this.groupBox9.TabIndex = 39;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Chi Cuadrado Esperado";
@@ -675,7 +675,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(950, 709);
+            this.ClientSize = new System.Drawing.Size(959, 709);
             this.Controls.Add(this.btn_limpiar_todo);
             this.Controls.Add(this.btn_grafico);
             this.Controls.Add(this.groupBox6);
