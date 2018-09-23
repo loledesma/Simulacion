@@ -407,7 +407,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1330, 712);
+            this.ClientSize = new System.Drawing.Size(1333, 712);
             this.Controls.Add(this.lbl_tablero2);
             this.Controls.Add(this.lbl_tablero1);
             this.Controls.Add(this.lbl_estado);
