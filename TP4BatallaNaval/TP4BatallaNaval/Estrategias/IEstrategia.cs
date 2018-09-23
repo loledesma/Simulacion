@@ -10,7 +10,7 @@ namespace TP4BatallaNaval.Estrategias
 {
     public interface IEstrategia
     {
-        Coordenada realizarMovimiento(IGeneradores generador);
+        Coordenada realizarMovimiento();
         void resultadoMovimiento(Coordenada movim, int resultado);
     }
 }

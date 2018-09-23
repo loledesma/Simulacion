@@ -30,6 +30,8 @@ namespace TP4BatallaNaval
         const int a = 12;
         const int c = 17;
         const int m = 5000;
+        IDistribuciones distr;
+        IGeneradores generador;
 
         public GestorJuego(Boolean _modo)
         {
@@ -56,8 +58,10 @@ namespace TP4BatallaNaval
                     _longitud--;
                 }
             }
-            estrategia_j1 = new EstrategiaAleatoria(flotas_estrategia1);
-            estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2);
+            generador = new CongruencialMixto(seed, a, c, m);
+            distr = new DistribucionUniforme(1, 64, generador);
+            estrategia_j1 = new EstrategiaAleatoria(flotas_estrategia1, distr);
+            estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distr);
         }
 
         public string obtenerNombre(int _tamaño)
@@ -131,10 +135,10 @@ namespace TP4BatallaNaval
 
         public Coordenada obtenerCoordenada()
         {
-            CongruencialMixto generador = new CongruencialMixto(seed, a, c, m);
-            DistribucionUniforme distr = new DistribucionUniforme(1, 64, generador);
-            int _x = (int) Math.Round(distr.generar(), 0);
-            int _y = (int) Math.Round(distr.generar(), 0);
+            CongruencialMixto _generador = new CongruencialMixto(seed, a, c, m);
+            DistribucionUniforme _distr = new DistribucionUniforme(1, 64, _generador);
+            int _x = (int) Math.Round(_distr.generar(), 0);
+            int _y = (int) Math.Round(_distr.generar(), 0);
             Coordenada coord = new Coordenada(_x, _y);
             return coord;
         }
@@ -142,9 +146,9 @@ namespace TP4BatallaNaval
         public int obtenerSentido()
         {
             int retorno = 0;
-            CongruencialMixto generador = new CongruencialMixto(seed, a, c, m);
-            DistribucionUniforme distr = new DistribucionUniforme(1, 4, generador);
-            retorno = int.Parse(distr.generar().ToString(), System.Globalization.NumberStyles.Integer);
+            CongruencialMixto _generador = new CongruencialMixto(seed, a, c, m);
+            DistribucionUniforme _distr = new DistribucionUniforme(1, 4, _generador);
+            retorno = int.Parse(_distr.generar().ToString(), System.Globalization.NumberStyles.Integer);
             return retorno;
         }
 

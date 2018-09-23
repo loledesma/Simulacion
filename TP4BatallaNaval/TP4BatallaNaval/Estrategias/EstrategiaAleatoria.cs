@@ -19,20 +19,22 @@ namespace TP4BatallaNaval.Estrategias
         int cant_aciertos;
         List<Flota> flotas;
         int cant_repetidos;
+        IDistribuciones distribucion;
 
-        public EstrategiaAleatoria(List<Flota> _list_barcos)
+        public EstrategiaAleatoria(List<Flota> _list_barcos, IDistribuciones _distrib)
         {
             cant_movimientos = 0;
             cant_agua = 0;
             flotas = _list_barcos;
             cant_barcos_enemigos = _list_barcos.Count();
             cant_aciertos = 0;
+            cant_repetidos = 0;
+            distribucion = _distrib;
         }
 
-        public Coordenada realizarMovimiento(IGeneradores _generador)
+        public Coordenada realizarMovimiento()
         {
             // esta estrategia siempre genera un aleatorio, no le interesan los movimientos anteriores.
-            DistribucionUniforme distribucion = new DistribucionUniforme(1, 64, _generador);
             int x = (int)Math.Round(distribucion.generar(), 0);
             int y = (int)Math.Round(distribucion.generar(), 0);
             Coordenada c = new Coordenada(x, y);
