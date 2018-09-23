@@ -7,7 +7,7 @@ using TP4BatallaNaval.Distribuciones;
 
 namespace TP4BatallaNaval.Estrategias
 {
-     public class EstrategiaEquipo1 : IEstrategia
+    public class EstrategiaEquipo2 : IEstrategia
     {
         Coordenada ultMovAcertado;
         // ultimoResultado: "0" -> Agua | "1" -> Averiado | "2" -> Hundido | "-1" -> Repetido
@@ -21,7 +21,7 @@ namespace TP4BatallaNaval.Estrategias
         int cant_repetidos;
         IDistribuciones distribucion;
 
-        public EstrategiaEquipo1(List<Flota> _list_barcos, IDistribuciones _distrib)
+        public EstrategiaEquipo2(List<Flota> _list_barcos, IDistribuciones _distrib)
         {
             cant_movimientos = 0;
             cant_agua = 0;
@@ -31,6 +31,15 @@ namespace TP4BatallaNaval.Estrategias
             cant_repetidos = 0;
             distribucion = _distrib;
             finaliza_juego = false;
+        }
+
+        public Coordenada realizarMovimiento()
+        {
+            // eso es con numeros aleatorios ES PARA MODIFICAR CON LA ESTRATEGIA DE CADA UNO
+            int x = (int)Math.Round(distribucion.generar(), 0);
+            int y = (int)Math.Round(distribucion.generar(), 0);
+            Coordenada c = new Coordenada(x, y);
+            return c;
         }
 
         public void resultadoMovimiento(Coordenada mov, int resultado)
@@ -56,19 +65,10 @@ namespace TP4BatallaNaval.Estrategias
                     break;
             }
 
-            if (cant_barcos_enemigos==0)
+            if (cant_barcos_enemigos == 0)
             {
                 finaliza_juego = true;
             }
         }
-        
-        public Coordenada realizarMovimiento()
-        {
-            int x = 0;
-            int y = 0;
-            Coordenada c = new Coordenada(x, y);
-
-            return c;
-        }
-    }
+}
 }

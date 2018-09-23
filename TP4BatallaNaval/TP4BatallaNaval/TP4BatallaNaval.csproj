@@ -59,6 +59,7 @@
     <Compile Include="Distribuciones\IDistribuciones.cs" />
     <Compile Include="Estrategias\EstrategiaAleatoria.cs" />
     <Compile Include="Estrategias\EstrategiaEquipo1.cs" />
+    <Compile Include="Estrategias\EstrategiaEquipo2.cs" />
     <Compile Include="Estrategias\IEstrategia.cs" />
     <Compile Include="Flota.cs" />
     <Compile Include="Generadores\CongruencialMixto.cs" />
