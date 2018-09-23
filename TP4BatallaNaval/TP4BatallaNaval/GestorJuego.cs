@@ -47,7 +47,10 @@ namespace TP4BatallaNaval
             {
                 while (_longitud >= long_min_barco)
                 {
-                    _flotaCargada = new Flota(_longitud, obtenerNombre(_longitud), posicionarFlota(_longitud, jugador), obtenerColor(_longitud));
+                    List<Coordenada> coordenadas = posicionarFlota(_longitud, jugador);
+                    string nombreflota = obtenerNombre(_longitud);
+                    Color colorflota = obtenerColor(_longitud);
+                    _flotaCargada = new Flota(_longitud, nombreflota, coordenadas, colorflota);
                     if (jugador == 1)
                     {
                         flotas_estrategia1.Add(_flotaCargada);
@@ -57,11 +60,18 @@ namespace TP4BatallaNaval
                     }
                     _longitud--;
                 }
+                _barcos++;
             }
             generador = new CongruencialMixto(seed, a, c, m);
             distr = new DistribucionUniforme(1, 64, generador);
-            estrategia_j1 = new EstrategiaAleatoria(flotas_estrategia1, distr);
-            estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distr);
+            if (jugador == 1)
+            {
+                estrategia_j1 = new EstrategiaAleatoria(flotas_estrategia1, distr);
+            }
+            else
+            {
+                estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distr);
+            }
         }
 
         public string obtenerNombre(int _tamaño)
