@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TP4BatallaNaval.Distribuciones;
+using TP4BatallaNaval.Generadores;
 
 namespace TP4BatallaNaval.Estrategias
 {
-    interface IEstrategia
+    public interface IEstrategia
     {
-        Coordenada realizarMovimiento();
-        void resultadoMovimiento(int resultado);
+        Coordenada realizarMovimiento(IGeneradores generador);
+        void resultadoMovimiento(Coordenada movim, int resultado);
     }
 }
