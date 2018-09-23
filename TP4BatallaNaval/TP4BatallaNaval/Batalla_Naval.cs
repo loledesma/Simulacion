@@ -14,18 +14,28 @@ namespace TP4BatallaNaval
     {
         List<Flota> flotas_tablero1;
         List<Flota> flotas_tablero2;
-        public GestorJuego controlador;
-
+        
         public Batalla_Naval()
         {
             InitializeComponent();
+        }
+
+        public void asignarFlotas(List<Flota> _flotajugador, int jugador)
+        {
+            if (jugador == 1)
+            {
+                flotas_tablero1 = _flotajugador;
+            }
+            else
+            {
+                flotas_tablero2 = _flotajugador;
+            }
         }
 
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
             flotas_tablero1.Clear();
             flotas_tablero2.Clear();
-            controlador = null;
             tablero1.Controls.Clear();
             tablero2.Controls.Clear();
             btn_cargar_barcos.Enabled = true;
@@ -87,10 +97,6 @@ namespace TP4BatallaNaval
         {
             btn_limpiar.Enabled = true;
             btn_cargar_barcos.Enabled = false;
-            controlador.cargar_barcos(1);
-            controlador.cargar_barcos(2);
-            flotas_tablero1 = controlador.flotas_estrategia1;
-            flotas_tablero2 = controlador.flotas_estrategia2;
             foreach (Flota _flota in flotas_tablero1)
             {
                 foreach (Coordenada posicion in _flota.posicionesFlota)

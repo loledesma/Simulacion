@@ -14,6 +14,7 @@ namespace TP4BatallaNaval
     {
         int[,] tablero1 = new int[64, 64];
         int[,] tablero2 = new int[64, 64];
+        Batalla_Naval graficador;
         // modo: FALSE-> Semi-Automatico | TRUE-> Automatico
         Boolean modo;
         // cantidad de barcos de cada tipo
@@ -54,9 +55,22 @@ namespace TP4BatallaNaval
                     if (jugador == 1)
                     {
                         flotas_estrategia1.Add(_flotaCargada);
-                    } else
+                        if (modo == false)
+                        {
+                            graficador = new Batalla_Naval();
+                            graficador.asignarFlotas(flotas_estrategia1, jugador);
+                            graficador.Show();
+                        }
+                    }
+                    else
                     {
                         flotas_estrategia2.Add(_flotaCargada);
+                        if (modo == false)
+                        {
+                            graficador = new Batalla_Naval();
+                            graficador.asignarFlotas(flotas_estrategia2, jugador);
+                            graficador.Show();
+                        }
                     }
                     _longitud--;
                 }
@@ -71,7 +85,7 @@ namespace TP4BatallaNaval
             else
             {
                 estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distr);
-            }
+            }            
         }
 
         public string obtenerNombre(int _tamaño)
