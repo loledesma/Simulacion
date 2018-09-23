@@ -14,14 +14,6 @@ namespace TP4BatallaNaval
     {
         int[,] tablero1 = new int[64, 64];
         int[,] tablero2 = new int[64, 64];
-        int cant_disparos_estrategia1;
-        int cant_disparos_estrategia2;
-        int cant_aciertos_estrategia1;
-        int cant_aciertos_estrategia2;
-        int cant_repetidos_estrategia1;
-        int cant_repetidos_estrategia2;
-        // Cantidad de Casilleros de Barcos 
-        int cant_casillas_flota;
         // modo: FALSE-> Semi-Automatico | TRUE-> Automatico
         Boolean modo;
         // cantidad de barcos de cada tipo
@@ -64,6 +56,8 @@ namespace TP4BatallaNaval
                     _longitud--;
                 }
             }
+            estrategia_j1 = new EstrategiaAleatoria(flotas_estrategia1);
+            estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2);
         }
 
         public string obtenerNombre(int _tamaño)

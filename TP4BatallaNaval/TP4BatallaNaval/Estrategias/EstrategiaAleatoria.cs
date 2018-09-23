@@ -18,7 +18,6 @@ namespace TP4BatallaNaval.Estrategias
         int cant_barcos_enemigos;
         int cant_aciertos;
         List<Flota> flotas;
-        int cant_dañados;
         int cant_repetidos;
 
         public EstrategiaAleatoria(List<Flota> _list_barcos)
@@ -32,41 +31,18 @@ namespace TP4BatallaNaval.Estrategias
 
         public Coordenada realizarMovimiento(IGeneradores _generador)
         {
-            Coordenada c;
+            // esta estrategia siempre genera un aleatorio, no le interesan los movimientos anteriores.
             DistribucionUniforme distribucion = new DistribucionUniforme(1, 64, _generador);
-            int x;
-            int y;
-            switch (ultimoResultado)
-            {
-                case 0:
-                    x = (int)Math.Round(distribucion.generar(), 0);
-                    y = (int)Math.Round(distribucion.generar(), 0);
-                    c = new Coordenada(x, y);
-                    return c;
-                case 1:
-                    c = new Coordenada(1, 1);
-                    return c;
-                case 2:
-                    x = (int)Math.Round(distribucion.generar(), 0);
-                    y = (int)Math.Round(distribucion.generar(), 0);
-                    c = new Coordenada(x, y);
-                    return c;
-                case -1:
-                    x = (int)Math.Round(distribucion.generar(), 0);
-                    y = (int)Math.Round(distribucion.generar(), 0);
-                    c = new Coordenada(x, y);
-                    return c;
-                default:
-                    x = (int)Math.Round(distribucion.generar(), 0);
-                    y = (int)Math.Round(distribucion.generar(), 0);
-                    c = new Coordenada(x, y);
-                    return c;
-            }
+            int x = (int)Math.Round(distribucion.generar(), 0);
+            int y = (int)Math.Round(distribucion.generar(), 0);
+            Coordenada c = new Coordenada(x, y);
+            return c;
         }
 
         public void resultadoMovimiento(Coordenada mov, int resultado)
         {
             ultimoResultado = resultado;
+            cant_movimientos++;
             switch (resultado)
             {
                 case 0:
