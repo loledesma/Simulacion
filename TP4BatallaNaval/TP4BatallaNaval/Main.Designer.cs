@@ -37,7 +37,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(129, 117);
+            this.button1.Location = new System.Drawing.Point(113, 57);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 76);
             this.button1.TabIndex = 0;
@@ -48,7 +48,7 @@
             // rdb_automatico
             // 
             this.rdb_automatico.AutoSize = true;
-            this.rdb_automatico.Location = new System.Drawing.Point(29, 16);
+            this.rdb_automatico.Location = new System.Drawing.Point(12, 11);
             this.rdb_automatico.Name = "rdb_automatico";
             this.rdb_automatico.Size = new System.Drawing.Size(78, 17);
             this.rdb_automatico.TabIndex = 1;
@@ -59,7 +59,7 @@
             // rdb_semiautomatico
             // 
             this.rdb_semiautomatico.AutoSize = true;
-            this.rdb_semiautomatico.Location = new System.Drawing.Point(29, 39);
+            this.rdb_semiautomatico.Location = new System.Drawing.Point(12, 34);
             this.rdb_semiautomatico.Name = "rdb_semiautomatico";
             this.rdb_semiautomatico.Size = new System.Drawing.Size(104, 17);
             this.rdb_semiautomatico.TabIndex = 2;
@@ -69,16 +69,16 @@
             // 
             // txt_cant_simulaciones
             // 
-            this.txt_cant_simulaciones.Location = new System.Drawing.Point(207, 66);
+            this.txt_cant_simulaciones.Location = new System.Drawing.Point(294, 10);
             this.txt_cant_simulaciones.Name = "txt_cant_simulaciones";
-            this.txt_cant_simulaciones.Size = new System.Drawing.Size(100, 20);
+            this.txt_cant_simulaciones.Size = new System.Drawing.Size(63, 20);
             this.txt_cant_simulaciones.TabIndex = 3;
             this.txt_cant_simulaciones.Text = "1000";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(72, 68);
+            this.label1.Location = new System.Drawing.Point(159, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 13);
             this.label1.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 261);
+            this.ClientSize = new System.Drawing.Size(372, 144);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_cant_simulaciones);
             this.Controls.Add(this.rdb_semiautomatico);

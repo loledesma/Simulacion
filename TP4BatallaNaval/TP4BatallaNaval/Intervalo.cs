@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrabajoPractico3
+namespace TP4BatallaNaval
 {
     public class Intervalo
     {

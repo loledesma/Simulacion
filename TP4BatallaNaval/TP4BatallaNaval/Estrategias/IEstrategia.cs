@@ -8,5 +8,6 @@ namespace TP4BatallaNaval.Estrategias
 {
     interface IEstrategia
     {
+        Coordenada realizarMovimiento();
     }
 }

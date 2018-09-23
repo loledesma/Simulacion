@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrabajoPractico3.Generadores
+namespace TP4BatallaNaval.Generadores
 {
     public class CongruencialMultiplicativo : IGeneradores
     {

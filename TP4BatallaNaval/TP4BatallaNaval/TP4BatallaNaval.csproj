@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,7 @@
     <Compile Include="Batalla_Naval.Designer.cs">
       <DependentUpon>Batalla_Naval.cs</DependentUpon>
     </Compile>
+    <Compile Include="Coordenada.cs" />
     <Compile Include="Distribuciones\DistribucionUniforme.cs" />
     <Compile Include="Distribuciones\IDistribuciones.cs" />
     <Compile Include="Estrategias\EstrategiaAleatoria.cs" />
@@ -71,6 +73,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Batalla_Naval.resx">
+      <DependentUpon>Batalla_Naval.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>

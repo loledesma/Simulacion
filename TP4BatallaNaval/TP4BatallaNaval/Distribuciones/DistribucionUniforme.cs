@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrabajoPractico3.Generadores;
+using TP4BatallaNaval.Generadores;
 
-namespace TrabajoPractico3.Distribuciones
+namespace TP4BatallaNaval.Distribuciones
 {
     public class DistribucionUniforme : IDistribuciones
     {

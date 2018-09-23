@@ -15,6 +15,7 @@ namespace TP4BatallaNaval
     {
         GestorJuego gestor;
         int cant_simulaciones;
+        Batalla_Naval grafico;
         public Main()
         {
             InitializeComponent();
@@ -23,18 +24,21 @@ namespace TP4BatallaNaval
         {
             // False -> Semi-Automatico     True -> Automatico
             if (rdb_semiautomatico.Checked == true)
-            { 
+            {
                 gestor = new GestorJuego(false);
-                gestor.cargar_barcos();
-
+                grafico = new Batalla_Naval();
+                grafico.controlador = gestor;
+                grafico.Show();
             }
             else 
             {
                 gestor = new GestorJuego(true);
+                cant_simulaciones = 1;
                 int _cant_ingresada = int.Parse (txt_cant_simulaciones.Text);
                 while (cant_simulaciones <= _cant_ingresada)
                 {
-
+                    gestor.cargar_barcos(1);
+                    gestor.cargar_barcos(2);
                 }
             }
         }
