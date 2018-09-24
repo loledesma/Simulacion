@@ -9,7 +9,7 @@ namespace TP4BatallaNaval.Estrategias
 {
     public class EstrategiaEquipo2 : IEstrategia
     {
-        Coordenada ultMovAcertado;
+     
         // ultimoResultado: "0" -> Agua | "1" -> Averiado | "2" -> Hundido | "-1" -> Repetido
         int ultimoResultado;
         int cant_movimientos;
@@ -53,12 +53,10 @@ namespace TP4BatallaNaval.Estrategias
                     break;
                 case 1:
                     cant_aciertos++;
-                    ultMovAcertado = mov;
                     break;
                 case 2:
                     cant_aciertos++;
                     cant_barcos_enemigos--;
-                    ultMovAcertado = mov;
                     break;
                 case -1:
                     cant_repetidos++;
