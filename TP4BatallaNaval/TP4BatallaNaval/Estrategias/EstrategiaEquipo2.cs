@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP4BatallaNaval.Distribuciones;
+using TP4BatallaNaval.Estrategias;
 
 namespace TP4BatallaNaval.Estrategias
 {
@@ -31,6 +32,21 @@ namespace TP4BatallaNaval.Estrategias
             cant_repetidos = 0;
             distribucion = _distrib;
             finaliza_juego = false;
+        }
+
+        public bool controlarFlotas(Flota flota)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool finalizoJuego()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Flota obtenerFlota(Coordenada movim)
+        {
+            throw new NotImplementedException();
         }
 
         public Coordenada realizarMovimiento()
