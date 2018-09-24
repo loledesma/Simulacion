@@ -12,5 +12,8 @@ namespace TP4BatallaNaval.Estrategias
     {
         Coordenada realizarMovimiento();
         void resultadoMovimiento(Coordenada movim, int resultado);
+        Boolean controlarFlotas(Flota flota);
+        Flota obtenerFlota(Coordenada movim); 
+        Boolean finalizoJuego();
     }
 }

@@ -85,7 +85,7 @@ namespace TP4BatallaNaval
             else
             {
                 estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distr);
-            }            
+            }
         }
 
         public string obtenerNombre(int _tamaño)
@@ -157,6 +157,7 @@ namespace TP4BatallaNaval
             return retorno;
         }
 
+        // para posicionar el barco.
         public Coordenada obtenerCoordenada()
         {
             CongruencialMixto _generador = new CongruencialMixto(seed, a, c, m);
@@ -379,6 +380,128 @@ namespace TP4BatallaNaval
                 }
             }
             return lista;
+        }
+
+        public int jugarBatallaNaval(Boolean modo)
+        {
+            int jugador_ganador = 0;
+            //bUltimoJugador: FALSE -> Jugador1 | True -> Jugador2
+            bUltimoJugador = false;
+            int jugador_actual = 1;
+            Coordenada movimiento;
+            if (modo == true)
+            {
+                do
+                {
+                    if (bUltimoJugador == false)
+                    {
+                        movimiento = estrategia_j1.realizarMovimiento();
+                        jugador_actual = 1;
+                    }
+                    else
+                    {
+                        movimiento = estrategia_j2.realizarMovimiento();
+                        jugador_actual = 2;
+                    }
+                    bUltimoJugador = !bUltimoJugador;
+                }
+                while (analizarJugada(jugador_actual, movimiento) == 0);
+                jugador_ganador = jugador_actual;
+            }
+            else
+            {
+                if (bUltimoJugador == false)
+                {
+                    movimiento = estrategia_j1.realizarMovimiento();
+                    jugador_actual = 1;
+                }
+                else
+                {
+                    movimiento = estrategia_j2.realizarMovimiento();
+                    jugador_actual = 2;
+                }
+                int res = analizarJugada(jugador_actual, movimiento);
+                if (res != 0)
+                {
+                    jugador_ganador = jugador_actual;
+                }
+                bUltimoJugador = !bUltimoJugador;
+            }
+            return jugador_ganador;
+        }
+
+        public int analizarJugada(int nJugador, Coordenada movim)
+        {
+            int Result = 0;
+            if (nJugador == 2)
+            {
+                if (tablero1[movim.x, movim.y] == 0)
+                {
+                    tablero1[movim.x, movim.y] = -1;
+                    estrategia_j1.resultadoMovimiento(movim, 0);
+                }
+                else if (tablero1[movim.x, movim.y] == 1)
+                {
+                    tablero1[movim.x, movim.y] = 2;
+                    Flota f = estrategia_j1.obtenerFlota(movim);
+                    f.canttoques++;
+                    if (estrategia_j1.controlarFlotas(f) == false)
+                    {
+                        estrategia_j1.resultadoMovimiento(movim, 1);
+                    }
+                    else
+                    {
+                        estrategia_j1.resultadoMovimiento(movim, 2);
+                    }
+                }
+                else if (tablero1[movim.x, movim.y] == -1 || tablero1[movim.x, movim.y] == 2)
+                {
+                    estrategia_j1.resultadoMovimiento(movim, -1);
+                }
+                if (estrategia_j1.finalizoJuego() == true)
+                {
+                    Result = nJugador;
+                }
+                else
+                {
+                    Result = 0;
+                }
+            }
+            else
+            {
+                if (tablero2[movim.x, movim.y] == 0)
+                {
+                    tablero2[movim.x, movim.y] = -1;
+                    estrategia_j2.resultadoMovimiento(movim, 0);
+                }
+                else if (tablero2[movim.x, movim.y] == 1)
+                {
+                    tablero2[movim.x, movim.y] = 2;
+                    Flota f = estrategia_j2.obtenerFlota(movim);
+                    f.canttoques++;
+                    if (estrategia_j2.controlarFlotas(f) == false)
+                    {
+                        estrategia_j2.resultadoMovimiento(movim, 1);
+                    }
+                    else
+                    {
+                        estrategia_j2.resultadoMovimiento(movim, 2);
+                    }
+                }
+                else if (tablero2[movim.x, movim.y] == -1 || tablero2[movim.x, movim.y] == 2)
+                {
+                    estrategia_j2.resultadoMovimiento(movim, -1);
+                }
+                if (estrategia_j2.finalizoJuego() == true)
+                {
+                    Result = nJugador;
+                }
+                else
+                {
+                    Result = 0;
+                }
+            }
+            return Result;
         }
     }
 }
