@@ -46,12 +46,10 @@ namespace TP4BatallaNaval
             int _barcos = 1;
             int _longitud = long_max_barco;
             Flota _flotaCargada;
-            // Se crea la lista de flotas Ana Luz
             flotas_estrategia1 = new List<Flota>();
             flotas_estrategia2 = new List<Flota>();
 
             while (_barcos <= cant_barcosxtipo)  
-
             {
                 while (_longitud >= long_min_barco)
                 {
@@ -192,8 +190,7 @@ namespace TP4BatallaNaval
             //_direccion: 1-> Arriba | 2-> Abajo | 3-> Izquierda | 4-> Derecha
             switch (_direccion)
             {
-                // Se reemplaza case = 0 por case = 2
-                case 2:
+                case 1:
                     if (_posini.y - _tamaño < 1)
                     {
                         retorno = false;
@@ -208,12 +205,11 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
-                            //Se agrega  incremento, si no nunca sale del while y valida siempre la misma posicion Ana Luz
                             i++;
                         }
                     }
                     break;
-                case 1:
+                case 2:
                     if (_posini.y + _tamaño > 64)
                     {
                         retorno = false;
@@ -228,7 +224,6 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
-                            //Se agrega  incremento, si no nunca sale del while y valida siempre la misma posicion
                             i++;
                         }
                       
@@ -249,14 +244,11 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
-                            //Se agrega  incremento, si no nunca sale del while y valida siempre la misma posicion
                             i++;
                         }
                     
                     }
                     break;
-                // se reemplaza case 3 por case 4
-                // se reemplaza   if (_posini.y + _tamaño > 64) por   if (_posini.x + _tamaño > 64)
                 case 4:
                     if (_posini.x + _tamaño > 64)
                     {
@@ -272,10 +264,8 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
-                            //Se agrega  incremento, si no nunca sale del while y valida siempre la misma posicion
                             i++;
-                        }
-                       
+                        }                       
                     }
                     break;
             }
@@ -460,7 +450,7 @@ namespace TP4BatallaNaval
                 if (tablero1[movim.x, movim.y] == 0)
                 {
                     tablero1[movim.x, movim.y] = -1;
-                    estrategia_j1.resultadoMovimiento(movim, 0);
+                    estrategia_j2.resultadoMovimiento(movim, 0);
                 }
                 else if (tablero1[movim.x, movim.y] == 1)
                 {
@@ -469,16 +459,16 @@ namespace TP4BatallaNaval
                     f.canttoques++;
                     if (estrategia_j1.controlarFlotas(f) == false)
                     {
-                        estrategia_j1.resultadoMovimiento(movim, 1);
+                        estrategia_j2.resultadoMovimiento(movim, 1);
                     }
                     else
                     {
-                        estrategia_j1.resultadoMovimiento(movim, 2);
+                        estrategia_j2.resultadoMovimiento(movim, 2);
                     }
                 }
                 else if (tablero1[movim.x, movim.y] == -1 || tablero1[movim.x, movim.y] == 2)
                 {
-                    estrategia_j1.resultadoMovimiento(movim, -1);
+                    estrategia_j2.resultadoMovimiento(movim, -1);
                 }
                 if (estrategia_j1.finalizoJuego() == true)
                 {
@@ -494,7 +484,7 @@ namespace TP4BatallaNaval
                 if (tablero2[movim.x, movim.y] == 0)
                 {
                     tablero2[movim.x, movim.y] = -1;
-                    estrategia_j2.resultadoMovimiento(movim, 0);
+                    estrategia_j1.resultadoMovimiento(movim, 0);
                 }
                 else if (tablero2[movim.x, movim.y] == 1)
                 {
@@ -503,16 +493,16 @@ namespace TP4BatallaNaval
                     f.canttoques++;
                     if (estrategia_j2.controlarFlotas(f) == false)
                     {
-                        estrategia_j2.resultadoMovimiento(movim, 1);
+                        estrategia_j1.resultadoMovimiento(movim, 1);
                     }
                     else
                     {
-                        estrategia_j2.resultadoMovimiento(movim, 2);
+                        estrategia_j1.resultadoMovimiento(movim, 2);
                     }
                 }
                 else if (tablero2[movim.x, movim.y] == -1 || tablero2[movim.x, movim.y] == 2)
                 {
-                    estrategia_j2.resultadoMovimiento(movim, -1);
+                    estrategia_j1.resultadoMovimiento(movim, -1);
                 }
                 if (estrategia_j2.finalizoJuego() == true)
                 {
