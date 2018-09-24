@@ -13,23 +13,15 @@ namespace TP4BatallaNaval
         public string nombre { get; set; }
         public Color color { get; set; }
         public List<Coordenada> posicionesFlota { get; set; }
+        public int canttoques { get; set; }
 
-        public Flota (int _tamaño)
-        {
-            tamaño = _tamaño;
-        }
-        public Flota(int _tamaño, string _nombre, List<Coordenada> _posiciones)
-        {
-            tamaño = _tamaño;
-            posicionesFlota = _posiciones;
-            nombre = _nombre;
-        }
         public Flota(int _tamaño, string _nombre, List<Coordenada> _posiciones, Color _color)
         {
             tamaño = _tamaño;
             posicionesFlota = _posiciones;
             nombre = _nombre;
             color = _color;
+            canttoques = 0;
         }
     }
 }

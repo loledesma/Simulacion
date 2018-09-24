@@ -14,6 +14,7 @@ namespace TP4BatallaNaval
     {
         List<Flota> flotas_tablero1;
         List<Flota> flotas_tablero2;
+        GestorJuego controlador;
         
         public Batalla_Naval()
         {
@@ -69,6 +70,7 @@ namespace TP4BatallaNaval
 
         private void btn_play_Click(object sender, EventArgs e)
         {
+            controlador = new GestorJuego(false);
             if (cb_avanzarmovs.CheckState == CheckState.Checked)
             {
                 int cantmovs = 0;
@@ -77,7 +79,12 @@ namespace TP4BatallaNaval
                 {
                     while (cantmovs < movstotal)
                     {
-
+                        int jugador_ganador = controlador.jugarBatallaNaval(false);
+                        if (jugador_ganador != 0)
+                        {
+                            MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
+                            break;
+                        }
                     }
                 }
                 else
@@ -89,7 +96,11 @@ namespace TP4BatallaNaval
             }
             else
             {
-
+                int jugador_ganador = controlador.jugarBatallaNaval(false);
+                if (jugador_ganador != 0)
+                {
+                    MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
+                }
             }
         }
 

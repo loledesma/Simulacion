@@ -10,12 +10,11 @@ namespace TP4BatallaNaval.Estrategias
 {
     public class EstrategiaAleatoria : IEstrategia
     {
-        Coordenada ultMovAcertado;
         // ultimoResultado: "0" -> Agua | "1" -> Averiado | "2" -> Hundido | "-1" -> Repetido
         int ultimoResultado;
         int cant_movimientos;
         int cant_agua;
-        int cant_barcos_enemigos;
+        int cant_barcos_hundidos;
         int cant_aciertos;
         List<Flota> flotas;
         int cant_repetidos;
@@ -26,7 +25,7 @@ namespace TP4BatallaNaval.Estrategias
             cant_movimientos = 0;
             cant_agua = 0;
             flotas = _list_barcos;
-            cant_barcos_enemigos = _list_barcos.Count();
+            cant_barcos_hundidos = 0;
             cant_aciertos = 0;
             cant_repetidos = 0;
             distribucion = _distrib;
@@ -50,18 +49,55 @@ namespace TP4BatallaNaval.Estrategias
                 case 0:
                     cant_agua++;
                     break;
-                case 1:
+                case 1: 
                     cant_aciertos++;
-                    ultMovAcertado = mov;
                     break;
                 case 2:
                     cant_aciertos++;
-                    cant_barcos_enemigos--;
-                    ultMovAcertado = mov;
                     break;
                 case -1:
                     cant_repetidos++;
                     break;
+            }
+        }
+
+        public Boolean controlarFlotas(Flota flota)
+        {
+            // retorno: FALSE -> tocado | TRUE -> hundido
+            Boolean retorno = false;
+            if (flota.canttoques == flota.tamaño)
+            {
+                retorno = true;
+                cant_barcos_hundidos++;
+            }
+            return retorno;
+        }
+
+        public Flota obtenerFlota(Coordenada c)
+        {
+            Flota fRet = null;
+            foreach (Flota f in flotas)
+            {
+                foreach (Coordenada co in f.posicionesFlota)
+                {
+                    if (co.x == c.x && co.y == c.y)
+                    {
+                        fRet = f;
+                    }
+                }
+            }
+            return fRet;
+        }
+
+        public Boolean finalizoJuego()
+        {
+            if (cant_barcos_hundidos == flotas.Count())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

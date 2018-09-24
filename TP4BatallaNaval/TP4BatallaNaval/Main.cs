@@ -15,6 +15,8 @@ namespace TP4BatallaNaval
     {
         GestorJuego gestor;
         int cant_simulaciones;
+        int cant_ganados_est1;
+        int cant_ganados_est2;
         public Main()
         {
             InitializeComponent();
@@ -25,6 +27,8 @@ namespace TP4BatallaNaval
             if (rdb_semiautomatico.Checked == true)
             {
                 gestor = new GestorJuego(false);
+                gestor.cargar_barcos(1);
+                gestor.cargar_barcos(2);
             }
             else 
             {
@@ -35,6 +39,27 @@ namespace TP4BatallaNaval
                 {
                     gestor.cargar_barcos(1);
                     gestor.cargar_barcos(2);
+                    if (gestor.jugarBatallaNaval(true) == 1)
+                    {
+                        cant_ganados_est1++;
+                    }
+                    else
+                    {
+                        cant_ganados_est2++; 
+                    }
+                    cant_simulaciones++;
+                }
+                if (cant_ganados_est1 > cant_ganados_est2)
+                {
+                    MessageBox.Show("Gano el Jugador con la estrategia N° 1 con " + cant_ganados_est1.ToString() + " partidas ganadas de " + cant_simulaciones.ToString() + " partidas simuladas.");
+                }
+                else if (cant_ganados_est1 < cant_ganados_est2)
+                {
+                    MessageBox.Show("Gano el Jugador con la estrategia N° 2 con " + cant_ganados_est2.ToString() + " partidas ganadas de " + cant_simulaciones.ToString() + " partidas simuladas.");
+                }
+                else if (cant_ganados_est1 == cant_ganados_est2)
+                {
+                    MessageBox.Show("Hubo empate entre ambas estrategias en las " + cant_simulaciones.ToString() + " partidas simuladas.");
                 }
             }
         }
