@@ -70,5 +70,20 @@ namespace TP4BatallaNaval.Estrategias
 
             return c;
         }
+
+        public bool controlarFlotas(Flota flota)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Flota obtenerFlota(Coordenada movim)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool finalizoJuego()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -34,6 +34,8 @@ namespace TP4BatallaNaval
         IDistribuciones distr;
         IGeneradores generador;
 
+
+        //_modo False ->SemiAutomatico True -> Automatico
         public GestorJuego(Boolean _modo)
         {
             modo = _modo;
@@ -44,7 +46,12 @@ namespace TP4BatallaNaval
             int _barcos = 1;
             int _longitud = long_max_barco;
             Flota _flotaCargada;
-            while (_barcos <= cant_barcosxtipo)
+            // Se crea la lista de flotas Ana Luz
+            flotas_estrategia1 = new List<Flota>();
+            flotas_estrategia2 = new List<Flota>();
+
+            while (_barcos <= cant_barcosxtipo)  
+
             {
                 while (_longitud >= long_min_barco)
                 {
@@ -173,7 +180,8 @@ namespace TP4BatallaNaval
             int retorno = 0;
             CongruencialMixto _generador = new CongruencialMixto(seed, a, c, m);
             DistribucionUniforme _distr = new DistribucionUniforme(1, 4, _generador);
-            retorno = int.Parse(_distr.generar().ToString(), System.Globalization.NumberStyles.Integer);
+            //int prueba = Convert.ToInt32(_distr.generar().ToString()); //analuz prueba
+            retorno = Convert.ToInt32(_distr.generar());
             return retorno;
         }
 
@@ -184,7 +192,8 @@ namespace TP4BatallaNaval
             //_direccion: 1-> Arriba | 2-> Abajo | 3-> Izquierda | 4-> Derecha
             switch (_direccion)
             {
-                case 0:
+                // Se reemplaza case = 0 por case = 2
+                case 2:
                     if (_posini.y - _tamaño < 1)
                     {
                         retorno = false;
@@ -199,6 +208,8 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
+                            //Se agrega  incremento, si no nunca sale del while y valida siempre la misma posicion Ana Luz
+                            i++;
                         }
                     }
                     break;
@@ -217,10 +228,13 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
+                            //Se agrega  incremento, si no nunca sale del while y valida siempre la misma posicion
+                            i++;
                         }
+                      
                     }
                     break;
-                case 2:
+                case 3:
                     if (_posini.x - _tamaño < 1)
                     {
                         retorno = false;
@@ -235,11 +249,16 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
+                            //Se agrega  incremento, si no nunca sale del while y valida siempre la misma posicion
+                            i++;
                         }
+                    
                     }
                     break;
-                case 3:
-                    if (_posini.y + _tamaño > 64)
+                // se reemplaza case 3 por case 4
+                // se reemplaza   if (_posini.y + _tamaño > 64) por   if (_posini.x + _tamaño > 64)
+                case 4:
+                    if (_posini.x + _tamaño > 64)
                     {
                         retorno = false;
                     }
@@ -253,7 +272,10 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
+                            //Se agrega  incremento, si no nunca sale del while y valida siempre la misma posicion
+                            i++;
                         }
+                       
                     }
                     break;
             }

@@ -21,9 +21,10 @@ namespace TP4BatallaNaval
         {
             InitializeComponent();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            // False -> Semi-Automatico     True -> Automatico
+            // True -> Semi-Automatico     False -> Automatico
             if (rdb_semiautomatico.Checked == true)
             {
                 gestor = new GestorJuego(false);
