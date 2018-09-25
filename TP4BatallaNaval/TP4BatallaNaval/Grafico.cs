@@ -15,6 +15,7 @@ namespace TP4BatallaNaval
         List<Flota> flotas_tablero1;
         List<Flota> flotas_tablero2;
         GestorJuego controlador;
+        Coordenada ultimoMovimiento;
 
         public Grafico()
         {
@@ -122,14 +123,33 @@ namespace TP4BatallaNaval
                     while (cantmovs < movstotal)
                     {
                         int jugador_ganador = controlador.jugarBatallaNaval(false);
-                        if (jugador_ganador != 0) //VER ESTA PARTE DEL CODIGO
+                        ultimoMovimiento = controlador.movimiento;
+                        if (controlador.bUltimoJugador == false)
                         {
-                            MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
-                            break;
+                            if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor != DefaultBackColor)
+                            {
+                                tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                            }
+                            else
+                            {
+                                tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Blue;
+                            }
                         }
                         else
                         {
-                            
+                            if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor != DefaultBackColor)
+                            {
+                                tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                            }
+                            else
+                            {
+                                tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Blue;
+                            }
+                        }
+                        if (jugador_ganador != 0) 
+                        {
+                            MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
+                            break;
                         }
                     }
                 }
@@ -143,6 +163,29 @@ namespace TP4BatallaNaval
             else
             {
                 int jugador_ganador = controlador.jugarBatallaNaval(false);
+                ultimoMovimiento = controlador.movimiento;
+                if (controlador.bUltimoJugador == false)
+                {
+                    if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor != DefaultBackColor)
+                    {
+                        tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Blue;
+                    }
+                }
+                else
+                {
+                    if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor != DefaultBackColor)
+                    {
+                        tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Blue;
+                    }
+                }
                 if (jugador_ganador != 0)
                 {
                     MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");

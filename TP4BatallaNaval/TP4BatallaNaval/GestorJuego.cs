@@ -43,6 +43,7 @@ namespace TP4BatallaNaval
         IGeneradores generadorEstrategia2;
         IGeneradores generadorCoordenadas;
         IGeneradores generadorSentidos;
+        public Coordenada movimiento;
 
         //_modo False ->SemiAutomatico True -> Automatico
         public GestorJuego(Boolean _modo)
@@ -410,7 +411,7 @@ namespace TP4BatallaNaval
             //bUltimoJugador: FALSE -> Jugador1 | True -> Jugador2
             bUltimoJugador = false;
             int jugador_actual = 1;
-            Coordenada movimiento;
+
             if (modo == true)
             {
                 do
