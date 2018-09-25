@@ -25,7 +25,7 @@ namespace TP4BatallaNaval
         public List<Flota> flotas_estrategia1;
         public List<Flota> flotas_estrategia2;
         // bUltimoJugador: 0-> Jugador1 | 1-> Jugador2
-        public Boolean bUltimoJugador;
+        public Boolean bUltimoJugador = false;
         const int seed = 1000;
         const int a = 12;
         const int c = 17;
@@ -409,7 +409,6 @@ namespace TP4BatallaNaval
         {
             int jugador_ganador = 0;
             //bUltimoJugador: FALSE -> Jugador1 | True -> Jugador2
-            bUltimoJugador = false;
             int jugador_actual = 1;
 
             if (modo == true)

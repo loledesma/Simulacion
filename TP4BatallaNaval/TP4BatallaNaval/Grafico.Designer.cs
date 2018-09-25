@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_tablero2 = new System.Windows.Forms.Label();
             this.lbl_tablero1 = new System.Windows.Forms.Label();
             this.tablero1 = new System.Windows.Forms.DataGridView();
@@ -51,9 +51,9 @@
             this.lbl_tablero2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tablero2.Location = new System.Drawing.Point(927, 9);
             this.lbl_tablero2.Name = "lbl_tablero2";
-            this.lbl_tablero2.Size = new System.Drawing.Size(140, 13);
+            this.lbl_tablero2.Size = new System.Drawing.Size(128, 13);
             this.lbl_tablero2.TabIndex = 13;
-            this.lbl_tablero2.Text = "Tablero de Estrategia 2";
+            this.lbl_tablero2.Text = "Tablero de Jugador 2";
             // 
             // lbl_tablero1
             // 
@@ -61,9 +61,9 @@
             this.lbl_tablero1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tablero1.Location = new System.Drawing.Point(268, 9);
             this.lbl_tablero1.Name = "lbl_tablero1";
-            this.lbl_tablero1.Size = new System.Drawing.Size(140, 13);
+            this.lbl_tablero1.Size = new System.Drawing.Size(128, 13);
             this.lbl_tablero1.TabIndex = 12;
-            this.lbl_tablero1.Text = "Tablero de Estrategia 1";
+            this.lbl_tablero1.Text = "Tablero de Jugador 1";
             // 
             // tablero1
             // 
@@ -71,14 +71,15 @@
             this.tablero1.AllowUserToDeleteRows = false;
             this.tablero1.AllowUserToResizeColumns = false;
             this.tablero1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablero1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.tablero1.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablero1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.tablero1.ColumnHeadersHeight = 10;
             this.tablero1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.tablero1.Location = new System.Drawing.Point(12, 30);
@@ -166,14 +167,15 @@
             this.tablero2.AllowUserToDeleteRows = false;
             this.tablero2.AllowUserToResizeColumns = false;
             this.tablero2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablero2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.tablero2.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablero2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.tablero2.ColumnHeadersHeight = 10;
             this.tablero2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.tablero2.Location = new System.Drawing.Point(671, 30);
@@ -191,6 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1336, 720);
             this.Controls.Add(this.tablero2);
             this.Controls.Add(this.lbl_estado);
@@ -205,6 +208,7 @@
             this.Controls.Add(this.lbl_tablero1);
             this.Name = "Grafico";
             this.Text = "Grafico";
+            this.Load += new System.EventHandler(this.Grafico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablero1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablero2)).EndInit();
             this.ResumeLayout(false);

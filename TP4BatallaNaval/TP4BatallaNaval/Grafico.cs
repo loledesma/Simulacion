@@ -20,44 +20,59 @@ namespace TP4BatallaNaval
         public Grafico()
         {
             InitializeComponent();
-            for (int a = 0; a < 64; a++)
+            generarGrilla();
+            controlador = new GestorJuego(false);
+        }
+
+        private void generarGrilla()
+        {
+            int a = 0;
+            for (a = 0; a < 64; a++)
             {
                 DataGridViewColumn col = new DataGridViewColumn();
                 DataGridViewCell cell = new DataGridViewTextBoxCell();
+                cell.Style.BackColor = Color.White;
                 col.CellTemplate = cell;
                 col.Name = a.ToString();
                 tablero1.Columns.Insert(a, col);
                 tablero1.Columns[a].Width = 10;
             }
-            for (int b = 0; b < 64; b++)
+            int b = 0;
+            for (b = 0; b < 64; b++)
             {
-                tablero1.Rows.Add();               
+                tablero1.Rows.Add();
                 tablero1.Rows[b].Height = 10;
             }
-
-            for (int a = 0; a < 64; a++)
+            a = 0;
+            for (a = 0; a < 64; a++)
             {
                 DataGridViewColumn col = new DataGridViewColumn();
                 DataGridViewCell cell = new DataGridViewTextBoxCell();
+                cell.Style.BackColor = Color.White;
                 col.CellTemplate = cell;
                 col.Name = a.ToString();
                 tablero2.Columns.Insert(a, col);
                 tablero2.Columns[a].Width = 10;
             }
-            for (int b = 0; b < 64; b++)
+            b = 0;
+            for (b = 0; b < 64; b++)
             {
                 tablero2.Rows.Add();
                 tablero2.Rows[b].Height = 10;
             }
-            controlador = new GestorJuego(false);
         }
 
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
             flotas_tablero1.Clear();
             flotas_tablero2.Clear();
-            tablero1.Controls.Clear();
-            tablero2.Controls.Clear();
+            tablero1.Rows.Clear();
+            tablero1.Columns.Clear();
+            tablero1.Refresh();
+            tablero2.Rows.Clear();
+            tablero2.Columns.Clear();
+            tablero2.Refresh();
+            generarGrilla();
             btn_cargar_barcos.Enabled = true;
             btn_limpiar.Enabled = false;
             btn_play.Enabled = false;
@@ -91,6 +106,7 @@ namespace TP4BatallaNaval
                 }
             }
             MessageBox.Show("Se cargaron los barcos en ambos tableros.");
+            btn_play.Enabled = true;
         }
 
         private void btn_salir_Click(object sender, EventArgs e)
@@ -114,11 +130,13 @@ namespace TP4BatallaNaval
 
         private void btn_play_Click(object sender, EventArgs e)
         {
+            btn_play.Enabled = false;
             if (cb_avanzarmovs.CheckState == CheckState.Checked)
             {
                 int cantmovs = 0;
                 int movstotal;
-                if (int.TryParse(txt_cantmovs.Text, out movstotal))
+                int.TryParse(txt_cantmovs.Text, out movstotal);
+                if (movstotal > 0)
                 {
                     while (cantmovs < movstotal)
                     {
@@ -126,24 +144,32 @@ namespace TP4BatallaNaval
                         ultimoMovimiento = controlador.movimiento;
                         if (controlador.bUltimoJugador == false)
                         {
-                            if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor != DefaultBackColor)
+                            if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.White)
                             {
-                                tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                                tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                            }
+                            else if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                            {
+                                tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                             }
                             else
                             {
-                                tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Blue;
+                                tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
                             }
                         }
                         else
                         {
-                            if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor != DefaultBackColor)
+                            if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.White)
                             {
-                                tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                                tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                            }
+                            else if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                            {
+                                tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                             }
                             else
                             {
-                                tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Blue;
+                                tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
                             }
                         }
                         if (jugador_ganador != 0) 
@@ -151,11 +177,12 @@ namespace TP4BatallaNaval
                             MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
                             break;
                         }
+                        cantmovs++;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debe ingresar un valor Numerico en la cantida de movimientos a anvanzar!");
+                    MessageBox.Show("Debe ingresar un valor Numerico positivo en la cantida de movimientos a anvanzar!");
                     txt_cantmovs.Text = "";
                     txt_cantmovs.Focus();
                 }
@@ -166,24 +193,32 @@ namespace TP4BatallaNaval
                 ultimoMovimiento = controlador.movimiento;
                 if (controlador.bUltimoJugador == false)
                 {
-                    if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor != DefaultBackColor)
+                    if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.White)
                     {
-                        tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                        tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                    }
+                    else if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                    {
+                        tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                     }
                     else
                     {
-                        tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Blue;
+                        tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
                     }
                 }
                 else
                 {
-                    if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor != DefaultBackColor)
+                    if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.White)
+                    {
+                        tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                    }
+                    else if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                    {
+                        tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                    }
+                    else 
                     {
                         tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
-                    }
-                    else
-                    {
-                        tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Blue;
                     }
                 }
                 if (jugador_ganador != 0)
@@ -191,6 +226,13 @@ namespace TP4BatallaNaval
                     MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
                 }
             }
+            btn_play.Enabled = true;
+        }
+
+        private void Grafico_Load(object sender, EventArgs e)
+        {
+            btn_play.Enabled = false;
+            btn_limpiar.Enabled = false;
         }
     }
 }
