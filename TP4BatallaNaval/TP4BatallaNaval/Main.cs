@@ -17,6 +17,8 @@ namespace TP4BatallaNaval
         int cant_simulaciones;
         int cant_ganados_est1;
         int cant_ganados_est2;
+        Grafico grafico;
+
         public Main()
         {
             InitializeComponent();
@@ -27,9 +29,8 @@ namespace TP4BatallaNaval
             // True -> Semi-Automatico     False -> Automatico
             if (rdb_semiautomatico.Checked == true)
             {
-                gestor = new GestorJuego(false);
-                gestor.cargar_barcos(1);
-                gestor.cargar_barcos(2);
+                grafico = new Grafico();
+                grafico.Show();
             }
             else if (rdb_automatico.Checked == true)
             {

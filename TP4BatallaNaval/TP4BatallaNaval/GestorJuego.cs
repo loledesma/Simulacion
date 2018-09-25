@@ -14,7 +14,6 @@ namespace TP4BatallaNaval
     {
         int[,] tablero1 = new int[64, 64];
         int[,] tablero2 = new int[64, 64];
-        Grafico graficador;
         // modo: FALSE-> Semi-Automatico | TRUE-> Automatico
         Boolean modo;
         // cantidad de barcos de cada tipo
@@ -96,22 +95,6 @@ namespace TP4BatallaNaval
                 generadorEstrategia2 = new CongruencialMixto(seed, a2, c2, m2);
                 distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia2);
                 estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distrEstrategias);
-            }
-            if (modo == false)
-            {
-                if (graficador is null)
-                {
-                    graficador = new Grafico();
-                }
-                if (jugador == 1)
-                {
-                    graficador.asignarFlotas(flotas_estrategia1, jugador);
-                }
-                else
-                {
-                    graficador.asignarFlotas(flotas_estrategia2, jugador);
-                    graficador.Show();
-                }
             }
         }
 

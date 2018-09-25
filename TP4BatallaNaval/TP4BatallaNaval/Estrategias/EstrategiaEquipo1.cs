@@ -198,7 +198,7 @@ namespace TP4BatallaNaval.Estrategias
 
         public int validarFinGrilla()
         {
-            int desplazamiento = 0;
+            int desplazamiento = ultimo_desplazamiento;
             if (ultMovAcertado.x == 0 && ultimo_desplazamiento == 0)
             {
                 desplazamiento = 1;

@@ -48,18 +48,7 @@ namespace TP4BatallaNaval
                 tablero2.Rows.Add();
                 tablero2.Rows[b].Height = 10;
             }
-        }
-
-        public void asignarFlotas(List<Flota> _flotajugador, int jugador)
-        {
-            if (jugador == 1)
-            {
-                flotas_tablero1 = _flotajugador;
-            }
-            else
-            {
-                flotas_tablero2 = _flotajugador;
-            }
+            controlador = new GestorJuego(false);
         }
 
         private void btn_limpiar_Click(object sender, EventArgs e)
@@ -82,6 +71,10 @@ namespace TP4BatallaNaval
         {
             btn_limpiar.Enabled = true;
             btn_cargar_barcos.Enabled = false;
+            controlador.cargar_barcos(1);
+            controlador.cargar_barcos(2);
+            flotas_tablero1 = controlador.flotas_estrategia1;
+            flotas_tablero2 = controlador.flotas_estrategia2;
             foreach (Flota _flota in flotas_tablero1)
             {
                 foreach (Coordenada posicion in _flota.posicionesFlota)
@@ -120,7 +113,6 @@ namespace TP4BatallaNaval
 
         private void btn_play_Click(object sender, EventArgs e)
         {
-            controlador = new GestorJuego(false);
             if (cb_avanzarmovs.CheckState == CheckState.Checked)
             {
                 int cantmovs = 0;
@@ -134,6 +126,10 @@ namespace TP4BatallaNaval
                         {
                             MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
                             break;
+                        }
+                        else
+                        {
+                            
                         }
                     }
                 }
