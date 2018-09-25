@@ -31,9 +31,13 @@ namespace TP4BatallaNaval
         const int a = 12;
         const int c = 17;
         const int m = 5000;
-        IDistribuciones distr;
-        IGeneradores generador;
-
+        IDistribuciones distrEstrategias;
+        IDistribuciones distribucionCoordenadas;
+        IDistribuciones distribucionSentidos;
+        IGeneradores generadorEstrategia1;
+        IGeneradores generadorEstrategia2;
+        IGeneradores generadorCoordenadas;
+        IGeneradores generadorSentidos;
 
         //_modo False ->SemiAutomatico True -> Automatico
         public GestorJuego(Boolean _modo)
@@ -81,15 +85,17 @@ namespace TP4BatallaNaval
                 }
                 _barcos++;
             }
-            generador = new CongruencialMixto(seed, a, c, m);
-            distr = new DistribucionUniforme(1, 64, generador);
             if (jugador == 1)
             {
-                estrategia_j1 = new EstrategiaAleatoria(flotas_estrategia1, distr);
+                generadorEstrategia1 = new CongruencialMixto(seed, a, c, m);
+                distrEstrategias = new DistribucionUniforme(1, 64, generadorEstrategia1);
+                estrategia_j1 = new EstrategiaAleatoria(flotas_estrategia1, distrEstrategias);
             }
             else
             {
-                estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distr);
+                generadorEstrategia2 = new CongruencialMixto(seed, a, c, m);
+                distrEstrategias = new DistribucionUniforme(1, 64, generadorEstrategia2);
+                estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distrEstrategias);
             }
         }
 
@@ -165,10 +171,13 @@ namespace TP4BatallaNaval
         // para posicionar el barco.
         public Coordenada obtenerCoordenada()
         {
-            CongruencialMixto _generador = new CongruencialMixto(seed, a, c, m);
-            DistribucionUniforme _distr = new DistribucionUniforme(1, 64, _generador);
-            int _x = (int) Math.Round(_distr.generar(), 0);
-            int _y = (int) Math.Round(_distr.generar(), 0);
+            if (generadorCoordenadas is null)
+            {
+                generadorCoordenadas = new CongruencialMixto(seed, a, c, m);
+                distribucionCoordenadas = new DistribucionUniforme(1, 64, generadorCoordenadas);
+            }             
+            int _x = (int) Math.Round(distribucionCoordenadas.generar(), 0);
+            int _y = (int) Math.Round(distribucionCoordenadas.generar(), 0);
             Coordenada coord = new Coordenada(_x, _y);
             return coord;
         }
@@ -176,10 +185,12 @@ namespace TP4BatallaNaval
         public int obtenerSentido()
         {
             int retorno = 0;
-            CongruencialMixto _generador = new CongruencialMixto(seed, a, c, m);
-            DistribucionUniforme _distr = new DistribucionUniforme(1, 4, _generador);
-            //int prueba = Convert.ToInt32(_distr.generar().ToString()); //analuz prueba
-            retorno = Convert.ToInt32(_distr.generar());
+            if (generadorSentidos is null)
+            {
+                generadorSentidos = new CongruencialMixto(seed, a, c, m);
+                distribucionSentidos = new DistribucionUniforme(1, 4, generadorSentidos);
+            }
+            retorno = Convert.ToInt32(distribucionSentidos.generar());
             return retorno;
         }
 
@@ -303,7 +314,7 @@ namespace TP4BatallaNaval
                 switch (sentido)
                 {
                     case 1:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.y - i;
                             Coordenada c = new Coordenada(posori.x, val);
@@ -313,7 +324,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 2:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.y + i;
                             Coordenada c = new Coordenada(posori.x, val);
@@ -323,7 +334,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 3:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.x - i;
                             Coordenada c = new Coordenada(val, posori.y);
@@ -333,7 +344,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 4:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.x + i;
                             Coordenada c = new Coordenada(val, posori.y);
@@ -350,7 +361,7 @@ namespace TP4BatallaNaval
                 switch (sentido)
                 {
                     case 1:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.y - i;
                             Coordenada c = new Coordenada(posori.x, val);
@@ -360,7 +371,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 2:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.y + i;
                             Coordenada c = new Coordenada(posori.x, val);
@@ -370,7 +381,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 3:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.x - i;
                             Coordenada c = new Coordenada(val, posori.y);
@@ -380,7 +391,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 4:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.x + i;
                             Coordenada c = new Coordenada(val, posori.y);
