@@ -10,27 +10,45 @@ using System.Windows.Forms;
 
 namespace TP4BatallaNaval
 {
-    public partial class Batalla_Naval : Form
+    public partial class Grafico : Form
     {
         List<Flota> flotas_tablero1;
         List<Flota> flotas_tablero2;
         GestorJuego controlador;
-        
-        public Batalla_Naval()
+
+        public Grafico()
         {
             InitializeComponent();
-        }
+            for (int a = 0; a < 64; a++)
+            {
+                DataGridViewColumn col = new DataGridViewColumn();
+                DataGridViewCell cell = new DataGridViewTextBoxCell();
+                col.CellTemplate = cell;
+                col.Name = a.ToString();
+                tablero1.Columns.Insert(a, col);
+                tablero1.Columns[a].Width = 10;
+            }
+            for (int b = 0; b < 64; b++)
+            {
+                tablero1.Rows.Add();               
+                tablero1.Rows[b].Height = 10;
+            }
 
-        public void asignarFlotas(List<Flota> _flotajugador, int jugador)
-        {
-            if (jugador == 1)
+            for (int a = 0; a < 64; a++)
             {
-                flotas_tablero1 = _flotajugador;
+                DataGridViewColumn col = new DataGridViewColumn();
+                DataGridViewCell cell = new DataGridViewTextBoxCell();
+                col.CellTemplate = cell;
+                col.Name = a.ToString();
+                tablero2.Columns.Insert(a, col);
+                tablero2.Columns[a].Width = 10;
             }
-            else
+            for (int b = 0; b < 64; b++)
             {
-                flotas_tablero2 = _flotajugador;
+                tablero2.Rows.Add();
+                tablero2.Rows[b].Height = 10;
             }
+            controlador = new GestorJuego(false);
         }
 
         private void btn_limpiar_Click(object sender, EventArgs e)
@@ -47,6 +65,31 @@ namespace TP4BatallaNaval
             txt_cantmovs.Text = "";
             txt_cantmovs.Enabled = false;
             lbl_estado.Visible = false;
+        }
+
+        private void btn_cargar_barcos_Click(object sender, EventArgs e)
+        {
+            btn_limpiar.Enabled = true;
+            btn_cargar_barcos.Enabled = false;
+            controlador.cargar_barcos(1);
+            controlador.cargar_barcos(2);
+            flotas_tablero1 = controlador.flotas_estrategia1;
+            flotas_tablero2 = controlador.flotas_estrategia2;
+            foreach (Flota _flota in flotas_tablero1)
+            {
+                foreach (Coordenada posicion in _flota.posicionesFlota)
+                {
+                    tablero1[posicion.y, posicion.x].Style.BackColor = _flota.color;
+                }
+            }
+            foreach (Flota _flota in flotas_tablero2)
+            {
+                foreach (Coordenada posicion in _flota.posicionesFlota)
+                {
+                    tablero2[posicion.y, posicion.x].Style.BackColor = _flota.color;
+                }
+            }
+            MessageBox.Show("Se cargaron los barcos en ambos tableros.");
         }
 
         private void btn_salir_Click(object sender, EventArgs e)
@@ -70,7 +113,6 @@ namespace TP4BatallaNaval
 
         private void btn_play_Click(object sender, EventArgs e)
         {
-            controlador = new GestorJuego(false);
             if (cb_avanzarmovs.CheckState == CheckState.Checked)
             {
                 int cantmovs = 0;
@@ -80,10 +122,14 @@ namespace TP4BatallaNaval
                     while (cantmovs < movstotal)
                     {
                         int jugador_ganador = controlador.jugarBatallaNaval(false);
-                        if (jugador_ganador != 0)
+                        if (jugador_ganador != 0) //VER ESTA PARTE DEL CODIGO
                         {
                             MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
                             break;
+                        }
+                        else
+                        {
+                            
                         }
                     }
                 }
@@ -102,29 +148,6 @@ namespace TP4BatallaNaval
                     MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
                 }
             }
-        }
-
-        private void btn_cargar_barcos_Click(object sender, EventArgs e)
-        {
-            btn_limpiar.Enabled = true;
-            btn_cargar_barcos.Enabled = false;
-            foreach (Flota _flota in flotas_tablero1)
-            {
-                foreach (Coordenada posicion in _flota.posicionesFlota)
-                {
-                    Control pos = tablero1.GetControlFromPosition(posicion.y, posicion.x);
-                    pos.BackColor = _flota.color;
-                }
-            }
-            foreach (Flota _flota in flotas_tablero2)
-            {
-                foreach (Coordenada posicion in _flota.posicionesFlota)
-                {
-                    Control pos = tablero1.GetControlFromPosition(posicion.y, posicion.x);
-                    pos.BackColor = _flota.color;
-                }
-            }
-            MessageBox.Show("Se cargaron los barcos en ambos tableros.");
         }
     }
 }

@@ -14,7 +14,6 @@ namespace TP4BatallaNaval
     {
         int[,] tablero1 = new int[64, 64];
         int[,] tablero2 = new int[64, 64];
-        Batalla_Naval graficador;
         // modo: FALSE-> Semi-Automatico | TRUE-> Automatico
         Boolean modo;
         // cantidad de barcos de cada tipo
@@ -31,9 +30,21 @@ namespace TP4BatallaNaval
         const int a = 12;
         const int c = 17;
         const int m = 5000;
-        IDistribuciones distr;
-        IGeneradores generador;
+        const int a1 = 13;
+        const int c1 = 19;
+        const int m1 = 6000;
+        const int a2 = 11;
+        const int c2 = 18;
+        const int m2 = 4500;
+        IDistribuciones distrEstrategias;
+        IDistribuciones distribucionCoordenadas;
+        IDistribuciones distribucionSentidos;
+        IGeneradores generadorEstrategia1;
+        IGeneradores generadorEstrategia2;
+        IGeneradores generadorCoordenadas;
+        IGeneradores generadorSentidos;
 
+        //_modo False ->SemiAutomatico True -> Automatico
         public GestorJuego(Boolean _modo)
         {
             modo = _modo;
@@ -42,10 +53,19 @@ namespace TP4BatallaNaval
         public void cargar_barcos(int jugador)
         {
             int _barcos = 1;
-            int _longitud = long_max_barco;
+            int _longitud = 0;
             Flota _flotaCargada;
-            while (_barcos <= cant_barcosxtipo)
+            if (jugador == 1)
             {
+                flotas_estrategia1 = new List<Flota>();
+            }
+            else
+            {
+                flotas_estrategia2 = new List<Flota>();
+            }
+            while (_barcos <= cant_barcosxtipo)  
+            {
+                _longitud = long_max_barco;
                 while (_longitud >= long_min_barco)
                 {
                     List<Coordenada> coordenadas = posicionarFlota(_longitud, jugador);
@@ -54,37 +74,27 @@ namespace TP4BatallaNaval
                     _flotaCargada = new Flota(_longitud, nombreflota, coordenadas, colorflota);
                     if (jugador == 1)
                     {
-                        flotas_estrategia1.Add(_flotaCargada);
-                        if (modo == false)
-                        {
-                            graficador = new Batalla_Naval();
-                            graficador.asignarFlotas(flotas_estrategia1, jugador);
-                            graficador.Show();
-                        }
+                        flotas_estrategia1.Add(_flotaCargada);                        
                     }
                     else
                     {
                         flotas_estrategia2.Add(_flotaCargada);
-                        if (modo == false)
-                        {
-                            graficador = new Batalla_Naval();
-                            graficador.asignarFlotas(flotas_estrategia2, jugador);
-                            graficador.Show();
-                        }
                     }
                     _longitud--;
                 }
                 _barcos++;
             }
-            generador = new CongruencialMixto(seed, a, c, m);
-            distr = new DistribucionUniforme(1, 64, generador);
             if (jugador == 1)
             {
-                estrategia_j1 = new EstrategiaAleatoria(flotas_estrategia1, distr);
+                generadorEstrategia1 = new CongruencialMixto(seed, a1, c1, m1);
+                distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia1);
+                estrategia_j1 = new EstrategiaEquipo1(flotas_estrategia1, distrEstrategias);
             }
             else
             {
-                estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distr);
+                generadorEstrategia2 = new CongruencialMixto(seed, a2, c2, m2);
+                distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia2);
+                estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distrEstrategias);
             }
         }
 
@@ -160,10 +170,13 @@ namespace TP4BatallaNaval
         // para posicionar el barco.
         public Coordenada obtenerCoordenada()
         {
-            CongruencialMixto _generador = new CongruencialMixto(seed, a, c, m);
-            DistribucionUniforme _distr = new DistribucionUniforme(1, 64, _generador);
-            int _x = (int) Math.Round(_distr.generar(), 0);
-            int _y = (int) Math.Round(_distr.generar(), 0);
+            if (generadorCoordenadas == null)
+            {
+                generadorCoordenadas = new CongruencialMixto(seed, a, c, m);
+                distribucionCoordenadas = new DistribucionUniforme(0, 63, generadorCoordenadas);
+            }             
+            int _x = (int) Math.Round(distribucionCoordenadas.generar(), 0);
+            int _y = (int) Math.Round(distribucionCoordenadas.generar(), 0);
             Coordenada coord = new Coordenada(_x, _y);
             return coord;
         }
@@ -171,9 +184,12 @@ namespace TP4BatallaNaval
         public int obtenerSentido()
         {
             int retorno = 0;
-            CongruencialMixto _generador = new CongruencialMixto(seed, a, c, m);
-            DistribucionUniforme _distr = new DistribucionUniforme(1, 4, _generador);
-            retorno = int.Parse(_distr.generar().ToString(), System.Globalization.NumberStyles.Integer);
+            if (generadorSentidos == null)
+            {
+                generadorSentidos = new CongruencialMixto(seed, a, c, m);
+                distribucionSentidos = new DistribucionUniforme(1, 4, generadorSentidos);
+            }
+            retorno = Convert.ToInt32(distribucionSentidos.generar());
             return retorno;
         }
 
@@ -184,8 +200,8 @@ namespace TP4BatallaNaval
             //_direccion: 1-> Arriba | 2-> Abajo | 3-> Izquierda | 4-> Derecha
             switch (_direccion)
             {
-                case 0:
-                    if (_posini.y - _tamaño < 1)
+                case 1:
+                    if (_posini.y - _tamaño < 0)
                     {
                         retorno = false;
                     }
@@ -199,11 +215,12 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
+                            i++;
                         }
                     }
                     break;
-                case 1:
-                    if (_posini.y + _tamaño > 64)
+                case 2:
+                    if (_posini.y + _tamaño > 63)
                     {
                         retorno = false;
                     }
@@ -217,11 +234,13 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
+                            i++;
                         }
+                      
                     }
                     break;
-                case 2:
-                    if (_posini.x - _tamaño < 1)
+                case 3:
+                    if (_posini.x - _tamaño < 0)
                     {
                         retorno = false;
                     }
@@ -235,11 +254,13 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
+                            i++;
                         }
+                    
                     }
                     break;
-                case 3:
-                    if (_posini.y + _tamaño > 64)
+                case 4:
+                    if (_posini.x + _tamaño > 63)
                     {
                         retorno = false;
                     }
@@ -253,7 +274,8 @@ namespace TP4BatallaNaval
                             {
                                 retorno = false;
                             }
-                        }
+                            i++;
+                        }                       
                     }
                     break;
             }
@@ -291,7 +313,7 @@ namespace TP4BatallaNaval
                 switch (sentido)
                 {
                     case 1:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.y - i;
                             Coordenada c = new Coordenada(posori.x, val);
@@ -301,7 +323,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 2:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.y + i;
                             Coordenada c = new Coordenada(posori.x, val);
@@ -311,7 +333,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 3:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.x - i;
                             Coordenada c = new Coordenada(val, posori.y);
@@ -321,7 +343,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 4:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.x + i;
                             Coordenada c = new Coordenada(val, posori.y);
@@ -338,7 +360,7 @@ namespace TP4BatallaNaval
                 switch (sentido)
                 {
                     case 1:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.y - i;
                             Coordenada c = new Coordenada(posori.x, val);
@@ -348,7 +370,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 2:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.y + i;
                             Coordenada c = new Coordenada(posori.x, val);
@@ -358,7 +380,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 3:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.x - i;
                             Coordenada c = new Coordenada(val, posori.y);
@@ -368,7 +390,7 @@ namespace TP4BatallaNaval
                         }
                         break;
                     case 4:
-                        while (i <= tamaño)
+                        while (i < tamaño)
                         {
                             int val = posori.x + i;
                             Coordenada c = new Coordenada(val, posori.y);
@@ -438,7 +460,7 @@ namespace TP4BatallaNaval
                 if (tablero1[movim.x, movim.y] == 0)
                 {
                     tablero1[movim.x, movim.y] = -1;
-                    estrategia_j1.resultadoMovimiento(movim, 0);
+                    estrategia_j2.resultadoMovimiento(movim, 0);
                 }
                 else if (tablero1[movim.x, movim.y] == 1)
                 {
@@ -447,16 +469,16 @@ namespace TP4BatallaNaval
                     f.canttoques++;
                     if (estrategia_j1.controlarFlotas(f) == false)
                     {
-                        estrategia_j1.resultadoMovimiento(movim, 1);
+                        estrategia_j2.resultadoMovimiento(movim, 1);
                     }
                     else
                     {
-                        estrategia_j1.resultadoMovimiento(movim, 2);
+                        estrategia_j2.resultadoMovimiento(movim, 2);
                     }
                 }
                 else if (tablero1[movim.x, movim.y] == -1 || tablero1[movim.x, movim.y] == 2)
                 {
-                    estrategia_j1.resultadoMovimiento(movim, -1);
+                    estrategia_j2.resultadoMovimiento(movim, -1);
                 }
                 if (estrategia_j1.finalizoJuego() == true)
                 {
@@ -472,7 +494,7 @@ namespace TP4BatallaNaval
                 if (tablero2[movim.x, movim.y] == 0)
                 {
                     tablero2[movim.x, movim.y] = -1;
-                    estrategia_j2.resultadoMovimiento(movim, 0);
+                    estrategia_j1.resultadoMovimiento(movim, 0);
                 }
                 else if (tablero2[movim.x, movim.y] == 1)
                 {
@@ -481,16 +503,16 @@ namespace TP4BatallaNaval
                     f.canttoques++;
                     if (estrategia_j2.controlarFlotas(f) == false)
                     {
-                        estrategia_j2.resultadoMovimiento(movim, 1);
+                        estrategia_j1.resultadoMovimiento(movim, 1);
                     }
                     else
                     {
-                        estrategia_j2.resultadoMovimiento(movim, 2);
+                        estrategia_j1.resultadoMovimiento(movim, 2);
                     }
                 }
                 else if (tablero2[movim.x, movim.y] == -1 || tablero2[movim.x, movim.y] == 2)
                 {
-                    estrategia_j2.resultadoMovimiento(movim, -1);
+                    estrategia_j1.resultadoMovimiento(movim, -1);
                 }
                 if (estrategia_j2.finalizoJuego() == true)
                 {
