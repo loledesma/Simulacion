@@ -8,8 +8,8 @@ using TP4BatallaNaval.Distribuciones;
 namespace TP4BatallaNaval.Estrategias
 {
      public class EstrategiaEquipo1 : IEstrategia
-    {
-        Coordenada ultMovAcertado;
+     {
+        private Coordenada ultMovAcertado;
         // ultimoResultado: "0" -> Agua | "1" -> Averiado | "2" -> Hundido | "-1" -> Repetido
         int ultimoResultado;
         int cant_movimientos;
@@ -75,7 +75,6 @@ namespace TP4BatallaNaval.Estrategias
                         ultMovAcertado = primerMov;
                         if (ultimo_desplazamiento_acertado < 4)
                         {
-
                             ultimo_desplazamiento = ultimo_desplazamiento_acertado +1 ;
                         }
                         else
@@ -87,6 +86,7 @@ namespace TP4BatallaNaval.Estrategias
                         ultimo_desplazamiento = ultimo_desplazamiento_acertado - 1;
                     }
                 }
+                ultimo_desplazamiento = validarFinGrilla();
                 switch (ultimo_desplazamiento)
                 {
                     case 0:
@@ -194,6 +194,28 @@ namespace TP4BatallaNaval.Estrategias
             {
                 return false;
             }
+        }
+
+        public int validarFinGrilla()
+        {
+            int desplazamiento = 0;
+            if (ultMovAcertado.x == 0 && ultimo_desplazamiento == 0)
+            {
+                desplazamiento = 1;
+            }
+            else if (ultMovAcertado.x == 63 && ultimo_desplazamiento == 2)
+            {
+                desplazamiento = 3;
+            }
+            else if (ultMovAcertado.y == 0 && ultimo_desplazamiento == 3)
+            {
+                desplazamiento = 0;
+            }
+            else if (ultMovAcertado.y == 63 && ultimo_desplazamiento == 1)
+            {
+                desplazamiento = 2;
+            }
+            return desplazamiento;
         }
     }
 }

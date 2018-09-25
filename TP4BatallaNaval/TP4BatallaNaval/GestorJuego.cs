@@ -14,7 +14,7 @@ namespace TP4BatallaNaval
     {
         int[,] tablero1 = new int[64, 64];
         int[,] tablero2 = new int[64, 64];
-        Batalla_Naval graficador;
+        Grafico graficador;
         // modo: FALSE-> Semi-Automatico | TRUE-> Automatico
         Boolean modo;
         // cantidad de barcos de cada tipo
@@ -101,7 +101,7 @@ namespace TP4BatallaNaval
             {
                 if (graficador is null)
                 {
-                    graficador = new Batalla_Naval();
+                    graficador = new Grafico();
                 }
                 if (jugador == 1)
                 {

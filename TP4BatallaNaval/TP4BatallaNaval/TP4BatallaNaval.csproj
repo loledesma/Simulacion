@@ -48,12 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Batalla_Naval.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Batalla_Naval.Designer.cs">
-      <DependentUpon>Batalla_Naval.cs</DependentUpon>
-    </Compile>
     <Compile Include="Coordenada.cs" />
     <Compile Include="Distribuciones\DistribucionUniforme.cs" />
     <Compile Include="Distribuciones\IDistribuciones.cs" />
@@ -81,9 +75,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Batalla_Naval.resx">
-      <DependentUpon>Batalla_Naval.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Grafico.resx">
       <DependentUpon>Grafico.cs</DependentUpon>
     </EmbeddedResource>
