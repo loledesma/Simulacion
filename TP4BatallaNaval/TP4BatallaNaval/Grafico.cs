@@ -142,34 +142,34 @@ namespace TP4BatallaNaval
                     {
                         int jugador_ganador = controlador.jugarBatallaNaval(false);
                         ultimoMovimiento = controlador.movimiento;
-                        if (controlador.bUltimoJugador == false)
+                        if (controlador.bUltimoJugador == true)
                         {
-                            if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.White)
+                            if (tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.White)
                             {
-                                tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                                tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                             }
-                            else if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                            else if (tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
                             {
-                                tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                                tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                             }
                             else
                             {
-                                tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                                tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
                             }
                         }
                         else
                         {
-                            if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.White)
+                            if (tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.White)
                             {
-                                tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                                tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                             }
-                            else if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                            else if (tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
                             {
-                                tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                                tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                             }
                             else
                             {
-                                tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                                tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
                             }
                         }
                         if (jugador_ganador != 0) 
@@ -191,34 +191,34 @@ namespace TP4BatallaNaval
             {
                 int jugador_ganador = controlador.jugarBatallaNaval(false);
                 ultimoMovimiento = controlador.movimiento;
-                if (controlador.bUltimoJugador == false)
+                if (controlador.bUltimoJugador == true)
                 {
-                    if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.White)
+                    if (tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.White)
                     {
-                        tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                        tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                     }
-                    else if (tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                    else if (tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
                     {
-                        tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                        tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                     }
                     else
                     {
-                        tablero2[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                        tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
                     }
                 }
                 else
                 {
-                    if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.White)
+                    if (tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.White)
                     {
-                        tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                        tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                     }
-                    else if (tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                    else if (tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
                     {
-                        tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                        tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
                     }
-                    else 
+                    else
                     {
-                        tablero1[ultimoMovimiento.x, ultimoMovimiento.y].Style.BackColor = Color.Red;
+                        tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
                     }
                 }
                 if (jugador_ganador != 0)
