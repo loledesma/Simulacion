@@ -31,11 +31,11 @@ namespace TP4BatallaNaval
                 gestor.cargar_barcos(1);
                 gestor.cargar_barcos(2);
             }
-            else 
+            else if (rdb_automatico.Checked == true)
             {
                 gestor = new GestorJuego(true);
                 cant_simulaciones = 1;
-                int _cant_ingresada = int.Parse (txt_cant_simulaciones.Text);
+                int _cant_ingresada = int.Parse(txt_cant_simulaciones.Text);
                 while (cant_simulaciones <= _cant_ingresada)
                 {
                     gestor.cargar_barcos(1);
@@ -46,7 +46,7 @@ namespace TP4BatallaNaval
                     }
                     else
                     {
-                        cant_ganados_est2++; 
+                        cant_ganados_est2++;
                     }
                     cant_simulaciones++;
                 }
@@ -62,6 +62,11 @@ namespace TP4BatallaNaval
                 {
                     MessageBox.Show("Hubo empate entre ambas estrategias en las " + cant_simulaciones.ToString() + " partidas simuladas.");
                 }
+            } 
+            else if (rdb_automatico.Checked == false || rdb_semiautomatico.Checked == false )
+            {
+                MessageBox.Show("Debe elegir una modalidad juego" );
+
             }
         }
     }

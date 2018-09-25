@@ -14,9 +14,8 @@ namespace TP4BatallaNaval.Estrategias
         int ultimoResultado;
         int cant_movimientos;
         int cant_agua;
-        int cant_barcos_enemigos;
+        int cant_barcos_hundidos;
         int cant_aciertos;
-        Boolean finaliza_juego;
         List<Flota> flotas;
         int cant_repetidos;
         IDistribuciones distribucion;
@@ -26,11 +25,19 @@ namespace TP4BatallaNaval.Estrategias
             cant_movimientos = 0;
             cant_agua = 0;
             flotas = _list_barcos;
-            cant_barcos_enemigos = _list_barcos.Count();
+            cant_barcos_hundidos = 0;
             cant_aciertos = 0;
             cant_repetidos = 0;
             distribucion = _distrib;
-            finaliza_juego = false;
+        }
+
+        public Coordenada realizarMovimiento()
+        {
+            // esta estrategia siempre genera un aleatorio, no le interesan los movimientos anteriores.
+            int x = (int)Math.Round(distribucion.generar(), 0);
+            int y = (int)Math.Round(distribucion.generar(), 0);
+            Coordenada c = new Coordenada(x, y);
+            return c;
         }
 
         public void resultadoMovimiento(Coordenada mov, int resultado)
@@ -44,46 +51,54 @@ namespace TP4BatallaNaval.Estrategias
                     break;
                 case 1:
                     cant_aciertos++;
-                    ultMovAcertado = mov;
                     break;
                 case 2:
                     cant_aciertos++;
-                    cant_barcos_enemigos--;
-                    ultMovAcertado = mov;
                     break;
                 case -1:
                     cant_repetidos++;
                     break;
             }
+        }
 
-            if (cant_barcos_enemigos==0)
+        public Boolean controlarFlotas(Flota flota)
+        {
+            // retorno: FALSE -> tocado | TRUE -> hundido
+            Boolean retorno = false;
+            if (flota.canttoques == flota.tamaño)
             {
-                finaliza_juego = true;
+                retorno = true;
+                cant_barcos_hundidos++;
             }
-        }
-        
-        public Coordenada realizarMovimiento()
-        {
-            int x = 0;
-            int y = 0;
-            Coordenada c = new Coordenada(x, y);
-
-            return c;
+            return retorno;
         }
 
-        public bool controlarFlotas(Flota flota)
+        public Flota obtenerFlota(Coordenada c)
         {
-            throw new NotImplementedException();
+            Flota fRet = null;
+            foreach (Flota f in flotas)
+            {
+                foreach (Coordenada co in f.posicionesFlota)
+                {
+                    if (co.x == c.x && co.y == c.y)
+                    {
+                        fRet = f;
+                    }
+                }
+            }
+            return fRet;
         }
 
-        public Flota obtenerFlota(Coordenada movim)
+        public Boolean finalizoJuego()
         {
-            throw new NotImplementedException();
-        }
-
-        public bool finalizoJuego()
-        {
-            throw new NotImplementedException();
+            if (cant_barcos_hundidos == flotas.Count())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
