@@ -34,9 +34,9 @@ namespace TP4BatallaNaval
             else if (rdb_automatico.Checked == true)
             {
                 gestor = new GestorJuego(true);
-                cant_simulaciones = 1;
+                cant_simulaciones = 0;
                 int _cant_ingresada = int.Parse(txt_cant_simulaciones.Text);
-                while (cant_simulaciones <= _cant_ingresada)
+                while (cant_simulaciones < _cant_ingresada)
                 {
                     gestor.cargar_barcos(1);
                     gestor.cargar_barcos(2);

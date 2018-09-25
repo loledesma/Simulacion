@@ -31,6 +31,12 @@ namespace TP4BatallaNaval
         const int a = 12;
         const int c = 17;
         const int m = 5000;
+        const int a1 = 13;
+        const int c1 = 19;
+        const int m1 = 6000;
+        const int a2 = 11;
+        const int c2 = 18;
+        const int m2 = 4500;
         IDistribuciones distrEstrategias;
         IDistribuciones distribucionCoordenadas;
         IDistribuciones distribucionSentidos;
@@ -81,13 +87,13 @@ namespace TP4BatallaNaval
             }
             if (jugador == 1)
             {
-                generadorEstrategia1 = new CongruencialMixto(seed, a, c, m);
+                generadorEstrategia1 = new CongruencialMixto(seed, a1, c1, m1);
                 distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia1);
-                estrategia_j1 = new EstrategiaAleatoria(flotas_estrategia1, distrEstrategias);
+                estrategia_j1 = new EstrategiaEquipo1(flotas_estrategia1, distrEstrategias);
             }
             else
             {
-                generadorEstrategia2 = new CongruencialMixto(seed, a, c, m);
+                generadorEstrategia2 = new CongruencialMixto(seed, a2, c2, m2);
                 distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia2);
                 estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distrEstrategias);
             }

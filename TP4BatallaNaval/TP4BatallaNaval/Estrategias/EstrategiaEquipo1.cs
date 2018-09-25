@@ -16,8 +16,12 @@ namespace TP4BatallaNaval.Estrategias
         int cant_agua;
         int cant_barcos_hundidos;
         int cant_aciertos;
+        int ultimo_desplazamiento_acertado;
         List<Flota> flotas;
+        Coordenada primerMov;
+        Coordenada origen;
         int cant_repetidos;
+        int ultimo_desplazamiento;
         IDistribuciones distribucion;
 
         public EstrategiaEquipo1(List<Flota> _list_barcos, IDistribuciones _distrib)
@@ -29,15 +33,95 @@ namespace TP4BatallaNaval.Estrategias
             cant_aciertos = 0;
             cant_repetidos = 0;
             distribucion = _distrib;
+            ultimo_desplazamiento = 0;
+            ultimo_desplazamiento_acertado = 0;
+            origen = new Coordenada(0,0);
         }
 
         public Coordenada realizarMovimiento()
         {
-            // esta estrategia siempre genera un aleatorio, no le interesan los movimientos anteriores.
-            int x = (int)Math.Round(distribucion.generar(), 0);
-            int y = (int)Math.Round(distribucion.generar(), 0);
+            int x = 0;
+            int y = 0;
             Coordenada c = new Coordenada(x, y);
-            return c;
+            if (ultMovAcertado == null)
+            {
+                if (cant_repetidos >= 2000)
+                {
+                    if (origen.y != 63)
+                    {
+                        origen.y = origen.y + 1;
+                    } else
+                    {
+                        origen.x = origen.x + 1;
+                        origen.y = 0;
+                    }
+                    c = origen;
+                    return c;
+                } else
+                {
+                    x = (int)Math.Round(distribucion.generar(), 0);
+                    y = (int)Math.Round(distribucion.generar(), 0);
+                    c.x = x;
+                    c.y = y;
+                    return c;
+                }
+               
+            } else
+            {// arriba = 1 derecha = 2 abajo = 3 izquierda = 4
+                if (ultimo_desplazamiento_acertado != 0)
+                {
+                    if (ultimoResultado == 0 || ultimoResultado == -1)
+                    {
+                        ultMovAcertado = primerMov;
+                        if (ultimo_desplazamiento_acertado < 4)
+                        {
+
+                            ultimo_desplazamiento = ultimo_desplazamiento_acertado +1 ;
+                        }
+                        else
+                        {
+                            ultimo_desplazamiento = 1;
+                        }
+                    } else
+                    {
+                        ultimo_desplazamiento = ultimo_desplazamiento_acertado - 1;
+                    }
+                }
+                switch (ultimo_desplazamiento)
+                {
+                    case 0:
+                        x = ultMovAcertado.x - 1;
+                        y = ultMovAcertado.y;
+                        c.x = x;
+                        c.y = y;
+                        ultimo_desplazamiento = 1;
+                        break;
+
+                    case 1:
+                        x = ultMovAcertado.x;
+                        y = ultMovAcertado.y +1;
+                        c.x = x;
+                        c.y = y;
+                        ultimo_desplazamiento = 2;
+                        break;
+                    case 2:
+                        x = ultMovAcertado.x +1 ;
+                        y = ultMovAcertado.y;
+                        c.x = x;
+                        c.y = y;
+                        ultimo_desplazamiento = 3;
+                        break;
+                    case 3:
+                        x = ultMovAcertado.x;
+                        y = ultMovAcertado.y -1 ;
+                        c.x = x;
+                        c.y = y;
+                        ultimo_desplazamiento = 4;
+                        break;
+                }
+                return c;    
+            }
+            
         }
 
         public void resultadoMovimiento(Coordenada mov, int resultado)
@@ -51,9 +135,20 @@ namespace TP4BatallaNaval.Estrategias
                     break;
                 case 1:
                     cant_aciertos++;
+                    if (ultMovAcertado == null)
+                    {
+                        primerMov = mov;
+                    }
+                    ultMovAcertado = mov;
+                    ultimo_desplazamiento_acertado = ultimo_desplazamiento;
+                    ultimo_desplazamiento = 0;
                     break;
                 case 2:
                     cant_aciertos++;
+                    ultMovAcertado = null;
+                    primerMov = null;
+                    ultimo_desplazamiento = 0;
+                    ultimo_desplazamiento_acertado = 0;
                     break;
                 case -1:
                     cant_repetidos++;

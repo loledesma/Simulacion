@@ -63,8 +63,9 @@ namespace TP4BatallaNaval.Estrategias
 
         public Boolean controlarFlotas(Flota flota)
         {
-            // retorno: FALSE -> tocado | TRUE -> hundido
             Boolean retorno = false;
+            // retorno: FALSE -> tocado | TRUE -> hundido
+            
             if (flota.canttoques == flota.tamaño)
             {
                 retorno = true;
