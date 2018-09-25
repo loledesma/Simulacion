@@ -49,11 +49,11 @@ namespace TP4BatallaNaval.Estrategias
                 case 0:
                     cant_agua++;
                     break;
-                case 1: 
+                case 1:
                     cant_aciertos++;
                     break;
                 case 2:
-                    cant_aciertos++;
+                    cant_aciertos++;                    
                     break;
                 case -1:
                     cant_repetidos++;
@@ -63,8 +63,9 @@ namespace TP4BatallaNaval.Estrategias
 
         public Boolean controlarFlotas(Flota flota)
         {
-            // retorno: FALSE -> tocado | TRUE -> hundido
             Boolean retorno = false;
+            // retorno: FALSE -> tocado | TRUE -> hundido
+            
             if (flota.canttoques == flota.tamaño)
             {
                 retorno = true;
