@@ -48,13 +48,19 @@ namespace TP4BatallaNaval
         public void cargar_barcos(int jugador)
         {
             int _barcos = 1;
-            int _longitud = long_max_barco;
+            int _longitud = 0;
             Flota _flotaCargada;
-            flotas_estrategia1 = new List<Flota>();
-            flotas_estrategia2 = new List<Flota>();
-
+            if (jugador == 1)
+            {
+                flotas_estrategia1 = new List<Flota>();
+            }
+            else
+            {
+                flotas_estrategia2 = new List<Flota>();
+            }
             while (_barcos <= cant_barcosxtipo)  
             {
+                _longitud = long_max_barco;
                 while (_longitud >= long_min_barco)
                 {
                     List<Coordenada> coordenadas = posicionarFlota(_longitud, jugador);
@@ -63,23 +69,11 @@ namespace TP4BatallaNaval
                     _flotaCargada = new Flota(_longitud, nombreflota, coordenadas, colorflota);
                     if (jugador == 1)
                     {
-                        flotas_estrategia1.Add(_flotaCargada);
-                        if (modo == false)
-                        {
-                            graficador = new Batalla_Naval();
-                            graficador.asignarFlotas(flotas_estrategia1, jugador);
-                            graficador.Show();
-                        }
+                        flotas_estrategia1.Add(_flotaCargada);                        
                     }
                     else
                     {
                         flotas_estrategia2.Add(_flotaCargada);
-                        if (modo == false)
-                        {
-                            graficador = new Batalla_Naval();
-                            graficador.asignarFlotas(flotas_estrategia2, jugador);
-                            graficador.Show();
-                        }
                     }
                     _longitud--;
                 }
@@ -88,14 +82,30 @@ namespace TP4BatallaNaval
             if (jugador == 1)
             {
                 generadorEstrategia1 = new CongruencialMixto(seed, a, c, m);
-                distrEstrategias = new DistribucionUniforme(1, 64, generadorEstrategia1);
+                distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia1);
                 estrategia_j1 = new EstrategiaAleatoria(flotas_estrategia1, distrEstrategias);
             }
             else
             {
                 generadorEstrategia2 = new CongruencialMixto(seed, a, c, m);
-                distrEstrategias = new DistribucionUniforme(1, 64, generadorEstrategia2);
+                distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia2);
                 estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distrEstrategias);
+            }
+            if (modo == false)
+            {
+                if (graficador is null)
+                {
+                    graficador = new Batalla_Naval();
+                }
+                if (jugador == 1)
+                {
+                    graficador.asignarFlotas(flotas_estrategia1, jugador);
+                }
+                else
+                {
+                    graficador.asignarFlotas(flotas_estrategia2, jugador);
+                    graficador.Show();
+                }
             }
         }
 
@@ -174,7 +184,7 @@ namespace TP4BatallaNaval
             if (generadorCoordenadas is null)
             {
                 generadorCoordenadas = new CongruencialMixto(seed, a, c, m);
-                distribucionCoordenadas = new DistribucionUniforme(1, 64, generadorCoordenadas);
+                distribucionCoordenadas = new DistribucionUniforme(0, 63, generadorCoordenadas);
             }             
             int _x = (int) Math.Round(distribucionCoordenadas.generar(), 0);
             int _y = (int) Math.Round(distribucionCoordenadas.generar(), 0);
@@ -202,7 +212,7 @@ namespace TP4BatallaNaval
             switch (_direccion)
             {
                 case 1:
-                    if (_posini.y - _tamaño < 1)
+                    if (_posini.y - _tamaño < 0)
                     {
                         retorno = false;
                     }
@@ -221,7 +231,7 @@ namespace TP4BatallaNaval
                     }
                     break;
                 case 2:
-                    if (_posini.y + _tamaño > 64)
+                    if (_posini.y + _tamaño > 63)
                     {
                         retorno = false;
                     }
@@ -241,7 +251,7 @@ namespace TP4BatallaNaval
                     }
                     break;
                 case 3:
-                    if (_posini.x - _tamaño < 1)
+                    if (_posini.x - _tamaño < 0)
                     {
                         retorno = false;
                     }
@@ -261,7 +271,7 @@ namespace TP4BatallaNaval
                     }
                     break;
                 case 4:
-                    if (_posini.x + _tamaño > 64)
+                    if (_posini.x + _tamaño > 63)
                     {
                         retorno = false;
                     }
