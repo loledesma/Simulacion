@@ -170,7 +170,7 @@ namespace TP4BatallaNaval
         // para posicionar el barco.
         public Coordenada obtenerCoordenada()
         {
-            if (generadorCoordenadas is null)
+            if (generadorCoordenadas == null)
             {
                 generadorCoordenadas = new CongruencialMixto(seed, a, c, m);
                 distribucionCoordenadas = new DistribucionUniforme(0, 63, generadorCoordenadas);
@@ -184,7 +184,7 @@ namespace TP4BatallaNaval
         public int obtenerSentido()
         {
             int retorno = 0;
-            if (generadorSentidos is null)
+            if (generadorSentidos == null)
             {
                 generadorSentidos = new CongruencialMixto(seed, a, c, m);
                 distribucionSentidos = new DistribucionUniforme(1, 4, generadorSentidos);

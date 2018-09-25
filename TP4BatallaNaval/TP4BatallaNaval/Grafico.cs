@@ -122,7 +122,7 @@ namespace TP4BatallaNaval
                     while (cantmovs < movstotal)
                     {
                         int jugador_ganador = controlador.jugarBatallaNaval(false);
-                        if (jugador_ganador != 0)
+                        if (jugador_ganador != 0) //VER ESTA PARTE DEL CODIGO
                         {
                             MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
                             break;
