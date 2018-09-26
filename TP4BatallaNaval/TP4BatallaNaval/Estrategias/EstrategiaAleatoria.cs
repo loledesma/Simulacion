@@ -12,12 +12,12 @@ namespace TP4BatallaNaval.Estrategias
     {
         // ultimoResultado: "0" -> Agua | "1" -> Averiado | "2" -> Hundido | "-1" -> Repetido
         int ultimoResultado;
-        int cant_movimientos;
-        int cant_agua;
-        int cant_barcos_hundidos;
-        int cant_aciertos;
+        public int cant_movimientos;
+        public int cant_agua;
+        public int cant_barcos_hundidos;
+        public int cant_aciertos;
         List<Flota> flotas;
-        int cant_repetidos;
+        public int cant_repetidos;
         IDistribuciones distribucion;
 
         public EstrategiaAleatoria(List<Flota> _list_barcos, IDistribuciones _distrib)

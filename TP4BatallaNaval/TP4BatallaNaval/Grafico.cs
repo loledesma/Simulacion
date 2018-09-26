@@ -80,7 +80,7 @@ namespace TP4BatallaNaval
             cb_avanzarmovs.CheckState = CheckState.Unchecked;
             txt_cantmovs.Text = "";
             txt_cantmovs.Enabled = false;
-            lbl_estado.Visible = false;
+            btn_estadistica.Enabled = false;
         }
 
         private void btn_cargar_barcos_Click(object sender, EventArgs e)
@@ -177,6 +177,10 @@ namespace TP4BatallaNaval
                         if (jugador_ganador != 0) 
                         {
                             MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
+                            btn_play.Enabled = false;
+                            cb_avanzarmovs.Enabled = false;
+                            txt_cantmovs.Enabled = false;
+                            btn_estadistica.Enabled = true;
                             break;
                         }
                         cantmovs++;
@@ -226,6 +230,10 @@ namespace TP4BatallaNaval
                 if (jugador_ganador != 0)
                 {
                     MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
+                    btn_play.Enabled = false;
+                    cb_avanzarmovs.Enabled = false;
+                    txt_cantmovs.Enabled = false;
+                    btn_estadistica.Enabled = true;
                 }
             }
             btn_play.Enabled = true;
@@ -235,6 +243,13 @@ namespace TP4BatallaNaval
         {
             btn_play.Enabled = false;
             btn_limpiar.Enabled = false;
+            btn_estadistica.Enabled = false;
+        }
+
+        private void btn_estadistica_Click(object sender, EventArgs e)
+        {
+            string resultado = controlador.obtenerEstadistica();
+            MessageBox.Show(resultado);
         }
     }
 }

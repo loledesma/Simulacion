@@ -20,8 +20,8 @@ namespace TP4BatallaNaval
         const int cant_barcosxtipo = 2;
         const int long_max_barco = 6;
         const int long_min_barco = 2;
-        IEstrategia estrategia_j1;
-        IEstrategia estrategia_j2;
+        public IEstrategia estrategia_j1;
+        public IEstrategia estrategia_j2;
         public List<Flota> flotas_estrategia1;
         public List<Flota> flotas_estrategia2;
         // bUltimoJugador: 0-> Jugador1 | 1-> Jugador2
@@ -59,10 +59,12 @@ namespace TP4BatallaNaval
             if (jugador == 1)
             {
                 flotas_estrategia1 = new List<Flota>();
+                tablero1.Initialize();
             }
             else
             {
                 flotas_estrategia2 = new List<Flota>();
+                tablero2.Initialize();
             }
             while (_barcos <= cant_barcosxtipo)  
             {
@@ -100,6 +102,24 @@ namespace TP4BatallaNaval
                 //distrEstrategias = new DistribucionNormal(32, 16, generadorEstrategia2);
                 estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distrEstrategias);
             }
+        }
+
+        public string obtenerEstadistica()
+        {
+            string retorno;
+            retorno = "+ El Jugador 1:" + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaEquipo1)estrategia_j1).cant_movimientos.ToString() + " movimientos totales. " + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaEquipo1)estrategia_j1).cant_agua.ToString() + " movimientos en Agua. " + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaEquipo1)estrategia_j1).cant_repetidos.ToString() + " movimientos Repetidos. " + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaEquipo1)estrategia_j1).cant_aciertos.ToString() + " movimientos en Flotas. " + "\n\r";
+            retorno += "   - Hundió " + ((EstrategiaAleatoria)estrategia_j2).cant_barcos_hundidos.ToString() + " Flotas Enemigas. " + "\n\r";
+            retorno += "+ El Jugador 2:" + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaAleatoria)estrategia_j2).cant_movimientos.ToString() + " movimientos totales. " + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaAleatoria)estrategia_j2).cant_agua.ToString() + " movimientos en Agua. " + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaAleatoria)estrategia_j2).cant_repetidos.ToString() + " movimientos Repetidos. " + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaAleatoria)estrategia_j2).cant_aciertos.ToString() + " movimientos en Flotas. " + "\n\r";
+            retorno += "   - Hundió " + ((EstrategiaEquipo1)estrategia_j1).cant_barcos_hundidos.ToString() + " Flotas Enemigas. " + "\n\r";
+            return retorno;
         }
 
         public string obtenerNombre(int _tamaño)
