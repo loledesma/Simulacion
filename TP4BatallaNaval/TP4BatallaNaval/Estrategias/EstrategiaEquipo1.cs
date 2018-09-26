@@ -66,7 +66,8 @@ namespace TP4BatallaNaval.Estrategias
                     return c;
                 }
                
-            } else
+            }
+            else
             {// arriba = 1 derecha = 2 abajo = 3 izquierda = 4
                 if (ultimo_desplazamiento_acertado != 0)
                 {
