@@ -158,6 +158,7 @@ namespace TP4BatallaNaval
                             {
                                 tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
                             }
+                            tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Selected = true;
                         }
                         else
                         {
@@ -173,6 +174,7 @@ namespace TP4BatallaNaval
                             {
                                 tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
                             }
+                            tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Selected = true;
                         }
                         if (jugador_ganador != 0) 
                         {
@@ -211,6 +213,7 @@ namespace TP4BatallaNaval
                     {
                         tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
                     }
+                    tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Selected = true;
                 }
                 else
                 {
@@ -226,6 +229,7 @@ namespace TP4BatallaNaval
                     {
                         tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
                     }
+                    tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Selected = true;
                 }
                 if (jugador_ganador != 0)
                 {
