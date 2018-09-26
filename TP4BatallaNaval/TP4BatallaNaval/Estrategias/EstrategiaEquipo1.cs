@@ -12,15 +12,15 @@ namespace TP4BatallaNaval.Estrategias
         private Coordenada ultMovAcertado;
         // ultimoResultado: "0" -> Agua | "1" -> Averiado | "2" -> Hundido | "-1" -> Repetido
         int ultimoResultado;
-        int cant_movimientos;
-        int cant_agua;
-        int cant_barcos_hundidos;
-        int cant_aciertos;
+        public int cant_movimientos;
+        public int cant_agua;
+        public int cant_barcos_hundidos;
+        public int cant_aciertos;
         int ultimo_desplazamiento_acertado;
         List<Flota> flotas;
         Coordenada primerMov;
         Coordenada origen;
-        int cant_repetidos;
+        public int cant_repetidos;
         int ultimo_desplazamiento;
         IDistribuciones distribucion;
 
@@ -66,7 +66,8 @@ namespace TP4BatallaNaval.Estrategias
                     return c;
                 }
                
-            } else
+            }
+            else
             {// arriba = 1 derecha = 2 abajo = 3 izquierda = 4
                 if (ultimo_desplazamiento_acertado != 0)
                 {

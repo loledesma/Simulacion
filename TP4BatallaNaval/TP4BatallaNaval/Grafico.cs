@@ -15,48 +15,64 @@ namespace TP4BatallaNaval
         List<Flota> flotas_tablero1;
         List<Flota> flotas_tablero2;
         GestorJuego controlador;
+        Coordenada ultimoMovimiento;
 
         public Grafico()
         {
             InitializeComponent();
-            for (int a = 0; a < 64; a++)
+            generarGrilla();
+            controlador = new GestorJuego(false);
+        }
+
+        private void generarGrilla()
+        {
+            int a = 0;
+            for (a = 0; a < 64; a++)
             {
                 DataGridViewColumn col = new DataGridViewColumn();
                 DataGridViewCell cell = new DataGridViewTextBoxCell();
+                cell.Style.BackColor = Color.White;
                 col.CellTemplate = cell;
                 col.Name = a.ToString();
                 tablero1.Columns.Insert(a, col);
                 tablero1.Columns[a].Width = 10;
             }
-            for (int b = 0; b < 64; b++)
+            int b = 0;
+            for (b = 0; b < 64; b++)
             {
-                tablero1.Rows.Add();               
+                tablero1.Rows.Add();
                 tablero1.Rows[b].Height = 10;
             }
-
-            for (int a = 0; a < 64; a++)
+            a = 0;
+            for (a = 0; a < 64; a++)
             {
                 DataGridViewColumn col = new DataGridViewColumn();
                 DataGridViewCell cell = new DataGridViewTextBoxCell();
+                cell.Style.BackColor = Color.White;
                 col.CellTemplate = cell;
                 col.Name = a.ToString();
                 tablero2.Columns.Insert(a, col);
                 tablero2.Columns[a].Width = 10;
             }
-            for (int b = 0; b < 64; b++)
+            b = 0;
+            for (b = 0; b < 64; b++)
             {
                 tablero2.Rows.Add();
                 tablero2.Rows[b].Height = 10;
             }
-            controlador = new GestorJuego(false);
         }
 
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
             flotas_tablero1.Clear();
             flotas_tablero2.Clear();
-            tablero1.Controls.Clear();
-            tablero2.Controls.Clear();
+            tablero1.Rows.Clear();
+            tablero1.Columns.Clear();
+            tablero1.Refresh();
+            tablero2.Rows.Clear();
+            tablero2.Columns.Clear();
+            tablero2.Refresh();
+            generarGrilla();
             btn_cargar_barcos.Enabled = true;
             btn_limpiar.Enabled = false;
             btn_play.Enabled = false;
@@ -64,7 +80,7 @@ namespace TP4BatallaNaval
             cb_avanzarmovs.CheckState = CheckState.Unchecked;
             txt_cantmovs.Text = "";
             txt_cantmovs.Enabled = false;
-            lbl_estado.Visible = false;
+            btn_estadistica.Enabled = false;
         }
 
         private void btn_cargar_barcos_Click(object sender, EventArgs e)
@@ -90,6 +106,9 @@ namespace TP4BatallaNaval
                 }
             }
             MessageBox.Show("Se cargaron los barcos en ambos tableros.");
+            btn_play.Enabled = true;
+            cb_avanzarmovs.Enabled = true;
+            txt_cantmovs.Enabled = true;
         }
 
         private void btn_salir_Click(object sender, EventArgs e)
@@ -113,29 +132,63 @@ namespace TP4BatallaNaval
 
         private void btn_play_Click(object sender, EventArgs e)
         {
+            btn_play.Enabled = false;
             if (cb_avanzarmovs.CheckState == CheckState.Checked)
             {
                 int cantmovs = 0;
                 int movstotal;
-                if (int.TryParse(txt_cantmovs.Text, out movstotal))
+                int.TryParse(txt_cantmovs.Text, out movstotal);
+                if (movstotal > 0)
                 {
                     while (cantmovs < movstotal)
                     {
                         int jugador_ganador = controlador.jugarBatallaNaval(false);
-                        if (jugador_ganador != 0) //VER ESTA PARTE DEL CODIGO
+                        ultimoMovimiento = controlador.movimiento;
+                        if (controlador.bUltimoJugador == true)
                         {
-                            MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
-                            break;
+                            if (tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.White)
+                            {
+                                tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                            }
+                            else if (tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                            {
+                                tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                            }
+                            else
+                            {
+                                tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
+                            }
                         }
                         else
                         {
-                            
+                            if (tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.White)
+                            {
+                                tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                            }
+                            else if (tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                            {
+                                tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                            }
+                            else
+                            {
+                                tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
+                            }
                         }
+                        if (jugador_ganador != 0) 
+                        {
+                            MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
+                            btn_play.Enabled = false;
+                            cb_avanzarmovs.Enabled = false;
+                            txt_cantmovs.Enabled = false;
+                            btn_estadistica.Enabled = true;
+                            break;
+                        }
+                        cantmovs++;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debe ingresar un valor Numerico en la cantida de movimientos a anvanzar!");
+                    MessageBox.Show("Debe ingresar un valor Numerico positivo en la cantida de movimientos a anvanzar!");
                     txt_cantmovs.Text = "";
                     txt_cantmovs.Focus();
                 }
@@ -143,11 +196,60 @@ namespace TP4BatallaNaval
             else
             {
                 int jugador_ganador = controlador.jugarBatallaNaval(false);
+                ultimoMovimiento = controlador.movimiento;
+                if (controlador.bUltimoJugador == true)
+                {
+                    if (tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.White)
+                    {
+                        tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                    }
+                    else if (tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                    {
+                        tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                    }
+                    else
+                    {
+                        tablero2.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
+                    }
+                }
+                else
+                {
+                    if (tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.White)
+                    {
+                        tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                    }
+                    else if (tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor == Color.LightBlue)
+                    {
+                        tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.LightBlue;
+                    }
+                    else
+                    {
+                        tablero1.Rows[ultimoMovimiento.x].Cells[ultimoMovimiento.y].Style.BackColor = Color.Red;
+                    }
+                }
                 if (jugador_ganador != 0)
                 {
                     MessageBox.Show("El jugador ganador es el N° " + jugador_ganador.ToString() + ".");
+                    btn_play.Enabled = false;
+                    cb_avanzarmovs.Enabled = false;
+                    txt_cantmovs.Enabled = false;
+                    btn_estadistica.Enabled = true;
                 }
             }
+            btn_play.Enabled = true;
+        }
+
+        private void Grafico_Load(object sender, EventArgs e)
+        {
+            btn_play.Enabled = false;
+            btn_limpiar.Enabled = false;
+            btn_estadistica.Enabled = false;
+        }
+
+        private void btn_estadistica_Click(object sender, EventArgs e)
+        {
+            string resultado = controlador.obtenerEstadistica();
+            MessageBox.Show(resultado);
         }
     }
 }
