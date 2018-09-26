@@ -34,7 +34,8 @@ namespace TP4BatallaNaval
             }
             else if (rdb_automatico.Checked == true)
             {
-                
+                cant_ganados_est1 = 0;
+                cant_ganados_est2 = 0;
                 cant_simulaciones = 0;
                 int _cant_ingresada = int.Parse(txt_cant_simulaciones.Text);
                 while (cant_simulaciones < _cant_ingresada)

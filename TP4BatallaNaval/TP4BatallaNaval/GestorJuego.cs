@@ -89,8 +89,8 @@ namespace TP4BatallaNaval
             }
             if (jugador == 1)
             {
-                //generadorEstrategia1 = new CongruencialMixto(seed, a1, c1, m1);
-                generadorEstrategia1 = new AleatorioSistema();
+                generadorEstrategia1 = new CongruencialMixto(seed, a1, c1, m1);
+                //generadorEstrategia1 = new AleatorioSistema();
                 distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia1);
                 //distrEstrategias = new DistribucionNormal(32, 16, generadorEstrategia1);
                 //distrEstrategias = new DistribucionExponencialNegativa((0.03125), generadorEstrategia1);
@@ -98,11 +98,12 @@ namespace TP4BatallaNaval
             }
             else
             {
-                generadorEstrategia2 = new CongruencialMixto(seed, a2, c2, m2);
+               generadorEstrategia2 = new CongruencialMixto(seed, a2, c2, m2);
+                //generadorEstrategia2 = new AleatorioSistema();
                 distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia2);
                 //distrEstrategias = new DistribucionNormal(32, 16, generadorEstrategia2);
                 //distrEstrategias = new DistribucionExponencialNegativa((0.03125), generadorEstrategia2);
-                estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distrEstrategias);
+                estrategia_j2 = new EstrategiaEquipo2(flotas_estrategia2, distrEstrategias);
             }
         }
 
@@ -114,12 +115,12 @@ namespace TP4BatallaNaval
             retorno += "   - Realizó " + ((EstrategiaEquipo1)estrategia_j1).cant_agua.ToString() + " movimientos en Agua. " + "\n\r";
             retorno += "   - Realizó " + ((EstrategiaEquipo1)estrategia_j1).cant_repetidos.ToString() + " movimientos Repetidos. " + "\n\r";
             retorno += "   - Realizó " + ((EstrategiaEquipo1)estrategia_j1).cant_aciertos.ToString() + " movimientos en Flotas. " + "\n\r";
-            retorno += "   - Hundió " + ((EstrategiaAleatoria)estrategia_j2).cant_barcos_hundidos.ToString() + " Flotas Enemigas. " + "\n\r";
+            retorno += "   - Hundió " + ((EstrategiaEquipo2)estrategia_j2).cant_barcos_hundidos.ToString() + " Flotas Enemigas. " + "\n\r";
             retorno += "+ El Jugador 2:" + "\n\r";
-            retorno += "   - Realizó " + ((EstrategiaAleatoria)estrategia_j2).cant_movimientos.ToString() + " movimientos totales. " + "\n\r";
-            retorno += "   - Realizó " + ((EstrategiaAleatoria)estrategia_j2).cant_agua.ToString() + " movimientos en Agua. " + "\n\r";
-            retorno += "   - Realizó " + ((EstrategiaAleatoria)estrategia_j2).cant_repetidos.ToString() + " movimientos Repetidos. " + "\n\r";
-            retorno += "   - Realizó " + ((EstrategiaAleatoria)estrategia_j2).cant_aciertos.ToString() + " movimientos en Flotas. " + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaEquipo2)estrategia_j2).cant_movimientos.ToString() + " movimientos totales. " + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaEquipo2)estrategia_j2).cant_agua.ToString() + " movimientos en Agua. " + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaEquipo2)estrategia_j2).cant_repetidos.ToString() + " movimientos Repetidos. " + "\n\r";
+            retorno += "   - Realizó " + ((EstrategiaEquipo2)estrategia_j2).cant_aciertos.ToString() + " movimientos en Flotas. " + "\n\r";
             retorno += "   - Hundió " + ((EstrategiaEquipo1)estrategia_j1).cant_barcos_hundidos.ToString() + " Flotas Enemigas. " + "\n\r";
             return retorno;
         }
