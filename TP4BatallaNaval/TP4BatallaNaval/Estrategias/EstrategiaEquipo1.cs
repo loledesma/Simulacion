@@ -12,15 +12,16 @@ namespace TP4BatallaNaval.Estrategias
         private Coordenada ultMovAcertado;
         // ultimoResultado: "0" -> Agua | "1" -> Averiado | "2" -> Hundido | "-1" -> Repetido
         int ultimoResultado;
-        int cant_movimientos;
-        int cant_agua;
-        int cant_barcos_hundidos;
-        int cant_aciertos;
+        public int cant_movimientos;
+        public int cant_agua;
+        public int cant_barcos_hundidos;
+        public int cant_aciertos;
         int ultimo_desplazamiento_acertado;
         List<Flota> flotas;
         Coordenada primerMov;
         Coordenada origen;
-        int cant_repetidos;
+        Boolean bpar = true;
+        public int cant_repetidos;
         int ultimo_desplazamiento;
         IDistribuciones distribucion;
 
@@ -43,17 +44,34 @@ namespace TP4BatallaNaval.Estrategias
             int x = 0;
             int y = 0;
             Coordenada c = new Coordenada(x, y);
+            
             if (ultMovAcertado == null)
             {
                 if (cant_repetidos >= 2000)
                 {
-                    if (origen.y != 63)
+                    if (origen.y < 62)
                     {
-                        origen.y = origen.y + 1;
-                    } else
+                        origen.y = origen.y + 2;
+                    }
+                    else
                     {
-                        origen.x = origen.x + 1;
-                        origen.y = 0;
+                        if (origen.x < 62)
+                        {
+                            origen.x = origen.x + 2;
+                            if (bpar == true)
+                            {
+                                origen.y = 0;
+                            } else
+                            {
+                                origen.y = 1;
+                            }
+                            
+                        } else
+                        {
+                            origen.x = 1;
+                            origen.y = 1;
+                            bpar = false;
+                        }                        
                     }
                     c = origen;
                     return c;
@@ -66,7 +84,8 @@ namespace TP4BatallaNaval.Estrategias
                     return c;
                 }
                
-            } else
+            }
+            else
             {// arriba = 1 derecha = 2 abajo = 3 izquierda = 4
                 if (ultimo_desplazamiento_acertado != 0)
                 {

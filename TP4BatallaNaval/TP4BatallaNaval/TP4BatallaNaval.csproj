@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Coordenada.cs" />
+    <Compile Include="Distribuciones\DistribucionExponencialNegativa.cs" />
+    <Compile Include="Distribuciones\DistribucionNormal.cs" />
     <Compile Include="Distribuciones\DistribucionUniforme.cs" />
     <Compile Include="Distribuciones\IDistribuciones.cs" />
     <Compile Include="Estrategias\EstrategiaAleatoria.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Estrategias\EstrategiaEquipo2.cs" />
     <Compile Include="Estrategias\IEstrategia.cs" />
     <Compile Include="Flota.cs" />
+    <Compile Include="Generadores\AleatorioSistema.cs" />
     <Compile Include="Generadores\CongruencialMixto.cs" />
     <Compile Include="Generadores\CongruencialMultiplicativo.cs" />
     <Compile Include="Generadores\IGeneradores.cs" />

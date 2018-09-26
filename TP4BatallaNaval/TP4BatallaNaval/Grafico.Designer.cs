@@ -33,7 +33,6 @@
             this.lbl_tablero2 = new System.Windows.Forms.Label();
             this.lbl_tablero1 = new System.Windows.Forms.Label();
             this.tablero1 = new System.Windows.Forms.DataGridView();
-            this.lbl_estado = new System.Windows.Forms.Label();
             this.cb_avanzarmovs = new System.Windows.Forms.CheckBox();
             this.txt_cantmovs = new System.Windows.Forms.TextBox();
             this.btn_salir = new System.Windows.Forms.Button();
@@ -41,6 +40,7 @@
             this.btn_play = new System.Windows.Forms.Button();
             this.btn_cargar_barcos = new System.Windows.Forms.Button();
             this.tablero2 = new System.Windows.Forms.DataGridView();
+            this.btn_estadistica = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablero1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablero2)).BeginInit();
             this.SuspendLayout();
@@ -51,9 +51,9 @@
             this.lbl_tablero2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tablero2.Location = new System.Drawing.Point(927, 9);
             this.lbl_tablero2.Name = "lbl_tablero2";
-            this.lbl_tablero2.Size = new System.Drawing.Size(140, 13);
+            this.lbl_tablero2.Size = new System.Drawing.Size(128, 13);
             this.lbl_tablero2.TabIndex = 13;
-            this.lbl_tablero2.Text = "Tablero de Estrategia 2";
+            this.lbl_tablero2.Text = "Tablero de Jugador 2";
             // 
             // lbl_tablero1
             // 
@@ -61,9 +61,9 @@
             this.lbl_tablero1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tablero1.Location = new System.Drawing.Point(268, 9);
             this.lbl_tablero1.Name = "lbl_tablero1";
-            this.lbl_tablero1.Size = new System.Drawing.Size(140, 13);
+            this.lbl_tablero1.Size = new System.Drawing.Size(128, 13);
             this.lbl_tablero1.TabIndex = 12;
-            this.lbl_tablero1.Text = "Tablero de Estrategia 1";
+            this.lbl_tablero1.Text = "Tablero de Jugador 1";
             // 
             // tablero1
             // 
@@ -71,6 +71,7 @@
             this.tablero1.AllowUserToDeleteRows = false;
             this.tablero1.AllowUserToResizeColumns = false;
             this.tablero1.AllowUserToResizeRows = false;
+            this.tablero1.BackgroundColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -91,16 +92,6 @@
             this.tablero1.ShowEditingIcon = false;
             this.tablero1.Size = new System.Drawing.Size(653, 653);
             this.tablero1.TabIndex = 14;
-            // 
-            // lbl_estado
-            // 
-            this.lbl_estado.AutoSize = true;
-            this.lbl_estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_estado.Location = new System.Drawing.Point(627, 690);
-            this.lbl_estado.Name = "lbl_estado";
-            this.lbl_estado.Size = new System.Drawing.Size(82, 20);
-            this.lbl_estado.TabIndex = 22;
-            this.lbl_estado.Text = "Resultado";
             // 
             // cb_avanzarmovs
             // 
@@ -166,6 +157,7 @@
             this.tablero2.AllowUserToDeleteRows = false;
             this.tablero2.AllowUserToResizeColumns = false;
             this.tablero2.AllowUserToResizeRows = false;
+            this.tablero2.BackgroundColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -187,13 +179,24 @@
             this.tablero2.Size = new System.Drawing.Size(653, 653);
             this.tablero2.TabIndex = 23;
             // 
+            // btn_estadistica
+            // 
+            this.btn_estadistica.Location = new System.Drawing.Point(592, 689);
+            this.btn_estadistica.Name = "btn_estadistica";
+            this.btn_estadistica.Size = new System.Drawing.Size(150, 25);
+            this.btn_estadistica.TabIndex = 24;
+            this.btn_estadistica.Text = "Estadisticas del Juego";
+            this.btn_estadistica.UseVisualStyleBackColor = true;
+            this.btn_estadistica.Click += new System.EventHandler(this.btn_estadistica_Click);
+            // 
             // Grafico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1336, 720);
+            this.Controls.Add(this.btn_estadistica);
             this.Controls.Add(this.tablero2);
-            this.Controls.Add(this.lbl_estado);
             this.Controls.Add(this.cb_avanzarmovs);
             this.Controls.Add(this.txt_cantmovs);
             this.Controls.Add(this.btn_salir);
@@ -205,6 +208,7 @@
             this.Controls.Add(this.lbl_tablero1);
             this.Name = "Grafico";
             this.Text = "Grafico";
+            this.Load += new System.EventHandler(this.Grafico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablero1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablero2)).EndInit();
             this.ResumeLayout(false);
@@ -217,7 +221,6 @@
         private System.Windows.Forms.Label lbl_tablero2;
         private System.Windows.Forms.Label lbl_tablero1;
         private System.Windows.Forms.DataGridView tablero1;
-        private System.Windows.Forms.Label lbl_estado;
         private System.Windows.Forms.CheckBox cb_avanzarmovs;
         private System.Windows.Forms.TextBox txt_cantmovs;
         private System.Windows.Forms.Button btn_salir;
@@ -225,5 +228,6 @@
         private System.Windows.Forms.Button btn_play;
         private System.Windows.Forms.Button btn_cargar_barcos;
         private System.Windows.Forms.DataGridView tablero2;
+        private System.Windows.Forms.Button btn_estadistica;
     }
 }
