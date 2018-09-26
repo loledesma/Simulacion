@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +11,23 @@ namespace TP4BatallaNaval.Estrategias
 {
     public class EstrategiaEquipo2 : IEstrategia
     {
-     
+
         // ultimoResultado: "0" -> Agua | "1" -> Averiado | "2" -> Hundido | "-1" -> Repetido
-        int ultimoResultado;
-        int cant_movimientos;
-        int cant_agua;
-        int cant_barcos_enemigos;
-        int cant_aciertos;
-        int cant_barcos_hundidos;
+        private Coordenada ultMovAcertado;
+        public int ultimoResultado;
+        public int cant_movimientos;
+        public int cant_agua;
+        public int cant_aciertos;
+        public int cant_barcos_hundidos;
         List<Flota> flotas;
-        int cant_repetidos;
+        public int cant_repetidos;
         IDistribuciones distribucion;
+        List<Coordenada> DisparosProgramados;
+        int ultimo_desplazamiento_acertado;
+        Coordenada primerMov;
+        Coordenada origen;
+        int ultimo_desplazamiento;
+        int posicionLista;
 
         public EstrategiaEquipo2(List<Flota> _list_barcos, IDistribuciones _distrib)
         {
@@ -32,15 +39,112 @@ namespace TP4BatallaNaval.Estrategias
             cant_aciertos = 0;
             cant_repetidos = 0;
             distribucion = _distrib;
+            posicionLista = -1;
+            DisparosProgramados = cargarCoordenadasDisparo();
         }
 
         public Coordenada realizarMovimiento()
         {
+
             // esta estrategia siempre genera un aleatorio, no le interesan los movimientos anteriores.
-            int x = (int)Math.Round(distribucion.generar(), 0);
-            int y = (int)Math.Round(distribucion.generar(), 0);
+            int x = 0;
+            int y = 0;
             Coordenada c = new Coordenada(x, y);
+
+            if (ultMovAcertado == null)
+            {
+                posicionLista++;
+                if (posicionLista < 128)
+                {
+                    c = DisparosProgramados[posicionLista];
+                    return c;
+                }
+                else
+                {
+                    x = (int)Math.Round(distribucion.generar(), 0);
+                    y = (int)Math.Round(distribucion.generar(), 0);
+                    c.x = x;
+                    c.y = y;
+                    return c;
+                }
+                
+            }
+            else
+            {// arriba = 1 derecha = 2 abajo = 3 izquierda = 4
+                if (ultimo_desplazamiento_acertado != 0)
+                {
+                    if (ultimoResultado == 0 || ultimoResultado == -1)
+                    {
+                        ultMovAcertado = primerMov;
+                        if (ultimo_desplazamiento_acertado < 4)
+                        {
+                            ultimo_desplazamiento = ultimo_desplazamiento_acertado + 1;
+                        }
+                        else
+                        {
+                            ultimo_desplazamiento = 1;
+                        }
+                    }
+                    else
+                    {
+                        ultimo_desplazamiento = ultimo_desplazamiento_acertado - 1;
+                    }
+                }
+                ultimo_desplazamiento = validarFinGrilla();
+                switch (ultimo_desplazamiento)
+                {
+                    case 0:
+                        x = ultMovAcertado.x - 1;
+                        y = ultMovAcertado.y;
+                        c.x = x;
+                        c.y = y;
+                        ultimo_desplazamiento = 1;
+                        break;
+
+                    case 1:
+                        x = ultMovAcertado.x;
+                        y = ultMovAcertado.y + 1;
+                        c.x = x;
+                        c.y = y;
+                        ultimo_desplazamiento = 2;
+                        break;
+                    case 2:
+                        x = ultMovAcertado.x + 1;
+                        y = ultMovAcertado.y;
+                        c.x = x;
+                        c.y = y;
+                        ultimo_desplazamiento = 3;
+                        break;
+                    case 3:
+                        x = ultMovAcertado.x;
+                        y = ultMovAcertado.y - 1;
+                        c.x = x;
+                        c.y = y;
+                        ultimo_desplazamiento = 4;
+                        break;
+                }
+            }
             return c;
+        }
+
+        public List<Coordenada> cargarCoordenadasDisparo()
+        {
+            int aux = 0;
+
+            DisparosProgramados = new List<Coordenada>();
+
+            for (int i = 0; i <= 63; i++)
+            {
+
+                DisparosProgramados.Add(new Coordenada(i, i));
+
+            }
+            for (int j = 63; j >= 0; j--)
+            {
+                DisparosProgramados.Add(new Coordenada(j, aux));
+                aux++;
+            }
+            return DisparosProgramados;
         }
 
         public void resultadoMovimiento(Coordenada mov, int resultado)
@@ -54,9 +158,20 @@ namespace TP4BatallaNaval.Estrategias
                     break;
                 case 1:
                     cant_aciertos++;
+                    if (ultMovAcertado == null)
+                    {
+                        primerMov = mov;
+                    }
+                    ultMovAcertado = mov;
+                    ultimo_desplazamiento_acertado = ultimo_desplazamiento;
+                    ultimo_desplazamiento = 0;
                     break;
                 case 2:
                     cant_aciertos++;
+                    ultMovAcertado = null;
+                    primerMov = null;
+                    ultimo_desplazamiento = 0;
+                    ultimo_desplazamiento_acertado = 0;
                     break;
                 case -1:
                     cant_repetidos++;
@@ -92,7 +207,27 @@ namespace TP4BatallaNaval.Estrategias
             }
             return fRet;
         }
-
+        public int validarFinGrilla()
+        {
+            int desplazamiento = ultimo_desplazamiento;
+            if (ultMovAcertado.x == 0 && ultimo_desplazamiento == 0)
+            {
+                desplazamiento = 1;
+            }
+            else if (ultMovAcertado.x == 63 && ultimo_desplazamiento == 2)
+            {
+                desplazamiento = 3;
+            }
+            else if (ultMovAcertado.y == 0 && ultimo_desplazamiento == 3)
+            {
+                desplazamiento = 0;
+            }
+            else if (ultMovAcertado.y == 63 && ultimo_desplazamiento == 1)
+            {
+                desplazamiento = 2;
+            }
+            return desplazamiento;
+        }
         public Boolean finalizoJuego()
         {
             if (cant_barcos_hundidos == flotas.Count())

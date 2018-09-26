@@ -20,6 +20,7 @@ namespace TP4BatallaNaval.Estrategias
         List<Flota> flotas;
         Coordenada primerMov;
         Coordenada origen;
+        Boolean bpar = true;
         public int cant_repetidos;
         int ultimo_desplazamiento;
         IDistribuciones distribucion;
@@ -43,17 +44,34 @@ namespace TP4BatallaNaval.Estrategias
             int x = 0;
             int y = 0;
             Coordenada c = new Coordenada(x, y);
+            
             if (ultMovAcertado == null)
             {
                 if (cant_repetidos >= 2000)
                 {
-                    if (origen.y != 63)
+                    if (origen.y < 62)
                     {
-                        origen.y = origen.y + 1;
-                    } else
+                        origen.y = origen.y + 2;
+                    }
+                    else
                     {
-                        origen.x = origen.x + 1;
-                        origen.y = 0;
+                        if (origen.x < 62)
+                        {
+                            origen.x = origen.x + 2;
+                            if (bpar == true)
+                            {
+                                origen.y = 0;
+                            } else
+                            {
+                                origen.y = 1;
+                            }
+                            
+                        } else
+                        {
+                            origen.x = 1;
+                            origen.y = 1;
+                            bpar = false;
+                        }                        
                     }
                     c = origen;
                     return c;
