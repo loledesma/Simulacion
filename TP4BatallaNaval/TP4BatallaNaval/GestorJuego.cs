@@ -59,12 +59,12 @@ namespace TP4BatallaNaval
             if (jugador == 1)
             {
                 flotas_estrategia1 = new List<Flota>();
-                tablero1.Initialize();
+                tablero1 = new int[64, 64];
             }
             else
             {
                 flotas_estrategia2 = new List<Flota>();
-                tablero2.Initialize();
+                tablero2 = new int[64, 64];
             }
             while (_barcos <= cant_barcosxtipo)  
             {
@@ -93,6 +93,7 @@ namespace TP4BatallaNaval
                 generadorEstrategia1 = new AleatorioSistema();
                 distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia1);
                 //distrEstrategias = new DistribucionNormal(32, 16, generadorEstrategia1);
+                //distrEstrategias = new DistribucionExponencialNegativa((0.03125), generadorEstrategia1);
                 estrategia_j1 = new EstrategiaEquipo1(flotas_estrategia1, distrEstrategias);
             }
             else
@@ -100,6 +101,7 @@ namespace TP4BatallaNaval
                 generadorEstrategia2 = new CongruencialMixto(seed, a2, c2, m2);
                 distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia2);
                 //distrEstrategias = new DistribucionNormal(32, 16, generadorEstrategia2);
+                //distrEstrategias = new DistribucionExponencialNegativa((0.03125), generadorEstrategia2);
                 estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distrEstrategias);
             }
         }
