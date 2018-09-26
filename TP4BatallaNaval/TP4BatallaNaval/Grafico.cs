@@ -107,6 +107,8 @@ namespace TP4BatallaNaval
             }
             MessageBox.Show("Se cargaron los barcos en ambos tableros.");
             btn_play.Enabled = true;
+            cb_avanzarmovs.Enabled = true;
+            txt_cantmovs.Enabled = true;
         }
 
         private void btn_salir_Click(object sender, EventArgs e)

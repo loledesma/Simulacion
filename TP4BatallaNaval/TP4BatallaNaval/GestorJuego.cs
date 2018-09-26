@@ -87,14 +87,17 @@ namespace TP4BatallaNaval
             }
             if (jugador == 1)
             {
-                generadorEstrategia1 = new CongruencialMixto(seed, a1, c1, m1);
+                //generadorEstrategia1 = new CongruencialMixto(seed, a1, c1, m1);
+                generadorEstrategia1 = new AleatorioSistema();
                 distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia1);
+                //distrEstrategias = new DistribucionNormal(32, 16, generadorEstrategia1);
                 estrategia_j1 = new EstrategiaEquipo1(flotas_estrategia1, distrEstrategias);
             }
             else
             {
                 generadorEstrategia2 = new CongruencialMixto(seed, a2, c2, m2);
                 distrEstrategias = new DistribucionUniforme(0, 63, generadorEstrategia2);
+                //distrEstrategias = new DistribucionNormal(32, 16, generadorEstrategia2);
                 estrategia_j2 = new EstrategiaAleatoria(flotas_estrategia2, distrEstrategias);
             }
         }
