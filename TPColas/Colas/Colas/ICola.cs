@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Colas.Colas
+﻿namespace Colas.Colas
 {
-    interface ICola
+    public interface ICola
     {
+        bool Vacia();
+        void AgregarCliente(Cliente cliente);
+        Cliente ProximoCliente();
+        int Cantidad();
+        void Vaciar();
     }
 }

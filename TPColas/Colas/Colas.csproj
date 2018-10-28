@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Colas</RootNamespace>
     <AssemblyName>Colas</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +50,12 @@
     <Compile Include="Llegada.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servidor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NumerosAleatorios\NumerosAleatorios.csproj">
+      <Project>{07d11d90-00f2-406f-a473-1fa95471d08c}</Project>
+      <Name>NumerosAleatorios</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

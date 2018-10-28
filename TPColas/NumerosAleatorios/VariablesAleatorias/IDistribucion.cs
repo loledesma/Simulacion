@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using NumerosAleatorios.NumerosAleatorios;
 
 namespace NumerosAleatorios.VariablesAleatorias
 {
-    interface IDistribucion
+    public interface IDistribucion
     {
+        void AsignarGenerador(IGeneradorNumerosAleatorios generador);
+        double Generar();
+        List<double> Generar(int cantidad);
     }
 }

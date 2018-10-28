@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NumerosAleatorios.NumerosAleatorios
+﻿namespace NumerosAleatorios.NumerosAleatorios
 {
-    interface IGenerador
+    public interface IGeneradorNumerosAleatorios
     {
+        double Generar();
+        int Generar(int cifras);
     }
 }
