@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TPColas
 {
-    public partial class Form1 : Form
+    public partial class TPColas : Form
     {
-        public Form1()
+        public TPColas()
         {
             InitializeComponent();
         }
