@@ -11,7 +11,6 @@ namespace TP4BatallaNaval.Estrategias
 {
     public class EstrategiaEquipo2 : IEstrategia
     {
-
         // ultimoResultado: "0" -> Agua | "1" -> Averiado | "2" -> Hundido | "-1" -> Repetido
         private Coordenada ultMovAcertado;
         public int ultimoResultado;
@@ -26,8 +25,10 @@ namespace TP4BatallaNaval.Estrategias
         int ultimo_desplazamiento_acertado;
         Coordenada primerMov;
         Coordenada origen;
+        //Boolean bpar = true;
         int ultimo_desplazamiento;
         int posicionLista;
+        Coordenada movimiento;
 
         public EstrategiaEquipo2(List<Flota> _list_barcos, IDistribuciones _distrib)
         {
@@ -40,12 +41,10 @@ namespace TP4BatallaNaval.Estrategias
             cant_repetidos = 0;
             distribucion = _distrib;
             posicionLista = -1;
-            DisparosProgramados = cargarCoordenadasDisparo();
         }
 
         public Coordenada realizarMovimiento()
         {
-
             // esta estrategia siempre genera un aleatorio, no le interesan los movimientos anteriores.
             int x = 0;
             int y = 0;
@@ -53,21 +52,68 @@ namespace TP4BatallaNaval.Estrategias
 
             if (ultMovAcertado == null)
             {
-                posicionLista++;
-                if (posicionLista < 128)
+                //if (cant_repetidos >= 2000)
+                //{
+                //    if (origen.y < 62)
+                //    {
+                //        origen.y = origen.y + 2;
+                //    }
+                //    else
+                //    {
+                //        if (origen.x < 62)
+                //        {
+                //            origen.x = origen.x + 2;
+                //            if (bpar == true)
+                //            {
+                //                origen.y = 0;
+                //            }
+                //            else
+                //            {
+                //                origen.y = 1;
+                //            }
+
+                //        }
+                //        else
+                //        {
+                //            origen.x = 1;
+                //            origen.y = 1;
+                //            bpar = false;
+                //        }
+                //    }
+                //    c = origen;
+                //    return c;
+                //}
+                //else
+                //{
+                //    x = (int)Math.Round(distribucion.generar(), 0);
+                //    y = (int)Math.Round(distribucion.generar(), 0);
+                //    c.x = x;
+                //    c.y = y;
+                //    return c;
+                //}
+                if (movimiento == null )
                 {
-                    c = DisparosProgramados[posicionLista];
-                    return c;
+                    x = (int)Math.Round(distribucion.generar(), 0);
+                    y = (int)Math.Round(distribucion.generar(), 0);                    
                 }
                 else
                 {
-                    x = (int)Math.Round(distribucion.generar(), 0);
-                    y = (int)Math.Round(distribucion.generar(), 0);
-                    c.x = x;
-                    c.y = y;
-                    return c;
+                    if (movimiento.x == 63 || movimiento.y == 63 )
+                    {
+                        x = (int)Math.Round(distribucion.generar(), 0);
+                        y = (int)Math.Round(distribucion.generar(), 0);                       
+                        
+                    }
+                    else
+                    {
+                        x = movimiento.x + 1;
+                        y = movimiento.y + 1;
+                    }              
                 }
-                
+                c.x = x;
+                c.y = y;
+                movimiento = c;
+                return c;
             }
             else
             {// arriba = 1 derecha = 2 abajo = 3 izquierda = 4
@@ -100,7 +146,6 @@ namespace TP4BatallaNaval.Estrategias
                         c.y = y;
                         ultimo_desplazamiento = 1;
                         break;
-
                     case 1:
                         x = ultMovAcertado.x;
                         y = ultMovAcertado.y + 1;
@@ -127,25 +172,7 @@ namespace TP4BatallaNaval.Estrategias
             return c;
         }
 
-        public List<Coordenada> cargarCoordenadasDisparo()
-        {
-            int aux = 0;
-
-            DisparosProgramados = new List<Coordenada>();
-
-            for (int i = 0; i <= 63; i++)
-            {
-
-                DisparosProgramados.Add(new Coordenada(i, i));
-
-            }
-            for (int j = 63; j >= 0; j--)
-            {
-                DisparosProgramados.Add(new Coordenada(j, aux));
-                aux++;
-            }
-            return DisparosProgramados;
-        }
+      
 
         public void resultadoMovimiento(Coordenada mov, int resultado)
         {
@@ -172,6 +199,7 @@ namespace TP4BatallaNaval.Estrategias
                     primerMov = null;
                     ultimo_desplazamiento = 0;
                     ultimo_desplazamiento_acertado = 0;
+                    movimiento = null;
                     break;
                 case -1:
                     cant_repetidos++;
