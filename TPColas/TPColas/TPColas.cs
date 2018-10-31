@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Colas;
 using Colas.Colas;
 using NumerosAleatorios.VariablesAleatorias;
+using NumerosAleatorios.NumerosAleatorios;
 using Colas.Clientes;
 
 
@@ -26,12 +27,11 @@ namespace TPColas
 
         private delegate void InicioFinDelegate(bool fin);
         private delegate void ColumnasDelegate(int numCamion);
-       private delegate void FilaDelegate(DateTime relojActual, string eventoActual, Llegada llegadas,
+        private delegate void FilaDelegate(DateTime relojActual, string eventoActual, Llegada llegadas,
            ICola colaRecepcion, Servidor recepcion, ICola colaBalanza, Servidor balanza, ICola colaDarsenas, Servidor darsena1,
-          Servidor darsena2, int atendidos, int noAtendidos, decimal permanenciaDiaria, IEnumerable<Cliente> clientes);
+           Servidor darsena2, int atendidos, int noAtendidos, decimal permanenciaDiaria, IEnumerable<Cliente> clientes);
         private delegate void StatusDelegate(int dia, DateTime relojActual, int simulacion);
-        private delegate void ResultadosDelegate(decimal promedioAtendidos, decimal promedioNoAtendidos,
-            decimal promedioPermanencia);
+        private delegate void ResultadosDelegate(decimal promedioAtendidos, decimal promedioNoAtendidos, decimal promedioPermanencia);
 
         public TPColas()
         {
@@ -264,32 +264,38 @@ namespace TPColas
 
             Invoke(inicioFinInstance, false);
 
+            // opcional: uso un generador congruencial mixto en vez de un generador del sistema.
+            var generadorCongMixto = new CongruencialMixto(1000, 12, 17, 5000);
+
             var recepcionA = double.Parse(txt_recepcion_a.Text);
             var recepcionB = double.Parse(txt_recepcion_b.Text);
-            var distribucionRecepcion = new DistribucionUniforme(recepcionA, recepcionB);
+            //var distribucionRecepcion = new DistribucionUniforme(recepcionA, recepcionB); //uso generador del sistema
+            var distribucionRecepcion = new DistribucionUniforme(recepcionA, recepcionB, generadorCongMixto); //uso generador cong. mixto.
             var colaRecepcion = new ColaFifo("Recepción");
             var recepcion = new Servidor(distribucionRecepcion, colaRecepcion, "Recepción"); //crea el objeto servidor de recepciony le pasa la cola y la distribucion
 
             var balanzaA = double.Parse(txt_balanza_a.Text);
             var balanzaB = double.Parse(txt_balanza_b.Text);
-            var distribucionBalanza = new DistribucionUniforme(balanzaA, balanzaB);
+            //var distribucionBalanza = new DistribucionUniforme(balanzaA, balanzaB); //uso generador del sistema
+            var distribucionBalanza = new DistribucionUniforme(balanzaA, balanzaB, generadorCongMixto); //uso generador cong. mixto.
             var colaBalanza = new ColaFifo("Balanza"); 
             var balanza = new Servidor(distribucionBalanza, colaBalanza, "Balanza"); //crea la balanza y le pasa la cola y la distribucion
 
             var darsenasA = double.Parse(txt_darsenas_a.Text);
             var darsenasB = double.Parse(txt_darsenas_b.Text);
-            var distribucionDarsenas = new DistribucionUniforme(darsenasA, darsenasB);
+            //var distribucionDarsenas = new DistribucionUniforme(darsenasA, darsenasB); //uso generador del sistema
+            var distribucionDarsenas = new DistribucionUniforme(darsenasA, darsenasB, generadorCongMixto); //uso generador cong. mixto.
             var colaDarsenas = new ColaFifo("Dársenas");
             var mediaRecalibracion = double.Parse(txt_recalibracion_media.Text);
             var varianzaRecalibracion = double.Parse(txt_recalibracion_varianza.Text);
-            var distribucionRecalibracion = new DistribucionNormal(mediaRecalibracion, varianzaRecalibracion);
+            //var distribucionRecalibracion = new DistribucionNormal(mediaRecalibracion, varianzaRecalibracion); //uso generador del sistema
+            var distribucionRecalibracion = new DistribucionNormal(mediaRecalibracion, varianzaRecalibracion, generadorCongMixto); //uso generador cong. mixto.
             var darsena1 = new Servidor(distribucionDarsenas, colaDarsenas, "Dársena 1", distribucionRecalibracion);
             var darsena2 = new Servidor(distribucionDarsenas, colaDarsenas, "Dársena 2", distribucionRecalibracion); //crea las darsenas
 
             IDistribucion distribucionLlegadas;
             var horaInicio = DateTime.Today.AddHours(5);
             var horaFin = DateTime.Today.AddHours(18);
-
             Llegada llegadas;
 
             if (rb_estrategia_a.Checked) //elije que estrategias va a usar si la exponencial o la uniforme para las llegadas
@@ -436,10 +442,10 @@ namespace TPColas
                 }
 
                 var permanenciaAnterior = promedioPermanencia * promedioAtendidos * (dia - 1);
-                if (promedioAtendidos > 0 )
+                promedioAtendidos = (promedioAtendidos * (dia - 1) + atendidos) / dia;
+                promedioNoAtendidos = (promedioNoAtendidos * (dia - 1) + noAtendidos) / dia;
+                if (promedioAtendidos != 0)
                 {
-                    promedioAtendidos = (promedioAtendidos * (dia - 1) + atendidos) / dia;
-                    promedioNoAtendidos = (promedioNoAtendidos * (dia - 1) + noAtendidos) / dia;
                     promedioPermanencia = (permanenciaAnterior + permanenciaDiaria * atendidos) / (promedioAtendidos * dia);
                 }
             }
@@ -466,12 +472,10 @@ namespace TPColas
                 if (txt_atendidos_a.Text != "" && txt_atendidos_b.Text != "")
                 {
                     CompararEstrategias();
-
                 }
                 else
                     {
-                    MessageBox.Show("Corra la simulación para ambas estrategias si desea comparar");
-
+                        MessageBox.Show("Corra la simulación para ambas estrategias si desea comparar");
                     }   
             }
             else
@@ -674,12 +678,6 @@ namespace TPColas
         private void btn_detener_Click(object sender, EventArgs e)
         {
             _cancelar = true;
-        }
-
-      
+        }      
     }
-
-   
-
-
 }
