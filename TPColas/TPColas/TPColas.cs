@@ -301,6 +301,8 @@ namespace TPColas
             if (rb_estrategia_a.Checked) //elije que estrategias va a usar si la exponencial o la uniforme para las llegadas
             {
                 var lambda = double.Parse(txt_llegadas_lambda.Text);
+                lambda = lambda / 24; // convierto el numero a su valor en formato de horas
+                lambda = lambda / 60; // convierto el numero de formato horas a su valor en horas-minutos. 
                 distribucionLlegadas = new DistribucionExponencialNegativa(lambda);
                 llegadas = new Llegada(distribucionLlegadas, DateTime.Today.AddHours(12), horaFin);
             }
@@ -377,7 +379,14 @@ namespace TPColas
                             var clienteLlegando = new Cliente($"Camión {numCamion}");
                             clienteLlegando.Llegar(relojActual);
                             recepcion.LlegadaCliente(relojActual, clienteLlegando);
-                            llegadas.ActualizarLlegada();
+                            if (rb_estrategia_a.Checked)
+                            {
+                                llegadas.ActualizarLlegada(1);
+                            }
+                            else
+                            {
+                                llegadas.ActualizarLlegada(0);
+                            }
                             if (simulacion <= hasta)
                             {
                                 clientes.Add(clienteLlegando);

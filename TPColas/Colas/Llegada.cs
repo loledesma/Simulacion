@@ -25,11 +25,15 @@ namespace Colas.Clientes
             Cierre = _horaFin;
         }
 
-        public void ActualizarLlegada()
+        public void ActualizarLlegada(int nOption)
         {
             if (!ProximaLlegada.HasValue)
                 return;
             var demora = DistribucionLlegadas.Generar();
+            if (DistribucionLlegadas is DistribucionExponencialNegativa)
+            { 
+                demora = demora / 60; //paso el valor del double a su correspondencia en minutos.
+            }
             ProximaLlegada = ProximaLlegada.Value.AddMinutes(demora);
         }
 
