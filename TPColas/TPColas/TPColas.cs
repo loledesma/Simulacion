@@ -1,5 +1,4 @@
-﻿
-using NumerosAleatorios;
+﻿using NumerosAleatorios;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,8 +12,6 @@ using Colas.Colas;
 using NumerosAleatorios.VariablesAleatorias;
 using NumerosAleatorios.NumerosAleatorios;
 using Colas.Clientes;
-
-
 
 namespace TPColas
 {
@@ -45,12 +42,12 @@ namespace TPColas
 
         private void rb_estrategia_a_CheckedChanged(object sender, EventArgs e)
         {
-            btn_simular.Enabled = true;
+            HabilitoSimulacion();
         }
 
         private void rb_estrategia_b_CheckedChanged(object sender, EventArgs e)
         {
-            btn_simular.Enabled = true;
+            HabilitoSimulacion();
         }
 
         private void btn_simular_Click(object sender, EventArgs e)
@@ -67,8 +64,40 @@ namespace TPColas
             _simularThread.Start();
         }
 
+        private void HabilitoSimulacion()
+        {
+            Boolean bFlag = false;
+            if (rb_estrategia_a.Checked || rb_estrategia_b.Checked)
+            {
+                if (rbTP5.Checked || (rbTP6.Checked && (rb_euler.Checked || rb_rungekutta.Checked)))
+                {
+                    bFlag = true;
+                }
+            }
+            btn_simular.Enabled = bFlag;
+        }
+
         private Boolean ValidarDatos()
         {
+            if (!rbTP5.Checked && !rbTP6.Checked)
+            {
+                var mensaje = "Debe seleccionar el Numero de Trabajo Practico a simular.";
+                MensajeError(mensaje, rbTP5);
+                return false;
+            }
+
+            if (rbTP5.Checked)
+            {
+                if (!ValidarUniforme(txt_darsenas_a, txt_darsenas_b))
+                    return false;
+            }
+            
+            if (rbTP6.Checked)
+            {
+                if (!ValidarUniforme(txt_litros_a, txt_litros_b))
+                    return false;
+            }
+
             if (rb_estrategia_a.Checked && !ValidarExponencial(txt_llegadas_lambda))
                 return false;
 
@@ -76,9 +105,6 @@ namespace TPColas
                 return false;
 
             if (!ValidarUniforme(txt_balanza_a, txt_balanza_b))
-                return false;
-
-            if (!ValidarUniforme(txt_darsenas_a, txt_darsenas_b))
                 return false;
 
             if (!ValidarNormal(txt_recalibracion_media, txt_recalibracion_varianza))
@@ -98,11 +124,13 @@ namespace TPColas
             }
 
             double lambda;
+
             if (!double.TryParse(txtLambda.Text, out lambda) || lambda <= 0)
             {
                 MensajeError(mensaje, txtLambda);
                 return false;
             }
+
             return true;
         }
 
@@ -251,6 +279,7 @@ namespace TPColas
                 MensajeError(mensaje, txtHasta);
                 return false;
             }
+
             return true;
         }
 
@@ -264,6 +293,21 @@ namespace TPColas
 
             Invoke(inicioFinInstance, false);
 
+            Boolean bContinua = false;
+            int nTipoContinua = 0;
+            if (rbTP6.Checked)
+            {
+                bContinua = true;
+                if (rb_euler.Checked)
+                {
+                    nTipoContinua = 1;
+                }
+                if (rb_rungekutta.Checked)
+                {
+                    nTipoContinua = 2;
+                }
+            }
+
             // opcional: uso un generador congruencial mixto en vez de un generador del sistema.
             var generadorCongMixto = new CongruencialMixto(1000, 12, 17, 5000);
 
@@ -272,17 +316,22 @@ namespace TPColas
             //var distribucionRecepcion = new DistribucionUniforme(recepcionA, recepcionB); //uso generador del sistema
             var distribucionRecepcion = new DistribucionUniforme(recepcionA, recepcionB, generadorCongMixto); //uso generador cong. mixto.
             var colaRecepcion = new ColaFifo("Recepción");
-            var recepcion = new Servidor(distribucionRecepcion, colaRecepcion, "Recepción"); //crea el objeto servidor de recepciony le pasa la cola y la distribucion
+            var recepcion = new Servidor(distribucionRecepcion, colaRecepcion, "Recepción", false); //crea el objeto servidor de recepciony le pasa la cola y la distribucion
 
             var balanzaA = double.Parse(txt_balanza_a.Text);
             var balanzaB = double.Parse(txt_balanza_b.Text);
             //var distribucionBalanza = new DistribucionUniforme(balanzaA, balanzaB); //uso generador del sistema
             var distribucionBalanza = new DistribucionUniforme(balanzaA, balanzaB, generadorCongMixto); //uso generador cong. mixto.
             var colaBalanza = new ColaFifo("Balanza"); 
-            var balanza = new Servidor(distribucionBalanza, colaBalanza, "Balanza"); //crea la balanza y le pasa la cola y la distribucion
+            var balanza = new Servidor(distribucionBalanza, colaBalanza, "Balanza", false); //crea la balanza y le pasa la cola y la distribucion
+
+            var litrosA = double.Parse(txt_litros_a.Text);
+            var litrosB = double.Parse(txt_litros_b.Text);
+            var distribucionLitros = new DistribucionUniforme(litrosA, litrosB, generadorCongMixto);
+            var distribucionK = new DistribucionNormal(0.2, 0.7, generadorCongMixto);
 
             var darsenasA = double.Parse(txt_darsenas_a.Text);
-            var darsenasB = double.Parse(txt_darsenas_b.Text);
+            var darsenasB = double.Parse(txt_darsenas_b.Text);            
             //var distribucionDarsenas = new DistribucionUniforme(darsenasA, darsenasB); //uso generador del sistema
             var distribucionDarsenas = new DistribucionUniforme(darsenasA, darsenasB, generadorCongMixto); //uso generador cong. mixto.
             var colaDarsenas = new ColaFifo("Dársenas");
@@ -290,8 +339,8 @@ namespace TPColas
             var varianzaRecalibracion = double.Parse(txt_recalibracion_varianza.Text);
             //var distribucionRecalibracion = new DistribucionNormal(mediaRecalibracion, varianzaRecalibracion); //uso generador del sistema
             var distribucionRecalibracion = new DistribucionNormal(mediaRecalibracion, varianzaRecalibracion, generadorCongMixto); //uso generador cong. mixto.
-            var darsena1 = new Servidor(distribucionDarsenas, colaDarsenas, "Dársena 1", distribucionRecalibracion);
-            var darsena2 = new Servidor(distribucionDarsenas, colaDarsenas, "Dársena 2", distribucionRecalibracion); //crea las darsenas
+            var darsena1 = new Servidor(distribucionDarsenas, colaDarsenas, "Dársena 1", bContinua, distribucionRecalibracion, distribucionLitros, distribucionK, nTipoContinua); //crea las darsenas
+            var darsena2 = new Servidor(distribucionDarsenas, colaDarsenas, "Dársena 2", bContinua, distribucionRecalibracion, distribucionLitros, distribucionK, nTipoContinua); //crea las darsenas
 
             IDistribucion distribucionLlegadas;
             var horaInicio = DateTime.Today.AddHours(5);
@@ -453,6 +502,7 @@ namespace TPColas
                 var permanenciaAnterior = promedioPermanencia * promedioAtendidos * (dia - 1);
                 promedioAtendidos = (promedioAtendidos * (dia - 1) + atendidos) / dia;
                 promedioNoAtendidos = (promedioNoAtendidos * (dia - 1) + noAtendidos) / dia;
+
                 if (promedioAtendidos != 0)
                 {
                     promedioPermanencia = (permanenciaAnterior + permanenciaDiaria * atendidos) / (promedioAtendidos * dia);
@@ -460,11 +510,8 @@ namespace TPColas
             }
 
             Invoke(resultadosInstance, promedioAtendidos, promedioNoAtendidos, promedioPermanencia);
-
             Invoke(inicioFinInstance, true);
-
             var resultado = _cancelar ? "interrumpida" : "completa";
-
             MessageBox.Show($@"Simulación {resultado}", @"Resultado");
         }
 
@@ -472,8 +519,11 @@ namespace TPColas
         {
             rb_estrategia_a.Enabled = fin;
             rb_estrategia_b.Enabled = fin;
+            rbTP5.Enabled = fin;
+            rbTP6.Enabled = fin;
+            rb_euler.Enabled = fin;
+            rb_rungekutta.Enabled = fin;
             btn_simular.Enabled = fin;
-
             btn_detener.Enabled = !fin;
 
             if (fin)
@@ -483,9 +533,9 @@ namespace TPColas
                     CompararEstrategias();
                 }
                 else
-                    {
-                        MessageBox.Show("Corra la simulación para ambas estrategias si desea comparar");
-                    }   
+                {
+                    MessageBox.Show("Corra la simulación para ambas estrategias si desea comparar");
+                }   
             }
             else
             {
@@ -501,7 +551,7 @@ namespace TPColas
         //manejo de grilla: agrega las columnas de los clientes
         private void AgregarColumnas(int numCamion)
         {
-            var columns = new DataGridViewColumn[3];
+            var columns = new DataGridViewColumn[4];
 
             DataGridViewColumn columnLlegada = new DataGridViewTextBoxColumn();
             columnLlegada.CellTemplate = new DataGridViewTextBoxCell();
@@ -526,6 +576,14 @@ namespace TPColas
             columnPermanencia.Width = 80;
             columnPermanencia.FillWeight = 1;
             columns[2] = (columnPermanencia);
+
+            DataGridViewColumn columnLitrosCamion = new DataGridViewTextBoxColumn();
+            columnLitrosCamion.CellTemplate = new DataGridViewTextBoxCell();
+            columnLitrosCamion.Name = $"litros_camion_{numCamion}";
+            columnLitrosCamion.HeaderText = $@"Combustible Camion {numCamion}";
+            columnLitrosCamion.Width = 120;
+            columnLitrosCamion.FillWeight = 1;
+            columns[3] = (columnLitrosCamion);
 
             dgv_simulaciones.Columns.AddRange(columns);
         }
@@ -564,6 +622,7 @@ namespace TPColas
                 dgv_simulaciones.Rows[row].Cells[$"llegada_camion_{num}"].Value = cliente.HoraLlegada.ToString("HH:mm:ss");
                 dgv_simulaciones.Rows[row].Cells[$"estado_camion_{num}"].Value = cliente.Estado;
                 dgv_simulaciones.Rows[row].Cells[$"permanencia_camion_{num}"].Value = DateTimeConverter.DesdeMinutos(cliente.TiempoEnSistema);
+                dgv_simulaciones.Rows[row].Cells[$"litros_camion_{num}"].Value = cliente.LitrosCombustible;
             }
         }
 
@@ -687,6 +746,44 @@ namespace TPColas
         private void btn_detener_Click(object sender, EventArgs e)
         {
             _cancelar = true;
-        }      
+        }
+
+        private void rbTP5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbTP5.Checked)
+            {
+                txt_darsenas_a.Enabled = true;
+                txt_darsenas_b.Enabled = true;
+                txt_litros_a.Enabled = false;
+                txt_litros_b.Enabled = false;
+                rb_euler.Enabled = false;
+                rb_rungekutta.Enabled = false;
+            }
+            HabilitoSimulacion();
+        }
+
+        private void rbTP6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbTP6.Checked)
+            {
+                txt_darsenas_a.Enabled = false;
+                txt_darsenas_b.Enabled = false;
+                txt_litros_a.Enabled = true;
+                txt_litros_b.Enabled = true;
+                rb_euler.Enabled = true;
+                rb_rungekutta.Enabled = true;
+            }
+            HabilitoSimulacion();
+        }
+
+        private void rb_euler_CheckedChanged(object sender, EventArgs e)
+        {
+            HabilitoSimulacion();
+        }
+
+        private void rb_rungekutta_CheckedChanged(object sender, EventArgs e)
+        {
+            HabilitoSimulacion();
+        }
     }
 }

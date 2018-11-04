@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TPColas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gb_actual = new System.Windows.Forms.GroupBox();
             this.txt_evento = new System.Windows.Forms.TextBox();
             this.txt_hora = new System.Windows.Forms.TextBox();
@@ -71,8 +71,6 @@
             this.btn_simular = new System.Windows.Forms.Button();
             this.rb_estrategia_b = new System.Windows.Forms.RadioButton();
             this.rb_estrategia_a = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.gb_estrategias = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -106,6 +104,17 @@
             this.total_atendidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sin_atender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.permanencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gb_tipo_tp = new System.Windows.Forms.GroupBox();
+            this.rbTP6 = new System.Windows.Forms.RadioButton();
+            this.rbTP5 = new System.Windows.Forms.RadioButton();
+            this.gb_litros_camiones = new System.Windows.Forms.GroupBox();
+            this.txt_litros_b = new System.Windows.Forms.TextBox();
+            this.txt_litros_a = new System.Windows.Forms.TextBox();
+            this.lbl_litros_b = new System.Windows.Forms.Label();
+            this.lbl_litros_a = new System.Windows.Forms.Label();
+            this.gb_modelos_continua = new System.Windows.Forms.GroupBox();
+            this.rb_rungekutta = new System.Windows.Forms.RadioButton();
+            this.rb_euler = new System.Windows.Forms.RadioButton();
             this.gb_actual.SuspendLayout();
             this.gb_datos_iniciales.SuspendLayout();
             this.gb_recalibracion.SuspendLayout();
@@ -115,6 +124,9 @@
             this.gb_llegadas.SuspendLayout();
             this.gb_estrategias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_simulaciones)).BeginInit();
+            this.gb_tipo_tp.SuspendLayout();
+            this.gb_litros_camiones.SuspendLayout();
+            this.gb_modelos_continua.SuspendLayout();
             this.SuspendLayout();
             // 
             // gb_actual
@@ -126,9 +138,9 @@
             this.gb_actual.Controls.Add(this.lbl_hora);
             this.gb_actual.Controls.Add(this.lbl_dia);
             this.gb_actual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gb_actual.Location = new System.Drawing.Point(944, 12);
+            this.gb_actual.Location = new System.Drawing.Point(927, 12);
             this.gb_actual.Name = "gb_actual";
-            this.gb_actual.Size = new System.Drawing.Size(155, 114);
+            this.gb_actual.Size = new System.Drawing.Size(172, 102);
             this.gb_actual.TabIndex = 14;
             this.gb_actual.TabStop = false;
             this.gb_actual.Text = "Simulación:";
@@ -137,36 +149,36 @@
             // 
             this.txt_evento.CausesValidation = false;
             this.txt_evento.Enabled = false;
-            this.txt_evento.Location = new System.Drawing.Point(57, 81);
+            this.txt_evento.Location = new System.Drawing.Point(63, 71);
             this.txt_evento.Name = "txt_evento";
             this.txt_evento.ReadOnly = true;
-            this.txt_evento.Size = new System.Drawing.Size(89, 20);
+            this.txt_evento.Size = new System.Drawing.Size(100, 20);
             this.txt_evento.TabIndex = 5;
             // 
             // txt_hora
             // 
             this.txt_hora.CausesValidation = false;
             this.txt_hora.Enabled = false;
-            this.txt_hora.Location = new System.Drawing.Point(57, 52);
+            this.txt_hora.Location = new System.Drawing.Point(63, 45);
             this.txt_hora.Name = "txt_hora";
             this.txt_hora.ReadOnly = true;
-            this.txt_hora.Size = new System.Drawing.Size(84, 20);
+            this.txt_hora.Size = new System.Drawing.Size(100, 20);
             this.txt_hora.TabIndex = 4;
             // 
             // txt_dia
             // 
             this.txt_dia.CausesValidation = false;
             this.txt_dia.Enabled = false;
-            this.txt_dia.Location = new System.Drawing.Point(57, 23);
+            this.txt_dia.Location = new System.Drawing.Point(63, 19);
             this.txt_dia.Name = "txt_dia";
             this.txt_dia.ReadOnly = true;
-            this.txt_dia.Size = new System.Drawing.Size(37, 20);
+            this.txt_dia.Size = new System.Drawing.Size(100, 20);
             this.txt_dia.TabIndex = 3;
             // 
             // lbl_evento
             // 
             this.lbl_evento.AutoSize = true;
-            this.lbl_evento.Location = new System.Drawing.Point(6, 84);
+            this.lbl_evento.Location = new System.Drawing.Point(6, 74);
             this.lbl_evento.Name = "lbl_evento";
             this.lbl_evento.Size = new System.Drawing.Size(51, 13);
             this.lbl_evento.TabIndex = 2;
@@ -175,7 +187,7 @@
             // lbl_hora
             // 
             this.lbl_hora.AutoSize = true;
-            this.lbl_hora.Location = new System.Drawing.Point(6, 55);
+            this.lbl_hora.Location = new System.Drawing.Point(6, 48);
             this.lbl_hora.Name = "lbl_hora";
             this.lbl_hora.Size = new System.Drawing.Size(38, 13);
             this.lbl_hora.TabIndex = 1;
@@ -184,7 +196,7 @@
             // lbl_dia
             // 
             this.lbl_dia.AutoSize = true;
-            this.lbl_dia.Location = new System.Drawing.Point(6, 30);
+            this.lbl_dia.Location = new System.Drawing.Point(6, 22);
             this.lbl_dia.Name = "lbl_dia";
             this.lbl_dia.Size = new System.Drawing.Size(32, 13);
             this.lbl_dia.TabIndex = 0;
@@ -206,7 +218,7 @@
             this.gb_datos_iniciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_datos_iniciales.Location = new System.Drawing.Point(12, 12);
             this.gb_datos_iniciales.Name = "gb_datos_iniciales";
-            this.gb_datos_iniciales.Size = new System.Drawing.Size(926, 114);
+            this.gb_datos_iniciales.Size = new System.Drawing.Size(909, 102);
             this.gb_datos_iniciales.TabIndex = 15;
             this.gb_datos_iniciales.TabStop = false;
             this.gb_datos_iniciales.Text = "Datos Iniciales:";
@@ -217,9 +229,9 @@
             this.gb_recalibracion.Controls.Add(this.lbl_recalibracion_varianza);
             this.gb_recalibracion.Controls.Add(this.txt_recalibracion_media);
             this.gb_recalibracion.Controls.Add(this.lbl_recalibracion_media);
-            this.gb_recalibracion.Location = new System.Drawing.Point(783, 19);
+            this.gb_recalibracion.Location = new System.Drawing.Point(767, 13);
             this.gb_recalibracion.Name = "gb_recalibracion";
-            this.gb_recalibracion.Size = new System.Drawing.Size(137, 85);
+            this.gb_recalibracion.Size = new System.Drawing.Size(129, 82);
             this.gb_recalibracion.TabIndex = 17;
             this.gb_recalibracion.TabStop = false;
             this.gb_recalibracion.Text = "Recalibración:";
@@ -264,16 +276,16 @@
             this.gb_darsenas.Controls.Add(this.lbl_darsenas_b);
             this.gb_darsenas.Controls.Add(this.txt_darsenas_a);
             this.gb_darsenas.Controls.Add(this.lbl_darsenas_a);
-            this.gb_darsenas.Location = new System.Drawing.Point(652, 19);
+            this.gb_darsenas.Location = new System.Drawing.Point(636, 13);
             this.gb_darsenas.Name = "gb_darsenas";
-            this.gb_darsenas.Size = new System.Drawing.Size(125, 85);
+            this.gb_darsenas.Size = new System.Drawing.Size(125, 82);
             this.gb_darsenas.TabIndex = 16;
             this.gb_darsenas.TabStop = false;
             this.gb_darsenas.Text = "Dársenas:";
             // 
             // txt_darsenas_b
             // 
-            this.txt_darsenas_b.Location = new System.Drawing.Point(71, 48);
+            this.txt_darsenas_b.Location = new System.Drawing.Point(55, 48);
             this.txt_darsenas_b.Name = "txt_darsenas_b";
             this.txt_darsenas_b.Size = new System.Drawing.Size(37, 20);
             this.txt_darsenas_b.TabIndex = 3;
@@ -282,7 +294,7 @@
             // lbl_darsenas_b
             // 
             this.lbl_darsenas_b.AutoSize = true;
-            this.lbl_darsenas_b.Location = new System.Drawing.Point(17, 51);
+            this.lbl_darsenas_b.Location = new System.Drawing.Point(30, 51);
             this.lbl_darsenas_b.Name = "lbl_darsenas_b";
             this.lbl_darsenas_b.Size = new System.Drawing.Size(19, 13);
             this.lbl_darsenas_b.TabIndex = 2;
@@ -290,7 +302,7 @@
             // 
             // txt_darsenas_a
             // 
-            this.txt_darsenas_a.Location = new System.Drawing.Point(71, 22);
+            this.txt_darsenas_a.Location = new System.Drawing.Point(55, 22);
             this.txt_darsenas_a.Name = "txt_darsenas_a";
             this.txt_darsenas_a.Size = new System.Drawing.Size(37, 20);
             this.txt_darsenas_a.TabIndex = 1;
@@ -299,7 +311,7 @@
             // lbl_darsenas_a
             // 
             this.lbl_darsenas_a.AutoSize = true;
-            this.lbl_darsenas_a.Location = new System.Drawing.Point(17, 25);
+            this.lbl_darsenas_a.Location = new System.Drawing.Point(30, 25);
             this.lbl_darsenas_a.Name = "lbl_darsenas_a";
             this.lbl_darsenas_a.Size = new System.Drawing.Size(19, 13);
             this.lbl_darsenas_a.TabIndex = 0;
@@ -311,16 +323,16 @@
             this.gb_balanza.Controls.Add(this.lbl_balanza_b);
             this.gb_balanza.Controls.Add(this.txt_balanza_a);
             this.gb_balanza.Controls.Add(this.lbl_balanza_a);
-            this.gb_balanza.Location = new System.Drawing.Point(521, 19);
+            this.gb_balanza.Location = new System.Drawing.Point(505, 13);
             this.gb_balanza.Name = "gb_balanza";
-            this.gb_balanza.Size = new System.Drawing.Size(125, 85);
+            this.gb_balanza.Size = new System.Drawing.Size(125, 82);
             this.gb_balanza.TabIndex = 8;
             this.gb_balanza.TabStop = false;
             this.gb_balanza.Text = "Pesado:";
             // 
             // txt_balanza_b
             // 
-            this.txt_balanza_b.Location = new System.Drawing.Point(71, 48);
+            this.txt_balanza_b.Location = new System.Drawing.Point(51, 48);
             this.txt_balanza_b.Name = "txt_balanza_b";
             this.txt_balanza_b.Size = new System.Drawing.Size(37, 20);
             this.txt_balanza_b.TabIndex = 3;
@@ -329,7 +341,7 @@
             // lbl_balanza_b
             // 
             this.lbl_balanza_b.AutoSize = true;
-            this.lbl_balanza_b.Location = new System.Drawing.Point(17, 51);
+            this.lbl_balanza_b.Location = new System.Drawing.Point(26, 51);
             this.lbl_balanza_b.Name = "lbl_balanza_b";
             this.lbl_balanza_b.Size = new System.Drawing.Size(19, 13);
             this.lbl_balanza_b.TabIndex = 2;
@@ -337,7 +349,7 @@
             // 
             // txt_balanza_a
             // 
-            this.txt_balanza_a.Location = new System.Drawing.Point(71, 22);
+            this.txt_balanza_a.Location = new System.Drawing.Point(51, 22);
             this.txt_balanza_a.Name = "txt_balanza_a";
             this.txt_balanza_a.Size = new System.Drawing.Size(37, 20);
             this.txt_balanza_a.TabIndex = 1;
@@ -346,7 +358,7 @@
             // lbl_balanza_a
             // 
             this.lbl_balanza_a.AutoSize = true;
-            this.lbl_balanza_a.Location = new System.Drawing.Point(17, 25);
+            this.lbl_balanza_a.Location = new System.Drawing.Point(26, 25);
             this.lbl_balanza_a.Name = "lbl_balanza_a";
             this.lbl_balanza_a.Size = new System.Drawing.Size(19, 13);
             this.lbl_balanza_a.TabIndex = 0;
@@ -358,16 +370,16 @@
             this.gb_recepcion.Controls.Add(this.lbl_recepcion_b);
             this.gb_recepcion.Controls.Add(this.txt_recepcion_a);
             this.gb_recepcion.Controls.Add(this.lbl_recepcion_a);
-            this.gb_recepcion.Location = new System.Drawing.Point(339, 19);
+            this.gb_recepcion.Location = new System.Drawing.Point(331, 13);
             this.gb_recepcion.Name = "gb_recepcion";
-            this.gb_recepcion.Size = new System.Drawing.Size(176, 85);
+            this.gb_recepcion.Size = new System.Drawing.Size(167, 82);
             this.gb_recepcion.TabIndex = 7;
             this.gb_recepcion.TabStop = false;
             this.gb_recepcion.Text = "Recepción de camiones:";
             // 
             // txt_recepcion_b
             // 
-            this.txt_recepcion_b.Location = new System.Drawing.Point(96, 48);
+            this.txt_recepcion_b.Location = new System.Drawing.Point(79, 48);
             this.txt_recepcion_b.Name = "txt_recepcion_b";
             this.txt_recepcion_b.Size = new System.Drawing.Size(37, 20);
             this.txt_recepcion_b.TabIndex = 3;
@@ -376,7 +388,7 @@
             // lbl_recepcion_b
             // 
             this.lbl_recepcion_b.AutoSize = true;
-            this.lbl_recepcion_b.Location = new System.Drawing.Point(42, 51);
+            this.lbl_recepcion_b.Location = new System.Drawing.Point(54, 51);
             this.lbl_recepcion_b.Name = "lbl_recepcion_b";
             this.lbl_recepcion_b.Size = new System.Drawing.Size(19, 13);
             this.lbl_recepcion_b.TabIndex = 2;
@@ -384,7 +396,7 @@
             // 
             // txt_recepcion_a
             // 
-            this.txt_recepcion_a.Location = new System.Drawing.Point(96, 22);
+            this.txt_recepcion_a.Location = new System.Drawing.Point(79, 22);
             this.txt_recepcion_a.Name = "txt_recepcion_a";
             this.txt_recepcion_a.Size = new System.Drawing.Size(37, 20);
             this.txt_recepcion_a.TabIndex = 1;
@@ -393,7 +405,7 @@
             // lbl_recepcion_a
             // 
             this.lbl_recepcion_a.AutoSize = true;
-            this.lbl_recepcion_a.Location = new System.Drawing.Point(42, 25);
+            this.lbl_recepcion_a.Location = new System.Drawing.Point(54, 25);
             this.lbl_recepcion_a.Name = "lbl_recepcion_a";
             this.lbl_recepcion_a.Size = new System.Drawing.Size(19, 13);
             this.lbl_recepcion_a.TabIndex = 0;
@@ -403,9 +415,9 @@
             // 
             this.gb_llegadas.Controls.Add(this.txt_llegadas_lambda);
             this.gb_llegadas.Controls.Add(this.lbl_llegadas_lambda);
-            this.gb_llegadas.Location = new System.Drawing.Point(196, 19);
+            this.gb_llegadas.Location = new System.Drawing.Point(196, 13);
             this.gb_llegadas.Name = "gb_llegadas";
-            this.gb_llegadas.Size = new System.Drawing.Size(137, 85);
+            this.gb_llegadas.Size = new System.Drawing.Size(129, 82);
             this.gb_llegadas.TabIndex = 6;
             this.gb_llegadas.TabStop = false;
             this.gb_llegadas.Text = "Llegadas (A):";
@@ -429,7 +441,7 @@
             // 
             // txt_hasta
             // 
-            this.txt_hasta.Location = new System.Drawing.Point(124, 77);
+            this.txt_hasta.Location = new System.Drawing.Point(114, 71);
             this.txt_hasta.Name = "txt_hasta";
             this.txt_hasta.Size = new System.Drawing.Size(54, 20);
             this.txt_hasta.TabIndex = 5;
@@ -437,7 +449,7 @@
             // 
             // txt_desde
             // 
-            this.txt_desde.Location = new System.Drawing.Point(124, 52);
+            this.txt_desde.Location = new System.Drawing.Point(114, 45);
             this.txt_desde.Name = "txt_desde";
             this.txt_desde.Size = new System.Drawing.Size(54, 20);
             this.txt_desde.TabIndex = 4;
@@ -445,7 +457,7 @@
             // 
             // txt_dias
             // 
-            this.txt_dias.Location = new System.Drawing.Point(124, 27);
+            this.txt_dias.Location = new System.Drawing.Point(114, 19);
             this.txt_dias.Name = "txt_dias";
             this.txt_dias.Size = new System.Drawing.Size(54, 20);
             this.txt_dias.TabIndex = 3;
@@ -454,7 +466,7 @@
             // lbl_dias
             // 
             this.lbl_dias.AutoSize = true;
-            this.lbl_dias.Location = new System.Drawing.Point(21, 30);
+            this.lbl_dias.Location = new System.Drawing.Point(11, 22);
             this.lbl_dias.Name = "lbl_dias";
             this.lbl_dias.Size = new System.Drawing.Size(38, 13);
             this.lbl_dias.TabIndex = 2;
@@ -463,7 +475,7 @@
             // lbl_hasta
             // 
             this.lbl_hasta.AutoSize = true;
-            this.lbl_hasta.Location = new System.Drawing.Point(21, 79);
+            this.lbl_hasta.Location = new System.Drawing.Point(11, 74);
             this.lbl_hasta.Name = "lbl_hasta";
             this.lbl_hasta.Size = new System.Drawing.Size(88, 13);
             this.lbl_hasta.TabIndex = 1;
@@ -472,7 +484,7 @@
             // lbl_desde
             // 
             this.lbl_desde.AutoSize = true;
-            this.lbl_desde.Location = new System.Drawing.Point(21, 55);
+            this.lbl_desde.Location = new System.Drawing.Point(11, 48);
             this.lbl_desde.Name = "lbl_desde";
             this.lbl_desde.Size = new System.Drawing.Size(91, 13);
             this.lbl_desde.TabIndex = 0;
@@ -482,7 +494,7 @@
             // 
             this.btn_detener.Enabled = false;
             this.btn_detener.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_detener.Location = new System.Drawing.Point(587, 165);
+            this.btn_detener.Location = new System.Drawing.Point(1001, 142);
             this.btn_detener.Name = "btn_detener";
             this.btn_detener.Size = new System.Drawing.Size(80, 33);
             this.btn_detener.TabIndex = 18;
@@ -494,9 +506,9 @@
             // 
             this.btn_simular.Enabled = false;
             this.btn_simular.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_simular.Location = new System.Drawing.Point(506, 165);
+            this.btn_simular.Location = new System.Drawing.Point(915, 142);
             this.btn_simular.Name = "btn_simular";
-            this.btn_simular.Size = new System.Drawing.Size(75, 33);
+            this.btn_simular.Size = new System.Drawing.Size(80, 33);
             this.btn_simular.TabIndex = 16;
             this.btn_simular.Text = "SIMULAR";
             this.btn_simular.UseVisualStyleBackColor = true;
@@ -505,53 +517,37 @@
             // rb_estrategia_b
             // 
             this.rb_estrategia_b.AutoSize = true;
-            this.rb_estrategia_b.Location = new System.Drawing.Point(628, 139);
+            this.rb_estrategia_b.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_estrategia_b.Location = new System.Drawing.Point(599, 165);
             this.rb_estrategia_b.Name = "rb_estrategia_b";
-            this.rb_estrategia_b.Size = new System.Drawing.Size(14, 13);
+            this.rb_estrategia_b.Size = new System.Drawing.Size(298, 17);
             this.rb_estrategia_b.TabIndex = 23;
             this.rb_estrategia_b.TabStop = true;
+            this.rb_estrategia_b.Text = "Estrategia B (Llegadas - Uniforme 7 y 8 minutos)";
             this.rb_estrategia_b.UseVisualStyleBackColor = true;
             this.rb_estrategia_b.CheckedChanged += new System.EventHandler(this.rb_estrategia_b_CheckedChanged);
             // 
             // rb_estrategia_a
             // 
             this.rb_estrategia_a.AutoSize = true;
-            this.rb_estrategia_a.Location = new System.Drawing.Point(382, 139);
+            this.rb_estrategia_a.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_estrategia_a.Location = new System.Drawing.Point(599, 139);
             this.rb_estrategia_a.Name = "rb_estrategia_a";
-            this.rb_estrategia_a.Size = new System.Drawing.Size(14, 13);
+            this.rb_estrategia_a.Size = new System.Drawing.Size(282, 17);
             this.rb_estrategia_a.TabIndex = 22;
             this.rb_estrategia_a.TabStop = true;
+            this.rb_estrategia_a.Text = "Estrategia A (Llegadas - Lambda 7,5 minutos)";
             this.rb_estrategia_a.UseVisualStyleBackColor = true;
             this.rb_estrategia_a.CheckedChanged += new System.EventHandler(this.rb_estrategia_a_CheckedChanged);
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(402, 129);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(203, 33);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Estrategia A: Llegada entre 5 y 7";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(648, 129);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(205, 33);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Estrategia B: Llegada entre 7 y 8";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(944, 563);
+            this.button1.Location = new System.Drawing.Point(953, 546);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 103);
+            this.button1.Size = new System.Drawing.Size(146, 108);
             this.button1.TabIndex = 26;
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -571,14 +567,14 @@
             this.gb_estrategias.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_estrategias.Location = new System.Drawing.Point(351, 546);
             this.gb_estrategias.Name = "gb_estrategias";
-            this.gb_estrategias.Size = new System.Drawing.Size(474, 120);
+            this.gb_estrategias.Size = new System.Drawing.Size(397, 108);
             this.gb_estrategias.TabIndex = 27;
             this.gb_estrategias.TabStop = false;
             this.gb_estrategias.Text = "SOLUCION:";
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(83, 72);
+            this.label2.Location = new System.Drawing.Point(14, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 27);
             this.label2.TabIndex = 15;
@@ -587,7 +583,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(83, 45);
+            this.label1.Location = new System.Drawing.Point(14, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 27);
             this.label1.TabIndex = 14;
@@ -597,7 +593,7 @@
             // txt_permanencia_b
             // 
             this.txt_permanencia_b.Enabled = false;
-            this.txt_permanencia_b.Location = new System.Drawing.Point(378, 76);
+            this.txt_permanencia_b.Location = new System.Drawing.Point(309, 76);
             this.txt_permanencia_b.Name = "txt_permanencia_b";
             this.txt_permanencia_b.Size = new System.Drawing.Size(64, 20);
             this.txt_permanencia_b.TabIndex = 12;
@@ -605,14 +601,14 @@
             // txt_permanencia_a
             // 
             this.txt_permanencia_a.Enabled = false;
-            this.txt_permanencia_a.Location = new System.Drawing.Point(378, 49);
+            this.txt_permanencia_a.Location = new System.Drawing.Point(309, 49);
             this.txt_permanencia_a.Name = "txt_permanencia_a";
             this.txt_permanencia_a.Size = new System.Drawing.Size(64, 20);
             this.txt_permanencia_a.TabIndex = 11;
             // 
             // lbl_permanencia
             // 
-            this.lbl_permanencia.Location = new System.Drawing.Point(369, 13);
+            this.lbl_permanencia.Location = new System.Drawing.Point(300, 13);
             this.lbl_permanencia.Name = "lbl_permanencia";
             this.lbl_permanencia.Size = new System.Drawing.Size(81, 33);
             this.lbl_permanencia.TabIndex = 10;
@@ -622,7 +618,7 @@
             // txt_no_atendidos_b
             // 
             this.txt_no_atendidos_b.Enabled = false;
-            this.txt_no_atendidos_b.Location = new System.Drawing.Point(284, 76);
+            this.txt_no_atendidos_b.Location = new System.Drawing.Point(215, 76);
             this.txt_no_atendidos_b.Name = "txt_no_atendidos_b";
             this.txt_no_atendidos_b.Size = new System.Drawing.Size(64, 20);
             this.txt_no_atendidos_b.TabIndex = 9;
@@ -630,14 +626,14 @@
             // txt_no_atendidos_a
             // 
             this.txt_no_atendidos_a.Enabled = false;
-            this.txt_no_atendidos_a.Location = new System.Drawing.Point(284, 49);
+            this.txt_no_atendidos_a.Location = new System.Drawing.Point(215, 49);
             this.txt_no_atendidos_a.Name = "txt_no_atendidos_a";
             this.txt_no_atendidos_a.Size = new System.Drawing.Size(64, 20);
             this.txt_no_atendidos_a.TabIndex = 8;
             // 
             // lbl_no_atendidos
             // 
-            this.lbl_no_atendidos.Location = new System.Drawing.Point(266, 13);
+            this.lbl_no_atendidos.Location = new System.Drawing.Point(197, 13);
             this.lbl_no_atendidos.Name = "lbl_no_atendidos";
             this.lbl_no_atendidos.Size = new System.Drawing.Size(97, 33);
             this.lbl_no_atendidos.TabIndex = 7;
@@ -647,7 +643,7 @@
             // txt_atendidos_b
             // 
             this.txt_atendidos_b.Enabled = false;
-            this.txt_atendidos_b.Location = new System.Drawing.Point(188, 76);
+            this.txt_atendidos_b.Location = new System.Drawing.Point(119, 76);
             this.txt_atendidos_b.Name = "txt_atendidos_b";
             this.txt_atendidos_b.Size = new System.Drawing.Size(64, 20);
             this.txt_atendidos_b.TabIndex = 6;
@@ -655,14 +651,14 @@
             // txt_atendidos_a
             // 
             this.txt_atendidos_a.Enabled = false;
-            this.txt_atendidos_a.Location = new System.Drawing.Point(188, 49);
+            this.txt_atendidos_a.Location = new System.Drawing.Point(119, 49);
             this.txt_atendidos_a.Name = "txt_atendidos_a";
             this.txt_atendidos_a.Size = new System.Drawing.Size(64, 20);
             this.txt_atendidos_a.TabIndex = 5;
             // 
             // lbl_atendidos
             // 
-            this.lbl_atendidos.Location = new System.Drawing.Point(185, 13);
+            this.lbl_atendidos.Location = new System.Drawing.Point(116, 13);
             this.lbl_atendidos.Name = "lbl_atendidos";
             this.lbl_atendidos.Size = new System.Drawing.Size(67, 33);
             this.lbl_atendidos.TabIndex = 4;
@@ -680,14 +676,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_simulaciones.CausesValidation = false;
             this.dgv_simulaciones.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_simulaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_simulaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_simulaciones.ColumnHeadersHeight = 41;
             this.dgv_simulaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv_simulaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -939,18 +935,138 @@
             this.permanencia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.permanencia.Width = 90;
             // 
+            // gb_tipo_tp
+            // 
+            this.gb_tipo_tp.Controls.Add(this.rbTP6);
+            this.gb_tipo_tp.Controls.Add(this.rbTP5);
+            this.gb_tipo_tp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_tipo_tp.Location = new System.Drawing.Point(13, 120);
+            this.gb_tipo_tp.Name = "gb_tipo_tp";
+            this.gb_tipo_tp.Size = new System.Drawing.Size(186, 77);
+            this.gb_tipo_tp.TabIndex = 29;
+            this.gb_tipo_tp.TabStop = false;
+            this.gb_tipo_tp.Text = "Numero de Trabajo Practico:";
+            // 
+            // rbTP6
+            // 
+            this.rbTP6.AutoSize = true;
+            this.rbTP6.Location = new System.Drawing.Point(58, 49);
+            this.rbTP6.Name = "rbTP6";
+            this.rbTP6.Size = new System.Drawing.Size(66, 17);
+            this.rbTP6.TabIndex = 1;
+            this.rbTP6.TabStop = true;
+            this.rbTP6.Text = "TP N°6";
+            this.rbTP6.UseVisualStyleBackColor = true;
+            this.rbTP6.CheckedChanged += new System.EventHandler(this.rbTP6_CheckedChanged);
+            // 
+            // rbTP5
+            // 
+            this.rbTP5.AutoSize = true;
+            this.rbTP5.Location = new System.Drawing.Point(58, 23);
+            this.rbTP5.Name = "rbTP5";
+            this.rbTP5.Size = new System.Drawing.Size(66, 17);
+            this.rbTP5.TabIndex = 0;
+            this.rbTP5.TabStop = true;
+            this.rbTP5.Text = "TP N°5";
+            this.rbTP5.UseVisualStyleBackColor = true;
+            this.rbTP5.CheckedChanged += new System.EventHandler(this.rbTP5_CheckedChanged);
+            // 
+            // gb_litros_camiones
+            // 
+            this.gb_litros_camiones.Controls.Add(this.txt_litros_b);
+            this.gb_litros_camiones.Controls.Add(this.txt_litros_a);
+            this.gb_litros_camiones.Controls.Add(this.lbl_litros_b);
+            this.gb_litros_camiones.Controls.Add(this.lbl_litros_a);
+            this.gb_litros_camiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_litros_camiones.Location = new System.Drawing.Point(208, 120);
+            this.gb_litros_camiones.Name = "gb_litros_camiones";
+            this.gb_litros_camiones.Size = new System.Drawing.Size(154, 77);
+            this.gb_litros_camiones.TabIndex = 30;
+            this.gb_litros_camiones.TabStop = false;
+            this.gb_litros_camiones.Text = "Litros de Combustibles:";
+            // 
+            // txt_litros_b
+            // 
+            this.txt_litros_b.Location = new System.Drawing.Point(50, 46);
+            this.txt_litros_b.Name = "txt_litros_b";
+            this.txt_litros_b.Size = new System.Drawing.Size(71, 20);
+            this.txt_litros_b.TabIndex = 5;
+            this.txt_litros_b.Text = "22000";
+            // 
+            // txt_litros_a
+            // 
+            this.txt_litros_a.Location = new System.Drawing.Point(50, 20);
+            this.txt_litros_a.Name = "txt_litros_a";
+            this.txt_litros_a.Size = new System.Drawing.Size(71, 20);
+            this.txt_litros_a.TabIndex = 4;
+            this.txt_litros_a.Text = "15000";
+            // 
+            // lbl_litros_b
+            // 
+            this.lbl_litros_b.AutoSize = true;
+            this.lbl_litros_b.Location = new System.Drawing.Point(25, 49);
+            this.lbl_litros_b.Name = "lbl_litros_b";
+            this.lbl_litros_b.Size = new System.Drawing.Size(19, 13);
+            this.lbl_litros_b.TabIndex = 5;
+            this.lbl_litros_b.Text = "B:";
+            // 
+            // lbl_litros_a
+            // 
+            this.lbl_litros_a.AutoSize = true;
+            this.lbl_litros_a.Location = new System.Drawing.Point(24, 23);
+            this.lbl_litros_a.Name = "lbl_litros_a";
+            this.lbl_litros_a.Size = new System.Drawing.Size(19, 13);
+            this.lbl_litros_a.TabIndex = 4;
+            this.lbl_litros_a.Text = "A:";
+            // 
+            // gb_modelos_continua
+            // 
+            this.gb_modelos_continua.Controls.Add(this.rb_rungekutta);
+            this.gb_modelos_continua.Controls.Add(this.rb_euler);
+            this.gb_modelos_continua.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gb_modelos_continua.Location = new System.Drawing.Point(368, 120);
+            this.gb_modelos_continua.Name = "gb_modelos_continua";
+            this.gb_modelos_continua.Size = new System.Drawing.Size(217, 77);
+            this.gb_modelos_continua.TabIndex = 31;
+            this.gb_modelos_continua.TabStop = false;
+            // 
+            // rb_rungekutta
+            // 
+            this.rb_rungekutta.AutoSize = true;
+            this.rb_rungekutta.Location = new System.Drawing.Point(11, 46);
+            this.rb_rungekutta.Name = "rb_rungekutta";
+            this.rb_rungekutta.Size = new System.Drawing.Size(197, 17);
+            this.rb_rungekutta.TabIndex = 3;
+            this.rb_rungekutta.TabStop = true;
+            this.rb_rungekutta.Text = "Aproximacion por Runge Kutta";
+            this.rb_rungekutta.UseVisualStyleBackColor = true;
+            this.rb_rungekutta.CheckedChanged += new System.EventHandler(this.rb_rungekutta_CheckedChanged);
+            // 
+            // rb_euler
+            // 
+            this.rb_euler.AutoSize = true;
+            this.rb_euler.Location = new System.Drawing.Point(11, 20);
+            this.rb_euler.Name = "rb_euler";
+            this.rb_euler.Size = new System.Drawing.Size(155, 17);
+            this.rb_euler.TabIndex = 2;
+            this.rb_euler.TabStop = true;
+            this.rb_euler.Text = "Aproximacion por Euler";
+            this.rb_euler.UseVisualStyleBackColor = true;
+            this.rb_euler.CheckedChanged += new System.EventHandler(this.rb_euler_CheckedChanged);
+            // 
             // TPColas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1102, 681);
+            this.ClientSize = new System.Drawing.Size(1102, 657);
+            this.Controls.Add(this.gb_modelos_continua);
+            this.Controls.Add(this.gb_litros_camiones);
+            this.Controls.Add(this.gb_tipo_tp);
             this.Controls.Add(this.dgv_simulaciones);
             this.Controls.Add(this.gb_estrategias);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.rb_estrategia_b);
             this.Controls.Add(this.rb_estrategia_a);
             this.Controls.Add(this.btn_detener);
@@ -976,6 +1092,12 @@
             this.gb_estrategias.ResumeLayout(false);
             this.gb_estrategias.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_simulaciones)).EndInit();
+            this.gb_tipo_tp.ResumeLayout(false);
+            this.gb_tipo_tp.PerformLayout();
+            this.gb_litros_camiones.ResumeLayout(false);
+            this.gb_litros_camiones.PerformLayout();
+            this.gb_modelos_continua.ResumeLayout(false);
+            this.gb_modelos_continua.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1023,8 +1145,6 @@
         private System.Windows.Forms.Button btn_simular;
         private System.Windows.Forms.RadioButton rb_estrategia_b;
         private System.Windows.Forms.RadioButton rb_estrategia_a;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox gb_estrategias;
         private System.Windows.Forms.Label label2;
@@ -1058,5 +1178,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn total_atendidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn sin_atender;
         private System.Windows.Forms.DataGridViewTextBoxColumn permanencia;
+        private System.Windows.Forms.GroupBox gb_tipo_tp;
+        private System.Windows.Forms.RadioButton rbTP6;
+        private System.Windows.Forms.RadioButton rbTP5;
+        private System.Windows.Forms.GroupBox gb_litros_camiones;
+        private System.Windows.Forms.TextBox txt_litros_b;
+        private System.Windows.Forms.TextBox txt_litros_a;
+        private System.Windows.Forms.Label lbl_litros_b;
+        private System.Windows.Forms.Label lbl_litros_a;
+        private System.Windows.Forms.GroupBox gb_modelos_continua;
+        private System.Windows.Forms.RadioButton rb_rungekutta;
+        private System.Windows.Forms.RadioButton rb_euler;
     }
 }
