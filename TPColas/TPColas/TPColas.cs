@@ -69,7 +69,7 @@ namespace TPColas
             Boolean bFlag = false;
             if (rb_estrategia_a.Checked || rb_estrategia_b.Checked)
             {
-                if (rbTP5.Checked || (rbTP6.Checked && (rb_euler.Checked || rb_rungekutta.Checked)))
+                if (rbTP5.Checked || (rbTP6.Checked && rb_euler.Checked))
                 {
                     bFlag = true;
                 }
@@ -521,8 +521,14 @@ namespace TPColas
             rb_estrategia_b.Enabled = fin;
             rbTP5.Enabled = fin;
             rbTP6.Enabled = fin;
-            rb_euler.Enabled = fin;
-            rb_rungekutta.Enabled = fin;
+            if (rbTP5.Checked)
+            {
+                rb_euler.Enabled = false;
+            }
+            else
+            {
+                rb_euler.Enabled = true;
+            }
             btn_simular.Enabled = fin;
             btn_detener.Enabled = !fin;
 
@@ -757,7 +763,6 @@ namespace TPColas
                 txt_litros_a.Enabled = false;
                 txt_litros_b.Enabled = false;
                 rb_euler.Enabled = false;
-                rb_rungekutta.Enabled = false;
             }
             HabilitoSimulacion();
         }
@@ -771,7 +776,6 @@ namespace TPColas
                 txt_litros_a.Enabled = true;
                 txt_litros_b.Enabled = true;
                 rb_euler.Enabled = true;
-                rb_rungekutta.Enabled = true;
             }
             HabilitoSimulacion();
         }
